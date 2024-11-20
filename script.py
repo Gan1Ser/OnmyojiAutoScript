@@ -21,7 +21,7 @@ from cached_property import cached_property
 from pydantic import BaseModel, ValidationError
 from threading import Thread
 from multiprocessing.queues import Queue
-
+from tasks.Component.BaseActivity.base_activity import BaseActivity
 
 from module.config.utils import convert_to_underscore
 from module.config.config import Config
@@ -32,7 +32,7 @@ from module.base.decorator import del_cached_property
 from module.logger import logger
 from module.exception import *
 
-class Script:
+class Script(BaseActivity):
     def __init__(self, config_name: str ='oas') -> None:
         logger.hr('Start', level=0)
         self.server = None
@@ -437,6 +437,9 @@ class Script:
                 continue
 
             # Run
+            # 一直检测突发任务 不错过勾协和体协
+            # self.screenshot()
+
             logger.info(f'Scheduler: Start task `{task}`')
             self.device.stuck_record_clear()
             self.device.click_record_clear()

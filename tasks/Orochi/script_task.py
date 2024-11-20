@@ -114,16 +114,6 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                 if self.appear_then_click(self.I_OROCHI_LOCK, interval=1):
                     continue
 
-
-
-
-
-
-
-
-
-
-
     def run_leader(self):
         logger.info('Start run leader')
         self.ui_get_current_page()

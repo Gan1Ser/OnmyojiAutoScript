@@ -117,7 +117,7 @@ class ScriptTask(GameUi, BaseActivity, HeroTestAssets, SwitchSoul):
             # 如果是兵藏秘境 看看是否有兵道帖
             if is_skill:
                 if not self.check_art_war_card():
-                    logger.info("Art war card is enough")
+                    logger.info("Art war card is not enough")
                     break
             # 点击战斗
             logger.info("Click battle")
@@ -130,6 +130,9 @@ class ScriptTask(GameUi, BaseActivity, HeroTestAssets, SwitchSoul):
                     if not self.appear(self.I_BATTLE):
                         break
                 elif is_skill:
+                    if not self.check_art_war_card():
+                        logger.info("Art war card is enough")
+                        break
                     if self.appear_then_click(self.I_START_CHALLENGE, interval=1):
                         continue
                     if self.appear_then_click(self.I_BCMJ_RESET_CONFIRM, interval=1):
@@ -294,14 +297,6 @@ class ScriptTask(GameUi, BaseActivity, HeroTestAssets, SwitchSoul):
         global is_update
         while 1:
             self.screenshot()
-            if self.appear(self.I_ONE):
-                if is_update:
-                    # 关闭经验加成
-                    self.open_buff()
-                    self.exp_100(False)
-                    self.exp_50(False)
-                    self.close_buff()
-                break
             if self.appear_then_click(self.I_UI_BACK_RED, interval=2):
                 continue
             if self.appear_then_click(self.I_UI_BACK_YELLOW, interval=2):
@@ -310,13 +305,23 @@ class ScriptTask(GameUi, BaseActivity, HeroTestAssets, SwitchSoul):
                 continue
             if self.appear_then_click(self.I_GBB_BACK, interval=2):
                 continue
+            self.ui_get_current_page()
+            self.ui_goto(page_main)
+            if is_update:
+                # 关闭经验加成
+                self.open_buff()
+                self.exp_100(False)
+                self.exp_50(False)
+                self.close_buff()
+            break
+
 
 
 if __name__ == "__main__":
     from module.config.config import Config
     from module.device.device import Device
 
-    c = Config("oas1")
+    c = Config("oas2")
     d = Device(c)
     t = ScriptTask(c, d)
 
