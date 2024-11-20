@@ -8,6 +8,7 @@ from tasks.Component.BaseActivity.base_activity import BaseActivity
 from tasks.HeroTest.assets import HeroTestAssets
 from tasks.GameUi.page import page_main, page_shikigami_records
 from tasks.GameUi.game_ui import GameUi
+from tasks.GameUi.page import page_exploration
 from tasks.Component.SwitchSoul.switch_soul import SwitchSoul
 
 from module.logger import logger
@@ -52,6 +53,13 @@ class ScriptTask(GameUi, BaseActivity, HeroTestAssets, SwitchSoul):
 
         self.ui_get_current_page()
         self.ui_goto(page_main)
+        # 启动经验加成
+        if is_update:
+            self.open_buff()
+            self.exp_100(True)
+            self.exp_50(True)
+            self.close_buff()
+        self.ui_goto(page_exploration)
         self.home_main()
         # 设定是否锁定阵容
         if is_update:
@@ -258,12 +266,6 @@ class ScriptTask(GameUi, BaseActivity, HeroTestAssets, SwitchSoul):
         logger.hr("Enter HeroTest", 2)
         global is_update
         global is_skill
-        # 启动经验加成
-        if is_update:
-            self.open_buff()
-            self.exp_100(True)
-            self.exp_50(True)
-            self.close_buff()
         while 1:
             self.screenshot()
             if is_update:
@@ -272,8 +274,6 @@ class ScriptTask(GameUi, BaseActivity, HeroTestAssets, SwitchSoul):
             if is_skill:
                 if self.appear(self.I_BCMJ_BATTLE):
                     break
-            if self.appear_then_click(self.I_ONE, interval=1):
-                continue
             if self.appear_then_click(self.I_TWO, interval=1):
                 continue
             if is_update:
