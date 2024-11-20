@@ -130,6 +130,8 @@ class ScriptTask(GameUi, BaseActivity, HeroTestAssets, SwitchSoul):
                     if not self.appear(self.I_BATTLE):
                         break
                 elif is_skill:
+                    if self.appear_then_click(self.I_START_CHALLENGE, interval=1):
+                        continue
                     if self.appear_then_click(self.I_BCMJ_RESET_CONFIRM, interval=1):
                         continue
                     if self.appear_then_click(self.I_BCMJ_BATTLE, interval=2):
