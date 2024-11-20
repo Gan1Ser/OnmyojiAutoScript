@@ -438,7 +438,8 @@ class Script(BaseActivity):
 
             # Run
             # 一直检测突发任务 不错过勾协和体协
-            # self.screenshot()
+            self.screenshot()
+            logger.info(f'不错过勾协')
 
             logger.info(f'Scheduler: Start task `{task}`')
             self.device.stuck_record_clear()
