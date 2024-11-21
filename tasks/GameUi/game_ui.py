@@ -205,7 +205,6 @@ class GameUi(BaseTask, GameUiAssets):
                 skip_first_screenshot = False
             else:
                 self.screenshot()
-
             # Destination additional button
             if destination.additional and isinstance(destination.additional, list):
                 appear = False

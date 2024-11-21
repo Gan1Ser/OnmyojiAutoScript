@@ -13,7 +13,6 @@ import os
 import inflection
 import asyncio
 import json
-
 from typing import Callable
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -22,7 +21,7 @@ from pydantic import BaseModel, ValidationError
 from threading import Thread
 from multiprocessing.queues import Queue
 from tasks.Component.BaseActivity.base_activity import BaseActivity
-
+from tasks.base_task import BaseTask
 from module.config.utils import convert_to_underscore
 from module.config.config import Config
 from module.config.config_model import ConfigModel
@@ -31,11 +30,17 @@ from module.base.utils import load_module
 from module.base.decorator import del_cached_property
 from module.logger import logger
 from module.exception import *
+from tasks.GameUi.game_ui import GameUi
+from tasks.GameUi.page import page_exploration
+from tasks.Component.SwitchSoul.switch_soul import SwitchSoul
 
-class Script(BaseActivity):
+class Script(GameUi, BaseActivity, SwitchSoul,BaseTask):
     def __init__(self, config_name: str ='oas') -> None:
         logger.hr('Start', level=0)
         self.server = None
+        self.start_time = datetime.now()
+        self.interval_timer = {}  # 这个是用来记录每个匹配的运行间隔的，用于控制运行频率
+        self.animates = {}  # 保存缓存
         self.state_queue: Queue = None
         self.gui_update_task: Callable = None  # 回调函数, gui进程注册当每次config更新任务的时候更新gui的信息
         self.config_name = config_name
@@ -321,6 +326,12 @@ class Script(BaseActivity):
                     logger.info('Goto main page during wait')
                     self.run('GotoMain')
                     self.device.release_during_wait()
+
+                    # 定时输出日志直到任务时间到达
+                    while datetime.now() < task.next_run:
+                        # 一直检测勾协
+                        self.screenshot()
+
                     if not self.wait_until(task.next_run):
                         del_cached_property(self, 'config')
                         continue
@@ -404,7 +415,6 @@ class Script(BaseActivity):
         """
         logger.set_file_logger(self.config_name)
         logger.info(f'Start scheduler loop: {self.config_name}')
-
         while 1:
             # Check update event from GUI
             # if self.stop_event is not None:
@@ -423,7 +433,6 @@ class Script(BaseActivity):
             #     del_cached_property(self, 'config')
             #     logger.info('Server or network is recovered. Restart game client')
             #     self.config.task_call('Restart')
-
             # Get task
             task = self.get_next_task()
             # 更新 gui的任务
