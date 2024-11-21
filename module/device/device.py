@@ -225,7 +225,7 @@ class Device(Screenshot, Control, AppControl, EmulatorManager):
 
 
 if __name__ == "__main__":
-    device = Device(config="oas1")
+    device = Device(config="oas2")
     # cv2.imshow("imgSrceen", device.screenshot())  # 显示
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()

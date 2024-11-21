@@ -132,7 +132,7 @@ page_onmyodo.link(button=G.I_BACK_Y, destination=page_main)
 page_main.link(button=G.I_MAIN_GOTO_ONMYODO, destination=page_onmyodo)
 # 好友 friends
 page_friends = Page(G.I_CHECK_FRIENDS)
-page_friends.link(button=G.I_BACK_Y, destination=page_main)
+page_friends.link(button=G.I_BACK_FRIENDS, destination=page_main)
 page_main.link(button=G.I_MAIN_GOTO_FRIENDS, destination=page_friends)
 # 花合战 daily
 page_daily = Page(G.I_CHECK_DAILY)
