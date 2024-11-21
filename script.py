@@ -330,9 +330,8 @@ class Script(GameUi, BaseActivity, SwitchSoul,BaseTask):
                     # 定时输出日志直到任务时间到达
                     while datetime.now() < task.next_run:
                         # 一直检测勾协
-                        self.screenshot()
-                        task = self.config.get_next()
-                        self.config.task = task
+                        if self._burst():
+                            break
 
                     if not self.wait_until(task.next_run):
                         del_cached_property(self, 'config')
