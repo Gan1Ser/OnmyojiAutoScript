@@ -107,6 +107,7 @@ class ScriptTask(GameUi, Summon, DailyTriflesAssets):
                 break
             if self.appear_then_click(self.I_ROOM_GIFT, interval=1):
                 continue
+        logger.info('我出来了')
         self.screenshot()
         self.appear_then_click(self.I_GIFT_RECOMMEND, interval=1)
         logger.info('Enter store sign')

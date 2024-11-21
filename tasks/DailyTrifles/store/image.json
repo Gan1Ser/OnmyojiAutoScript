@@ -1,14 +1,5 @@
 [
   {
-    "itemName": "room_gift",
-    "imageName": "store_room_gift.png",
-    "roiFront": "1142,638,62,55",
-    "roiBack": "1127,611,103,94",
-    "method": "Template matching",
-    "threshold": 0.8,
-    "description": "礼包屋"
-  },
-  {
     "itemName": "gift_recommend",
     "imageName": "store_gift_recommend.png",
     "roiFront": "1186,98,53,64",
@@ -25,5 +16,14 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "免费一抽"
+  },
+  {
+    "itemName": "store_room_gift",
+    "imageName": "store_store_room_gift.png",
+    "roiFront": "1124,634,81,79",
+    "roiBack": "1124,634,81,79",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "description"
   }
 ]
