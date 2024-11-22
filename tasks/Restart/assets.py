@@ -12,15 +12,15 @@ class RestartAssets:
 
 	# Image Rule Assets
 	# 点击勾玉 
-	I_HARVEST_JADE = RuleImage(roi_front=(732,489,34,33), roi_back=(177,451,973,141), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_jade.png")
+	I_HARVEST_JADE = RuleImage(roi_front=(835,479,30,42), roi_back=(765,399,304,177), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_jade.png")
 	# 签到小图标 
-	I_HARVEST_SIGN = RuleImage(roi_front=(397,500,24,34), roi_back=(70,471,889,89), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign.png")
+	I_HARVEST_SIGN = RuleImage(roi_front=(427,480,27,36), roi_back=(324,423,238,160), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign.png")
 	# description 
-	I_HARVEST_SIGN_2 = RuleImage(roi_front=(592,135,100,252), roi_back=(592,135,100,252), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_2.png")
+	I_HARVEST_SIGN_2 = RuleImage(roi_front=(590,144,100,252), roi_back=(590,144,100,252), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_2.png")
 	# 999签到福袋 
-	I_HARVEST_SIGN_999 = RuleImage(roi_front=(345,494,23,29), roi_back=(51,459,888,103), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_999.png")
+	I_HARVEST_SIGN_999 = RuleImage(roi_front=(514,464,25,32), roi_back=(354,407,269,177), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_999.png")
 	# 邮件小图标 
-	I_HARVEST_MAIL = RuleImage(roi_front=(337,505,37,25), roi_back=(38,465,880,89), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_mail.png")
+	I_HARVEST_MAIL = RuleImage(roi_front=(1134,25,43,42), roi_back=(873,2,403,122), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_mail.png")
 	# 全部收取 
 	I_HARVEST_MAIL_ALL = RuleImage(roi_front=(80,622,75,64), roi_back=(80,622,75,64), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_mail_all.png")
 	# 有些邮件需要点击一次 
@@ -46,7 +46,9 @@ class RestartAssets:
 	# description 
 	I_HARVEST_SOUL_3 = RuleImage(roi_front=(313,489,188,33), roi_back=(302,472,216,60), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_soul_3.png")
 	# 寮包 
-	I_HARVEST_GUILD_REWARD = RuleImage(roi_front=(244,498,41,42), roi_back=(200,403,817,157), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_guild_reward.png")
+	I_HARVEST_GUILD_REWARD = RuleImage(roi_front=(244,498,41,42), roi_back=(244,498,41,42), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_guild_reward.png")
+	# description 
+	I_BACK_MAIL = RuleImage(roi_front=(1145,88,60,60), roi_back=(1145,88,60,60), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_back_mail.png")
 
 
 	# Image Rule Assets

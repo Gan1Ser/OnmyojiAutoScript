@@ -113,7 +113,7 @@ class LoginHandler(BaseTask, RestartAssets):
         :return: 如果没有发现任何奖励后退出
         """
         logger.hr('Harvest')
-        timer_harvest = Timer(3)  # 如果连续3秒没有发现任何奖励，退出
+        timer_harvest = Timer(13)  # 如果连续3秒没有发现任何奖励，退出
         while 1:
             self.screenshot()
 
@@ -154,7 +154,6 @@ class LoginHandler(BaseTask, RestartAssets):
             # 邮件
             # 判断是否勾选了收取邮件（不收取邮件可以查看每日收获）
             if self.config.restart.harvest_config.enable_mail:
-
                 if self.appear_then_click(self.I_HARVEST_MAIL, interval=1.2):
                     timer_harvest.reset()
                     continue
@@ -174,10 +173,13 @@ class LoginHandler(BaseTask, RestartAssets):
                         if not self.appear(self.I_HARVEST_MAIL_ALL) and not self.appear(self.I_HARVEST_MAIL_OPEN):
                             logger.info('Mail has been harvested')
                             logger.info('Exit mail')
+                            self.appear_then_click(self.I_BACK_MAIL, interval=2)
                             break
                         if self.appear_then_click(self.I_HARVEST_MAIL_OPEN, interval=1):
                             timer_harvest.reset()
                             continue
+                    continue
+                continue
             # 体力
             if self.appear_then_click(self.I_HARVEST_AP, interval=1, threshold=0.7):
                 timer_harvest.reset()

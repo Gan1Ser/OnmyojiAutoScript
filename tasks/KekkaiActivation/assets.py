@@ -65,7 +65,7 @@ class KekkaiActivationAssets:
 	# 太鼓4 
 	I_A_HARVEST_KAIKO_4 = RuleImage(roi_front=(930,231,69,49), roi_back=(930,231,69,49), threshold=0.8, method="Template matching", file="./tasks/KekkaiActivation/a/a_a_harvest_kaiko_4.png")
 	# description 
-	I_A_HARVEST_KAIKO_3 = RuleImage(roi_front=(930,231,69,49), roi_back=(930,231,69,49), threshold=0.8, method="Template matching", file="./tasks/KekkaiActivation/a/a_a_harvest_kaiko_3.png")
+	I_A_HARVEST_KAIKO_3 = RuleImage(roi_front=(893,163,47,42), roi_back=(865,136,100,100), threshold=0.8, method="Template matching", file="./tasks/KekkaiActivation/a/a_a_harvest_kaiko_3.png")
 	# 太鼓6 
 	I_A_HARVEST_KAIKO_6 = RuleImage(roi_front=(930,231,69,49), roi_back=(930,231,69,49), threshold=0.7, method="Template matching", file="./tasks/KekkaiActivation/a/a_a_harvest_kaiko_6.png")
 	# 斗鱼6 
