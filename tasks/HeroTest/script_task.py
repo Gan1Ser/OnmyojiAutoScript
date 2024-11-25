@@ -131,7 +131,7 @@ class ScriptTask(GameUi, BaseActivity, HeroTestAssets, SwitchSoul):
                         break
                 elif is_skill:
                     if not self.check_art_war_card():
-                        logger.info("Art war card is enough")
+                        logger.info("Art war card is not nough")
                         break
                     if self.appear_then_click(self.I_START_CHALLENGE, interval=1):
                         continue

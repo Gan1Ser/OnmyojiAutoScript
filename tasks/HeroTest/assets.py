@@ -58,11 +58,11 @@ class HeroTestAssets:
 
 
 	# Ocr Rule Assets
-	# 投喂的体力
+	# 投喂的体力 
 	O_REMAIN_AP = RuleOcr(roi=(1095,24,123,33), area=(1095,24,123,33), mode="DigitCounter", method="Default", keyword="", name="remain_ap")
-	# 兵藏秘境兵道帖
+	# 兵藏秘境兵道帖 
 	O_ART_WAR_CARD = RuleOcr(roi=(712,21,98,36), area=(712,21,98,36), mode="DigitCounter", method="Default", keyword="", name="art_war_card")
-	# 兵道帖机密
+	# 兵道帖机密 
 	O_ART_WAR_CARD_PLUS = RuleOcr(roi=(916,25,90,29), area=(916,25,90,29), mode="SINGLE", method="Default", keyword="", name="art_war_card_plus")
 
 
