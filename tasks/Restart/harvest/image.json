@@ -29,8 +29,8 @@
   {
     "itemName": "harvest_sign_999",
     "imageName": "harvest_harvest_sign_999.png",
-    "roiFront": "384,503,41,37",
-    "roiBack": "384,503,41,37",
+    "roiFront": "393,511,27,26",
+    "roiBack": "393,511,27,26",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "999签到福袋"
