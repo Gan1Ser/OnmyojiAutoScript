@@ -164,7 +164,7 @@ class RichManAssets:
 	# 契灵商店 
 	I_MALL_BONDLINGS_CHECK = RuleImage(roi_front=(355,186,34,104), roi_back=(355,186,34,104), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/navbar/navbar_mall_bondlings_check.png")
 	# 杂货铺 
-	I_MALL_SUNDRY = RuleImage(roi_front=(856,639,74,61), roi_back=(834,621,116,90), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/navbar/navbar_mall_sundry.png")
+	I_MALL_SUNDRY = RuleImage(roi_front=(872,648,54,41), roi_back=(872,648,54,41), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/navbar/navbar_mall_sundry.png")
 	# 杂货铺 
 	I_MALL_SUNDRY_CHECK = RuleImage(roi_front=(1093,10,31,44), roi_back=(1093,10,31,44), threshold=0.7, method="Template matching", file="./tasks/RichMan/mall/navbar/navbar_mall_sundry_check.png")
 

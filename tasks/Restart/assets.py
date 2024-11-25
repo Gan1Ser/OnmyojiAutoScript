@@ -18,7 +18,7 @@ class RestartAssets:
 	# description 
 	I_HARVEST_SIGN_2 = RuleImage(roi_front=(590,144,100,252), roi_back=(590,144,100,252), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_2.png")
 	# 999签到福袋 
-	I_HARVEST_SIGN_999 = RuleImage(roi_front=(384,503,41,37), roi_back=(384,503,41,37), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_999.png")
+	I_HARVEST_SIGN_999 = RuleImage(roi_front=(393,511,27,26), roi_back=(393,511,27,26), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_999.png")
 	# 邮件小图标 
 	I_HARVEST_MAIL = RuleImage(roi_front=(1137,32,35,29), roi_back=(1137,32,35,29), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_mail.png")
 	# 全部收取 
