@@ -57,12 +57,12 @@ class HeroTestAssets:
 	I_START_CHALLENGE = RuleImage(roi_front=(685,407,142,47), roi_back=(685,407,142,47), threshold=0.8, method="Template matching", file="./tasks/HeroTest/as/as_start_challenge.png")
 
 
-	# Image Rule Assets
-	# 投喂的体力 
-	I_REMAIN_AP = RuleImage(roi_front=(1095,24,123,33), roi_back=(1095,24,123,33), threshold=0, method="Default", file="./tasks/HeroTest/as/")
-	# 兵藏秘境兵道帖 
-	I_ART_WAR_CARD = RuleImage(roi_front=(712,21,98,36), roi_back=(712,21,98,36), threshold=0, method="Default", file="./tasks/HeroTest/as/")
-	# 兵道帖机密 
-	I_ART_WAR_CARD_PLUS = RuleImage(roi_front=(916,25,90,29), roi_back=(916,25,90,29), threshold=0, method="Default", file="./tasks/HeroTest/as/")
+	# Ocr Rule Assets
+	# 投喂的体力
+	O_REMAIN_AP = RuleOcr(roi=(1095,24,123,33), area=(1095,24,123,33), mode="DigitCounter", method="Default", keyword="", name="remain_ap")
+	# 兵藏秘境兵道帖
+	O_ART_WAR_CARD = RuleOcr(roi=(712,21,98,36), area=(712,21,98,36), mode="DigitCounter", method="Default", keyword="", name="art_war_card")
+	# 兵道帖机密
+	O_ART_WAR_CARD_PLUS = RuleOcr(roi=(916,25,90,29), area=(916,25,90,29), mode="SINGLE", method="Default", keyword="", name="art_war_card_plus")
 
 
