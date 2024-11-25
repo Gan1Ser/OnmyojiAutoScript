@@ -110,8 +110,22 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets):
         if not in_dokan:
             self.ui_get_current_page()
             self.ui_goto(page_guild)
-
-            self.goto_dokan()
+            flag = self.goto_dokan()
+            if flag:
+                pass
+            else:
+                logger.info(f"道馆没有开始")
+                success = False
+                # 保持好习惯，一个任务结束了就返回到庭院，方便下一任务的开始
+                self.ui_get_current_page()
+                self.ui_goto(page_main)
+                logger.info(f"怎么没有到庭院？")
+                # 设置下次运行时间
+                if success:
+                    self.set_next_run(task='Dokan', finish=True, server=True, success=True)
+                else:
+                    self.set_next_run(task='Dokan', finish=True, server=True, success=False)
+                raise TaskEnd
 
         # 开始道馆流程
         while 1:
@@ -428,6 +442,8 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets):
                 pos = self.O_DOKAN_MAP.ocr_full(image)
                 if pos == (0, 0, 0, 0):
                     logger.info(f"failed to find {self.O_DOKAN_MAP.keyword}")
+                    logger.info(f"道馆未开始")
+                    return False
                 else:
                     # 取中间
                     x = pos[0] + pos[2] / 2
