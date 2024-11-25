@@ -248,11 +248,11 @@ class ScriptTask(GameUi, BaseActivity, HeroTestAssets, SwitchSoul):
 
     def check_art_war_card(self):
         self.screenshot()
-        cu = self.O_ART_WAR_CARD.ocr(image=self.device.image)
+        cu = self.I_ART_WAR_CARD.ocr(image=self.device.image)
         if cu[0] >= 1:
             logger.info("Art war card is enough")
             return True
-        cu = self.O_ART_WAR_CARD_PLUS.ocr(image=self.device.image)
+        cu = self.I_ART_WAR_CARD_PLUS.ocr(image=self.device.image)
         # 转换为int
         if cu != "":
             cu = int(cu)
