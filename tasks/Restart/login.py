@@ -21,8 +21,9 @@ class LoginHandler(BaseTask, RestartAssets):
         self.device.stuck_record_add('LOGIN_CHECK')
 
         confirm_timer = Timer(1.5, count=2).start()
-        orientation_timer = Timer(10)
+        orientation_timer = Timer(3)
         login_success = False
+        self.mail_count = 0
 
         while 1:
             # Watch device rotation
@@ -153,33 +154,33 @@ class LoginHandler(BaseTask, RestartAssets):
                 continue
             # 邮件
             # 判断是否勾选了收取邮件（不收取邮件可以查看每日收获）
-            if self.config.restart.harvest_config.enable_mail:
-                if self.appear_then_click(self.I_HARVEST_MAIL, interval=1.2):
+            if self.config.restart.harvest_config.enable_mail and self.mail_count == 0:
+                if self.appear_then_click(self.I_HARVEST_MAIL, interval=3):
+                    self.mail_count = 1
                     timer_harvest.reset()
-                    continue
-                if self.appear(self.I_HARVEST_MAIL_TITLE, interval=0.2):
-                    while 1:
-                        self.screenshot()
-                        if self.appear_then_click(self.I_HARVEST_MAIL_ALL, interval=2):
-                            timer_harvest.reset()
-                            pass
-                        if self.appear_then_click(self.I_HARVEST_MAIL_CONFIRM, interval=1):
-                            continue
+                    self.wait_until_appear(self.I_HARVEST_MAIL_TITLE, wait_time=2)
+                    if self.appear(self.I_HARVEST_MAIL_TITLE, interval=2.5):
+                        while 1:
+                            self.screenshot()
+                            if self.appear_then_click(self.I_HARVEST_MAIL_ALL, interval=2):
+                                timer_harvest.reset()
+                                pass
+                            if self.appear_then_click(self.I_HARVEST_MAIL_CONFIRM, interval=1):
+                                continue
 
-                        # 如果一直出现收取全部，那就说明还在进行中
-                        if self.appear(self.I_HARVEST_MAIL_ALL):
-                            pass
-                        # 如果没有出现 ‘收取全部’ 也没有出现 ‘还未读的邮件’ 那就可以退出了
-                        if not self.appear(self.I_HARVEST_MAIL_ALL) and not self.appear(self.I_HARVEST_MAIL_OPEN):
-                            logger.info('Mail has been harvested')
-                            logger.info('Exit mail')
-                            self.appear_then_click(self.I_BACK_MAIL, interval=2)
-                            break
-                        if self.appear_then_click(self.I_HARVEST_MAIL_OPEN, interval=1):
-                            timer_harvest.reset()
-                            continue
-                    continue
-                continue
+                            # 如果一直出现收取全部，那就说明还在进行中
+                            if self.appear(self.I_HARVEST_MAIL_ALL):
+                                pass
+                            # 如果没有出现 ‘收取全部’ 也没有出现 ‘还未读的邮件’ 那就可以退出了
+                            if not self.appear(self.I_HARVEST_MAIL_ALL) and not self.appear(self.I_HARVEST_MAIL_OPEN):
+                                logger.info('Mail has been harvested')
+                                logger.info('Exit mail')
+                                break
+                            if self.appear_then_click(self.I_HARVEST_MAIL_OPEN, interval=1):
+                                timer_harvest.reset()
+                                continue
+                        self.appear_then_click(self.I_UI_BACK_RED, interval=2.3)
+                        continue
             # 体力
             if self.appear_then_click(self.I_HARVEST_AP, interval=1, threshold=0.7):
                 timer_harvest.reset()

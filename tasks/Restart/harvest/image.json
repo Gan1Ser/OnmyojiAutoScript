@@ -2,8 +2,8 @@
   {
     "itemName": "harvest_jade",
     "imageName": "harvest_harvest_jade.png",
-    "roiFront": "835,479,30,42",
-    "roiBack": "765,399,304,177",
+    "roiFront": "1084,537,43,42",
+    "roiBack": "1084,537,43,42",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "点击勾玉"
@@ -11,8 +11,8 @@
   {
     "itemName": "harvest_sign",
     "imageName": "harvest_harvest_sign.png",
-    "roiFront": "427,480,27,36",
-    "roiBack": "324,423,238,160",
+    "roiFront": "391,501,27,36",
+    "roiBack": "391,501,27,36",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "签到小图标"
@@ -29,8 +29,8 @@
   {
     "itemName": "harvest_sign_999",
     "imageName": "harvest_harvest_sign_999.png",
-    "roiFront": "514,464,25,32",
-    "roiBack": "354,407,269,177",
+    "roiFront": "384,503,41,37",
+    "roiBack": "384,503,41,37",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "999签到福袋"
@@ -38,8 +38,8 @@
   {
     "itemName": "harvest_mail",
     "imageName": "harvest_harvest_mail.png",
-    "roiFront": "1134,25,43,42",
-    "roiBack": "873,2,403,122",
+    "roiFront": "1137,32,35,29",
+    "roiBack": "1137,32,35,29",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "邮件小图标"
@@ -47,8 +47,8 @@
   {
     "itemName": "harvest_mail_all",
     "imageName": "harvest_harvest_mail_all.png",
-    "roiFront": "80,622,75,64",
-    "roiBack": "80,622,75,64",
+    "roiFront": "86,622,69,53",
+    "roiBack": "86,622,69,53",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "全部收取"
@@ -57,7 +57,7 @@
     "itemName": "harvest_mail_open",
     "imageName": "harvest_harvest_mail_open.png",
     "roiFront": "163,367,45,48",
-    "roiBack": "139,86,100,487",
+    "roiBack": "163,367,45,48",
     "method": "Template matching",
     "threshold": 0.9,
     "description": "有些邮件需要点击一次"
@@ -75,7 +75,7 @@
     "itemName": "harvest_soul",
     "imageName": "harvest_harvest_soul.png",
     "roiFront": "241,497,38,36",
-    "roiBack": "68,480,930,72",
+    "roiBack": "241,497,38,36",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "description"
