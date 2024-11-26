@@ -16,9 +16,8 @@ from tasks.GameUi.game_ui import GameUi
 from tasks.GameUi.page import page_demon_encounter, page_shikigami_records
 from tasks.DemonEncounter.assets import DemonEncounterAssets
 from tasks.Component.GeneralBattle.general_battle import GeneralBattle
-from tasks.Component.GeneralBattle.config_general_battle import GeneralBattleConfig
+from tasks.Component.GeneralBattle.config_general_battle import GeneralBattleConfig, GreenMarkType
 from tasks.DemonEncounter.data.answer import Answer
-
 class LanternClass(Enum):
     BATTLE = 0  # 打怪  --> 无法判断因为怪的图片不一样，用排除法
     BOX = 1  # 开宝箱
@@ -144,6 +143,8 @@ class ScriptTask(GameUi, GeneralBattle, DemonEncounterAssets, SwitchSoul):
         # 延长时间并在战斗结束后改回来
         self.device.stuck_timer_long = Timer(480, count=480).start()
         config = self.con
+        config.green_enable = True
+        config.green_mark = GreenMarkType.GREEN_LEFT1  # 设置为左边第一个绿标
         self.run_general_battle(config)
         self.device.stuck_timer_long = Timer(300, count=300).start()
 
@@ -444,11 +445,11 @@ class ScriptTask(GameUi, GeneralBattle, DemonEncounterAssets, SwitchSoul):
 if __name__ == '__main__':
     from module.config.config import Config
     from module.device.device import Device
-    from memory_profiler import profile
+    # from memory_profiler import profile
 
     c = Config('oas1')
     d = Device(c)
     t = ScriptTask(c, d)
 
     # t.run()
-    t.battle_wait(True)
+    # t.battle_wait(True)
