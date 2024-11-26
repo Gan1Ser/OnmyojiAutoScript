@@ -11,8 +11,8 @@
   {
     "itemName": "harvest_sign",
     "imageName": "harvest_harvest_sign.png",
-    "roiFront": "391,501,27,36",
-    "roiBack": "391,501,27,36",
+    "roiFront": "390,496,34,44",
+    "roiBack": "390,496,34,44",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "签到小图标"
