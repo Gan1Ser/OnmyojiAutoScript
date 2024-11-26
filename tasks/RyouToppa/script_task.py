@@ -144,7 +144,12 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, RyouToppaAssets):
 
         # 100% 攻破, 第二天再执行
         if ryou_toppa_success_penetration:
-            self.set_next_run(task='RyouToppa', finish=True, success=True)
+            # self.set_next_run(task='RyouToppa', finish=True, success=True)
+            # 获取明天的日期并设置为6点30分
+            tomorrow = datetime.now() + timedelta(days=1)
+            target_time = tomorrow.replace(hour=6, minute=30, second=0, microsecond=0)
+            # 调用set_next_run方法设置下次运行时间为明天早上6点30分
+            self.set_next_run(task="RyouToppa", target=target_time)
             raise TaskEnd
         if self.config.ryou_toppa.general_battle_config.lock_team_enable:
             logger.info("Lock team.")
