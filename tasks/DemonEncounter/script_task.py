@@ -144,7 +144,7 @@ class ScriptTask(GameUi, GeneralBattle, DemonEncounterAssets, SwitchSoul):
         self.device.stuck_timer_long = Timer(480, count=480).start()
         config = self.con
         config.green_enable = True
-        config.green_mark = GreenMarkType.GREEN_LEFT1  # 设置为左边第一个绿标
+        config.green_mark = GreenMarkType.GREEN_LEFT3  # 设置为左边第一个绿标
         self.run_general_battle(config)
         self.device.stuck_timer_long = Timer(300, count=300).start()
 
@@ -343,7 +343,7 @@ class ScriptTask(GameUi, GeneralBattle, DemonEncounterAssets, SwitchSoul):
     def _battle(self, target_click):
         config = self.con
         config.green_enable = True
-        config.green_mark = GreenMarkType.GREEN_LEFT1  # 设置为左边第一个绿标
+        config.green_mark = GreenMarkType.GREEN_LEFT3  # 设置为左边第一个绿标
         while 1:
             self.screenshot()
             if not self.appear(self.I_DE_LOCATION):
