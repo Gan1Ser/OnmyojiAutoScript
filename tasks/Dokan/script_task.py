@@ -110,22 +110,8 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets):
         if not in_dokan:
             self.ui_get_current_page()
             self.ui_goto(page_guild)
-            flag = self.goto_dokan()
-            if flag:
-                pass
-            else:
-                logger.info(f"道馆没有开始")
-                success = False
-                # 保持好习惯，一个任务结束了就返回到庭院，方便下一任务的开始
-                self.ui_get_current_page()
-                self.ui_goto(page_main)
-                logger.info(f"怎么没有到庭院？")
-                # 设置下次运行时间
-                if success:
-                    self.set_next_run(task='Dokan', finish=True, server=True, success=True)
-                else:
-                    self.set_next_run(task='Dokan', finish=True, server=True, success=False)
-                raise TaskEnd
+
+            self.goto_dokan()
 
         # 开始道馆流程
         while 1:
@@ -306,7 +292,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets):
 
     def dokan_choose_attack_priority(self, attack_priority: int) -> bool:
         """ 选择优先攻击
-        : return 
+        : return
         """
         logger.hr('Try to choose attack priority')
         max_try = 5
@@ -365,8 +351,8 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets):
                 else:
                     self.click(click=self.C_DOKAN_RANDOM_CLICK_AREA2, interval=sleep)
             else:
-                # 假设安全区域是绿色的  
-                safe_color_lower = np.array([45, 25, 25])  # HSV颜色空间的绿色下界  
+                # 假设安全区域是绿色的
+                safe_color_lower = np.array([45, 25, 25])  # HSV颜色空间的绿色下界
                 safe_color_upper = np.array([90, 255, 255])  # HSV颜色空间的绿色上界
                 pos = detect_safe_area2(self.device.image, safe_color_lower, safe_color_upper, 3, True)
                 logger.info(f"random click area: {pos}, delay: {sleep}")
@@ -420,7 +406,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets):
     def goto_dokan(self):
         ''' 进入道馆
         TODO 道馆相关场景
-        :return 
+        :return
         '''
         self.ui_get_current_page()
         try_count = 0
@@ -442,8 +428,6 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets):
                 pos = self.O_DOKAN_MAP.ocr_full(image)
                 if pos == (0, 0, 0, 0):
                     logger.info(f"failed to find {self.O_DOKAN_MAP.keyword}")
-                    logger.info(f"道馆未开始")
-                    return False
                 else:
                     # 取中间
                     x = pos[0] + pos[2] / 2
@@ -495,7 +479,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets):
         # 状态：达到失败次数，CD中
         if self.appear(self.I_RYOU_DOKAN_CD, threshold=0.8):
             return True, DokanScene.RYOU_DOKAN_SCENE_CD
-        
+
         # # 状态：加油中，左下角有鼓
         # if self.appear_then_click(self.I_RYOU_DOKAN_CHEERING, threshold=0.8) or self.appear(
         #         self.I_RYOU_DOKAN_CHEERING_GRAY, threshold=0.8):
@@ -508,7 +492,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets):
 
         # 状态：道馆已经结束，图片位置会偏移，换OCR
         if self.ocr_appear(self.O_DOKAN_SUCCEEDED):
-        # if self.appear(self.I_RYOU_DOKAN_FINISHED, threshold=0.8):
+            # if self.appear(self.I_RYOU_DOKAN_FINISHED, threshold=0.8):
             return True, DokanScene.RYOU_DOKAN_SCENE_FINISHED
 
         return False, DokanScene.RYOU_DOKAN_SCENE_UNKNOWN
