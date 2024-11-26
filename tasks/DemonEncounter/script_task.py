@@ -342,6 +342,8 @@ class ScriptTask(GameUi, GeneralBattle, DemonEncounterAssets, SwitchSoul):
 
     def _battle(self, target_click):
         config = self.con
+        config.green_enable = True
+        config.green_mark = GreenMarkType.GREEN_LEFT1  # 设置为左边第一个绿标
         while 1:
             self.screenshot()
             if not self.appear(self.I_DE_LOCATION):
