@@ -2,20 +2,20 @@
   {
     "itemName": "harvest_jade",
     "imageName": "harvest_harvest_jade.png",
-    "roiFront": "1088,540,31,34",
+    "roiFront": "1091,542,31,34",
     "roiBack": "671,434,499,158",
     "method": "Template matching",
     "threshold": 0.6,
-    "description": "点击勾玉"
+    "description": "琼庭院勾玉"
   },
   {
     "itemName": "harvest_sign",
     "imageName": "harvest_harvest_sign.png",
-    "roiFront": "397,500,24,34",
+    "roiFront": "395,500,24,34",
     "roiBack": "70,462,889,98",
     "method": "Template matching",
     "threshold": 0.7,
-    "description": "签到小图标"
+    "description": "琼庭院签到小图标"
   },
   {
     "itemName": "harvest_sign_2",
@@ -29,11 +29,11 @@
   {
     "itemName": "harvest_sign_999",
     "imageName": "harvest_harvest_sign_999.png",
-    "roiFront": "345,494,23,29",
+    "roiFront": "394,508,23,29",
     "roiBack": "51,459,888,103",
     "method": "Template matching",
     "threshold": 0.7,
-    "description": "999签到福袋"
+    "description": "琼庭院999签到福袋"
   },
   {
     "itemName": "harvest_mail",
@@ -172,11 +172,65 @@
   },
   {
     "itemName": "harvest_zidu",
-    "imageName": "harvest_zidu.png",
-    "roiFront": "785,475,135,135",
+    "imageName": "harvest_harvest_zidu.png",
+    "roiFront": "910,508,95,95",
     "roiBack": "785,475,135,135",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "点击庭院阴阳师出现的姿度按钮"
+  },
+  {
+    "itemName": "harvest_ap_1",
+    "imageName": "harvest_harvest_ap_1.png",
+    "roiFront": "841,488,24,24",
+    "roiBack": "718,447,408,147",
+    "method": "Template matching",
+    "threshold": 0.9,
+    "description": "缘结神社食盒"
+  },
+  {
+    "itemName": "harvest_sign_999_1",
+    "imageName": "harvest_harvest_sign_999_1.png",
+    "roiFront": "427,491,21,21",
+    "roiBack": "267,443,291,145",
+    "method": "Template matching",
+    "threshold": 0.9,
+    "description": "缘结神社999福袋"
+  },
+  {
+    "itemName": "harvest_sign_1",
+    "imageName": "harvest_harvest_sign_1.png",
+    "roiFront": "425,484,26,28",
+    "roiBack": "319,452,254,140",
+    "method": "Template matching",
+    "threshold": 0.9,
+    "description": "缘结神社签到"
+  },
+  {
+    "itemName": "harvest_jade_1",
+    "imageName": "harvest_harvest_jade_1.png",
+    "roiFront": "840,485,25,30",
+    "roiBack": "776,452,326,129",
+    "method": "Template matching",
+    "threshold": 0.9,
+    "description": "缘结神社勾玉"
+  },
+  {
+    "itemName": "harvest_soul1",
+    "imageName": "harvest_harvest_soul1.png",
+    "roiFront": "418,480,34,29",
+    "roiBack": "307,454,275,135",
+    "method": "Template matching",
+    "threshold": 0.9,
+    "description": "缘结神社御魂"
+  },
+  {
+    "itemName": "harvest_soul_4",
+    "imageName": "harvest_harvest_soul_4.png",
+    "roiFront": "422,476,33,38",
+    "roiBack": "287,452,293,131",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "缘结神社自选御魂"
   }
 ]

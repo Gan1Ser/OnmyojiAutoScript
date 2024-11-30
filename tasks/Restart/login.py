@@ -114,7 +114,38 @@ class LoginHandler(BaseTask, RestartAssets):
         :return: 如果没有发现任何奖励后退出
         """
         logger.hr('Harvest')
-        timer_harvest = Timer(13)  # 如果连续3秒没有发现任何奖励，退出
+        timer_harvest = Timer(5)  # 如果连续3秒没有发现任何奖励，退出
+
+        #勾玉列表
+        JADE_List = [
+            self.I_HARVEST_JADE,
+            self.I_HARVEST_JADE_1,
+        ]
+        #签到列表
+        SIGN_List = [
+            self.I_HARVEST_SIGN,
+            self.I_HARVEST_SIGN_1, #无2,3,4
+        ]
+        #福袋列表
+        SIGN_999_List = [
+            self.I_HARVEST_SIGN_999,
+            self.I_HARVEST_SIGN_999_1,
+        ]
+        #体力列表
+        AP_List = [
+            self.I_HARVEST_AP,
+            self.I_HARVEST_AP_1,
+        ]
+        #御魂加成列表
+        SOUL_List = [
+            self.I_HARVEST_SOUL,
+            self.I_HARVEST_SOUL1,
+        ]
+        #自选御魂
+        CHOOSE_SOUL_List = [
+            self.I_HARVEST_SOUL_1,
+            self.I_HARVEST_SOUL_4,
+        ]
         while 1:
             self.screenshot()
 
@@ -132,13 +163,15 @@ class LoginHandler(BaseTask, RestartAssets):
                 continue
 
             # 勾玉
-            if self.appear_then_click(self.I_HARVEST_JADE, interval=1.5):
-                timer_harvest.reset()
-                continue
+            for JADE in JADE_List:
+                if self.appear_then_click(JADE, interval=1.5):
+                    timer_harvest.reset()
+                    break
             # 签到
-            if self.appear_then_click(self.I_HARVEST_SIGN, interval=1.5):
-                timer_harvest.reset()
-                continue
+            for SIGN in SOUL_List:
+                if self.appear_then_click(SIGN, interval=1.5):
+                    timer_harvest.reset()
+                    break
             # 某些活动的特殊签到，有空看到就删掉
             if self.appear_then_click(self.I_HARVEST_SIGN_3, interval=0.7):
                 continue
@@ -149,9 +182,10 @@ class LoginHandler(BaseTask, RestartAssets):
                 timer_harvest.reset()
                 continue
             # 999天的签到福袋
-            if self.appear_then_click(self.I_HARVEST_SIGN_999, interval=1.5):
-                timer_harvest.reset()
-                continue
+            for SIGN_999 in SIGN_999_List:
+                if self.appear_then_click(SIGN_999, interval=1.5):
+                    timer_harvest.reset()
+                    break
             # 邮件
             # 判断是否勾选了收取邮件（不收取邮件可以查看每日收获）
             if self.config.restart.harvest_config.enable_mail and self.mail_count == 0:
@@ -182,25 +216,28 @@ class LoginHandler(BaseTask, RestartAssets):
                         self.appear_then_click(self.I_UI_BACK_RED, interval=2.3)
                         continue
             # 体力
-            if self.appear_then_click(self.I_HARVEST_AP, interval=1, threshold=0.7):
-                timer_harvest.reset()
-                continue
+            for AP in AP_List:
+                if self.appear_then_click(AP, interval=1):
+                    timer_harvest.reset()
+                    break
             # 御魂觉醒加成
-            if self.appear_then_click(self.I_HARVEST_SOUL, interval=1):
-                timer_harvest.reset()
-                continue
+            for SOUL in SOUL_List:
+                if self.appear_then_click(SOUL, interval=1):
+                    timer_harvest.reset()
+                    break
             # 寮包
             if self.appear_then_click(self.I_HARVEST_GUILD_REWARD, interval=2):
                 timer_harvest.reset()
                 continue
             # 自选御魂
-            if self.appear(self.I_HARVEST_SOUL_1):
-                logger.info('Select soul 1')
-                self.ui_click(self.I_HARVEST_SOUL_1, stop=self.I_HARVEST_SOUL_2)
-                self.ui_click(self.I_HARVEST_SOUL_2, stop=self.I_HARVEST_SOUL_3, interval=3)
-                self.ui_click_until_disappear(click=self.I_HARVEST_SOUL_3)
-                timer_harvest.reset()
-
+            for CHOOSE_SOUL in CHOOSE_SOUL_List:
+                if self.appear_then_click(CHOOSE_SOUL, interval=1):
+                    logger.info('Select soul 1')
+                    self.ui_click(CHOOSE_SOUL, stop=self.I_HARVEST_SOUL_2)
+                    self.ui_click(self.I_HARVEST_SOUL_2, stop=self.I_HARVEST_SOUL_3, interval=3)
+                    self.ui_click_until_disappear(click=self.I_HARVEST_SOUL_3)
+                    timer_harvest.reset()
+                    break
 
             # 红色的关闭
             if self.appear_then_click(self.I_UI_BACK_RED, interval=2.3):

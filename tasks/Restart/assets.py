@@ -11,14 +11,14 @@ class RestartAssets:
 
 
 	# Image Rule Assets
-	# 点击勾玉 
-	I_HARVEST_JADE = RuleImage(roi_front=(1088,540,31,34), roi_back=(671,434,499,158), threshold=0.6, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_jade.png")
-	# 签到小图标 
-	I_HARVEST_SIGN = RuleImage(roi_front=(397,500,24,34), roi_back=(70,462,889,98), threshold=0.7, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign.png")
+	# 琼庭院勾玉 
+	I_HARVEST_JADE = RuleImage(roi_front=(1091,542,31,34), roi_back=(671,434,499,158), threshold=0.6, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_jade.png")
+	# 琼庭院签到小图标 
+	I_HARVEST_SIGN = RuleImage(roi_front=(395,500,24,34), roi_back=(70,462,889,98), threshold=0.7, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign.png")
 	# description 
 	I_HARVEST_SIGN_2 = RuleImage(roi_front=(592,135,100,252), roi_back=(592,135,100,252), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_2.png")
-	# 999签到福袋 
-	I_HARVEST_SIGN_999 = RuleImage(roi_front=(345,494,23,29), roi_back=(51,459,888,103), threshold=0.7, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_999.png")
+	# 琼庭院999签到福袋 
+	I_HARVEST_SIGN_999 = RuleImage(roi_front=(394,508,23,29), roi_back=(51,459,888,103), threshold=0.7, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_999.png")
 	# 邮件小图标 
 	I_HARVEST_MAIL = RuleImage(roi_front=(1137,34,36,27), roi_back=(1137,34,36,27), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_mail.png")
 	# 全部收取 
@@ -50,7 +50,19 @@ class RestartAssets:
 	# 宠物小屋关闭按钮 
 	I_HARVEST_BACK_PET_HOUSE = RuleImage(roi_front=(20,15,70,70), roi_back=(20,15,70,70), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_back_pet_house.png")
 	# 点击庭院阴阳师出现的姿度按钮 
-	I_HARVEST_ZIDU = RuleImage(roi_front=(785,475,135,135), roi_back=(785,475,135,135), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_zidu.png")
+	I_HARVEST_ZIDU = RuleImage(roi_front=(910,508,95,95), roi_back=(785,475,135,135), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_zidu.png")
+	# 缘结神社食盒 
+	I_HARVEST_AP_1 = RuleImage(roi_front=(841,488,24,24), roi_back=(718,447,408,147), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_ap_1.png")
+	# 缘结神社999福袋 
+	I_HARVEST_SIGN_999_1 = RuleImage(roi_front=(427,491,21,21), roi_back=(267,443,291,145), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_999_1.png")
+	# 缘结神社签到 
+	I_HARVEST_SIGN_1 = RuleImage(roi_front=(425,484,26,28), roi_back=(319,452,254,140), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_1.png")
+	# 缘结神社勾玉 
+	I_HARVEST_JADE_1 = RuleImage(roi_front=(840,485,25,30), roi_back=(776,452,326,129), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_jade_1.png")
+	# 缘结神社御魂 
+	I_HARVEST_SOUL1 = RuleImage(roi_front=(418,480,34,29), roi_back=(307,454,275,135), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_soul1.png")
+	# 缘结神社自选御魂 
+	I_HARVEST_SOUL_4 = RuleImage(roi_front=(422,476,33,38), roi_back=(287,452,293,131), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_soul_4.png")
 
 
 	# Click Rule Assets
