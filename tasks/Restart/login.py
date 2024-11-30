@@ -168,7 +168,7 @@ class LoginHandler(BaseTask, RestartAssets):
                     timer_harvest.reset()
                     break
             # 签到
-            for SIGN in SOUL_List:
+            for SIGN in SIGN_List:
                 if self.appear_then_click(SIGN, interval=1.5):
                     timer_harvest.reset()
                     break
