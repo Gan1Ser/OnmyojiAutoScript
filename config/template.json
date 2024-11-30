@@ -1230,6 +1230,12 @@
       "custom_run_time_saturday": "19:00:00",
       "custom_run_time_sunday": "19:00:00"
     },
+    "abyss_shadows_combat_time": {
+      "CombatTime_enable": false,
+      "boss_combat_time": 60,
+      "general_combat_time": 60,
+      "elite_combat_time": 60
+    },
     "general_battle_config": {
       "lock_team_enable": false,
       "preset_enable": false,
