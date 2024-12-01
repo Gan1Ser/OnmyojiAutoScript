@@ -196,5 +196,14 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "description"
+  },
+  {
+    "itemName": "equipping",
+    "imageName": "res_equipping.png",
+    "roiFront": "1126,545,100,83",
+    "roiBack": "1126,545,100,83",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "description"
   }
 ]

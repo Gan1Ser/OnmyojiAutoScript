@@ -499,12 +499,14 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
         self.device.stuck_record_add('BATTLE_STATUS_S')
         cfg: AbyssShadows = self.config.abyss_shadows
         while 1:
+            #确保进入战斗
             self.screenshot()
-            if self.appear_then_click(self.I_PREPARE_HIGHLIGHT, interval=1.5):
-                continue
-            if not self.appear(self.I_PRESET):
+            if self.wait_until_appear(self.I_EQUIPPING, wait_time=4):
+                self.click(self.I_EQUIPPING, interval=1.5)
+            if not self.appear(self.I_EQUIPPING):
                 break
-        logger.info(f"Click {self.I_PREPARE_HIGHLIGHT.name}")
+        logger.info(f"Click {self.I_EQUIPPING.name}")
+        logger.info(f"点击准备了")
 
         # 进入战斗后，开始计时
         self.device.stuck_record_clear()
@@ -522,9 +524,12 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
             # 等待设定的战斗时间
             while time.time() - start_time < combat_time:
                 self.screenshot()
-                break
-        # 战斗时间结束后，执行退出操作
-        logger.info("Combat time ended, proceeding to exit.")
+            logger.info("Combat time ended, proceeding to exit.")
+
+        # 战斗提前结束这时没有返回按钮
+        if self.appear_then_click(self.I_WIN, interval=1.5):
+            return True
+
         # 点击返回
         while 1:
             self.screenshot()
