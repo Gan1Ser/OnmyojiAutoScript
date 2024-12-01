@@ -38,8 +38,8 @@ class KekkaiUtilizeAssets:
 	I_CARD_EXP = RuleImage(roi_front=(889,151,57,54), roi_back=(829,107,199,185), threshold=0.8, method="Template matching", file="./tasks/KekkaiUtilize/realm/realm_card_exp.png")
 	# 收取体力（没有满） 
 	I_BOX_AP = RuleImage(roi_front=(815,435,57,51), roi_back=(744,336,202,204), threshold=0.7, method="Template matching", file="./tasks/KekkaiUtilize/realm/realm_box_ap.png")
-	# 收取盒子的经验（没有满） 
-	I_BOX_EXP = RuleImage(roi_front=(893,440,42,45), roi_back=(862,396,147,127), threshold=0.7, method="Template matching", file="./tasks/KekkaiUtilize/realm/realm_box_exp.png")
+	# 梦狐之乡_收取盒子的经验（没有满） 
+	I_BOX_EXP_1 = RuleImage(roi_front=(988,447,42,45), roi_back=(881,406,225,138), threshold=0.7, method="Template matching", file="./tasks/KekkaiUtilize/realm/realm_box_exp_1.png")
 	# 结界皮肤 
 	I_REALM_SHIN = RuleImage(roi_front=(175,460,54,58), roi_back=(22,380,393,308), threshold=0.9, method="Template matching", file="./tasks/KekkaiUtilize/realm/realm_realm_shin.png")
 	# 寄养别人的经验 
@@ -48,8 +48,8 @@ class KekkaiUtilizeAssets:
 	I_AP_EXTRACT = RuleImage(roi_front=(592,501,100,75), roi_back=(592,501,100,75), threshold=0.8, method="Template matching", file="./tasks/KekkaiUtilize/realm/realm_ap_extract.png")
 	# 提取 
 	I_EXP_EXTRACT = RuleImage(roi_front=(592,448,100,73), roi_back=(592,448,100,73), threshold=0.8, method="Template matching", file="./tasks/KekkaiUtilize/realm/realm_exp_extract.png")
-	# 盒子经验满 
-	I_BOX_EXP_MAX = RuleImage(roi_front=(889,430,61,64), roi_back=(829,372,228,186), threshold=0.7, method="Template matching", file="./tasks/KekkaiUtilize/realm/realm_box_exp_max.png")
+	# 梦狐之乡_盒子经验满 
+	I_BOX_EXP_MAX_1 = RuleImage(roi_front=(978,443,61,64), roi_back=(829,372,228,186), threshold=0.7, method="Template matching", file="./tasks/KekkaiUtilize/realm/realm_box_exp_max_1.png")
 
 
 	# Image Rule Assets

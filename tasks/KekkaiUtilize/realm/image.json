@@ -45,13 +45,13 @@
     "description": "收取体力（没有满）"
   },
   {
-    "itemName": "box_exp",
-    "imageName": "realm_box_exp.png",
-    "roiFront": "893,440,42,45",
-    "roiBack": "862,396,147,127",
+    "itemName": "box_exp_1",
+    "imageName": "realm_box_exp_1.png",
+    "roiFront": "988,447,42,45",
+    "roiBack": "881,406,225,138",
     "method": "Template matching",
     "threshold": 0.7,
-    "description": "收取盒子的经验（没有满）"
+    "description": "梦狐之乡_收取盒子的经验（没有满）"
   },
   {
     "itemName": "realm_shin",
@@ -90,12 +90,12 @@
     "description": "提取"
   },
   {
-    "itemName": "box_exp_max",
-    "imageName": "realm_box_exp_max.png",
-    "roiFront": "889,430,61,64",
+    "itemName": "box_exp_max_1",
+    "imageName": "realm_box_exp_max_1.png",
+    "roiFront": "978,443,61,64",
     "roiBack": "829,372,228,186",
     "method": "Template matching",
     "threshold": 0.7,
-    "description": "盒子经验满"
+    "description": "梦狐之乡_盒子经验满"
   }
 ]
