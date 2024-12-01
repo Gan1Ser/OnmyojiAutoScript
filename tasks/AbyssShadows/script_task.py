@@ -496,7 +496,6 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
         :param config:
         :return:
         """
-        self.device.stuck_record_add('BATTLE_STATUS_S')
         cfg: AbyssShadows = self.config.abyss_shadows
         while 1:
             #确保进入战斗
@@ -509,9 +508,9 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
         logger.info(f"点击准备了")
 
         # 进入战斗后，开始计时
-        self.device.stuck_record_clear()
         start_time = time.time()
         if cfg.abyss_shadows_combat_time.CombatTime_enable:
+            self.device.stuck_record_add('BATTLE_STATUS_S')
             if Monster_type == "BOSS":  # BOSS战斗
                 combat_time = cfg.abyss_shadows_combat_time.boss_combat_time
             elif Monster_type == "GENERAL":  # 是副将战斗
@@ -520,12 +519,13 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
                 combat_time = cfg.abyss_shadows_combat_time.elite_combat_time
             else:
                 combat_time = 60  # 默认为 60 秒
-
             # 等待设定的战斗时间
             while time.time() - start_time < combat_time:
                 self.screenshot()
+                if self.appear_then_click(self.I_WIN, interval=1.5):
+                    break
             logger.info("Combat time ended, proceeding to exit.")
-
+            self.device.stuck_record_clear()
         # 战斗提前结束这时没有返回按钮
         if self.appear_then_click(self.I_WIN, interval=1.5):
             return True

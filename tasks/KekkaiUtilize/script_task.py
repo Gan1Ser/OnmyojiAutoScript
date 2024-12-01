@@ -187,7 +187,7 @@ class ScriptTask(GameUi, ReplaceShikigami, KekkaiUtilizeAssets):
             while 1:
                 self.screenshot()
                 # 如果出现结界皮肤， 表示收取好了
-                if self.appear(self.I_REALM_SHIN) and not self.appear(self.I_BOX_EXP, threshold=0.6):
+                if self.appear(self.I_REALM_SHIN) and not self.appear(self.I_BOX_EXP_1, threshold=0.6):
                     break
                 # 如果出现收取确认，表明进入到了有满级的
                 if self.appear(self.I_UI_CONFIRM):
@@ -218,7 +218,7 @@ class ScriptTask(GameUi, ReplaceShikigami, KekkaiUtilizeAssets):
                     if cur != 0 and totol != 0 and cur == totol * 1.2 and cur + res == totol:
                         logger.info('Exp box reach max do not collect')
                         break
-                if self.appear_then_click(self.I_BOX_EXP, threshold=0.6, interval=1):
+                if self.appear_then_click(self.I_BOX_EXP_1, threshold=0.6, interval=1):
                     continue
                 if self.appear_then_click(self.I_EXP_EXTRACT, interval=1):
                     continue
@@ -230,7 +230,7 @@ class ScriptTask(GameUi, ReplaceShikigami, KekkaiUtilizeAssets):
 
         self.screenshot()
         box_ap = self.appear(self.I_BOX_AP)
-        box_exp = self.appear(self.I_BOX_EXP, threshold=0.6) or self.appear(self.I_BOX_EXP_MAX, threshold=0.6)
+        box_exp = self.appear(self.I_BOX_EXP_1, threshold=0.6) or self.appear(self.I_BOX_EXP_MAX_1, threshold=0.6)
         if ap_enable:
             _check_ap_box(box_ap)
         if exp_enable:
