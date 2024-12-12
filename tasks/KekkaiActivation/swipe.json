@@ -5,5 +5,19 @@
     "roiBack": "176,168,29,24",
     "mode": "default",
     "description": "description"
+  },
+  {
+    "itemName": "n_swipe1",
+    "roiFront": "981,535,55,57",
+    "roiBack": "194,538,51,64",
+    "mode": "default",
+    "description": "N卡滑动"
+  },
+  {
+    "itemName": "n_swipe2",
+    "roiFront": "973,544,65,64",
+    "roiBack": "577,546,74,63",
+    "mode": "default",
+    "description": "N卡滑动"
   }
 ]

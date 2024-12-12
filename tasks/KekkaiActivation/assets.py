@@ -25,6 +25,10 @@ class KekkaiActivationAssets:
 	# Swipe Rule Assets
 	# description 
 	S_CARDS_SWIPE = RuleSwipe(roi_front=(178,401,23,23), roi_back=(176,168,29,24), mode="default", name="cards_swipe")
+	# N卡滑动 
+	S_N_SWIPE1 = RuleSwipe(roi_front=(981,535,55,57), roi_back=(194,538,51,64), mode="default", name="n_swipe1")
+	# N卡滑动 
+	S_N_SWIPE2 = RuleSwipe(roi_front=(973,544,65,64), roi_back=(577,546,74,63), mode="default", name="n_swipe2")
 
 
 	# Image Rule Assets

@@ -348,6 +348,8 @@ class ScriptTask(KU, KekkaiActivationAssets):
             logger.info('Exist max level shikigami and replace it')
             self.unset_shikigami_max_lv()
             self.switch_shikigami_class(shikigami_class)
+            self.swipe(self.S_N_SWIPE1, interval=0.9)
+            self.swipe(self.S_N_SWIPE2, interval=0.9)
             self.set_shikigami(shikigami_order=7, stop_image=self.I_RS_NO_ADD)
         else:
             logger.info('No max level shikigami')
