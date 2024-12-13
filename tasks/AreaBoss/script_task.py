@@ -154,7 +154,8 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
             if not self.get_difficulty():
                 # 判断是否能切换到极地鬼
                 if not self.appear(self.I_AB_DIFFICULTY_NORMAL):
-                        return False
+                    self.ui_click_until_disappear(self.I_AB_CLOSE_RED, interval=3)
+                    return False
                 # 切换到 极地鬼
                 self.switch_difficulty(True)
             # 调整悬赏层数
