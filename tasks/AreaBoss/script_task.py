@@ -126,7 +126,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
         self.wait_until_appear(self.I_AB_CLOSE_RED)
         self.ui_click(self.I_AB_CLOSE_RED, self.I_FILTER)
 
-    def boss_fight(self, battle: RuleImage, ultra: bool = False, fileter_open: bool = True) -> bool:
+    def boss_fight(self, battle: RuleImage, ultra: bool = True, fileter_open: bool = True) -> bool:
         """
             完成挑战一个鬼王的全流程
             从打开筛选界面开始 到关闭鬼王详情界面结束
