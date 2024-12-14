@@ -157,7 +157,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
                     self.ui_click_until_disappear(self.I_AB_CLOSE_RED, interval=3)
                     return False
                 # 切换到 极地鬼
-                self.switch_difficulty(True)
+            self.switch_difficulty(True)
             # 调整悬赏层数
             match reward_floor:
                 case AreaBossFloor.ONE: self.switch_to_floor_1()
