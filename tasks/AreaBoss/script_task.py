@@ -159,10 +159,10 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
                 # 切换到 极地鬼
             self.switch_difficulty(True)
             # 调整悬赏层数
-            match reward_floor:
-                case AreaBossFloor.ONE: self.switch_to_floor_1()
-                case AreaBossFloor.TEN: self.switch_to_floor_10()
-                case AreaBossFloor.DEFAULT: logger.info("Not change floor")
+            # match reward_floor:
+            #     case AreaBossFloor.ONE: self.switch_to_floor_1()
+            #     case AreaBossFloor.TEN: self.switch_to_floor_10()
+            #     case AreaBossFloor.DEFAULT: logger.info("Not change floor")
         result = True
         if not self.start_fight():
             result = False
