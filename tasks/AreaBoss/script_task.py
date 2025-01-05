@@ -126,7 +126,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
         self.wait_until_appear(self.I_AB_CLOSE_RED)
         self.ui_click(self.I_AB_CLOSE_RED, self.I_FILTER)
 
-    def boss_fight(self, battle: RuleImage, ultra: bool = True, fileter_open: bool = True) -> bool:
+    def boss_fight(self, battle: RuleImage, ultra: bool = False, fileter_open: bool = True) -> bool:
         """
             完成挑战一个鬼王的全流程
             从打开筛选界面开始 到关闭鬼王详情界面结束
@@ -153,16 +153,26 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
         if ultra:
             if not self.get_difficulty():
                 # 判断是否能切换到极地鬼
-                if not self.appear(self.I_AB_DIFFICULTY_NORMAL):
+                if not self.appear(self.I_AB_DIFFICULTY_NORMAL) and self.config.area_boss.boss.Attack_60:
+                    self.switch_to_level_60()
+                    if not self.start_fight():
+                        logger.warning("you are so weakness!")
+                        self.wait_until_appear(self.I_AB_CLOSE_RED)
+                        self.ui_click_until_disappear(self.I_AB_CLOSE_RED, interval=3)
+                        return False
+                else:
                     self.ui_click_until_disappear(self.I_AB_CLOSE_RED, interval=3)
                     return False
                 # 切换到 极地鬼
             self.switch_difficulty(True)
+
+            print("切换成功")
+
             # 调整悬赏层数
-            # match reward_floor:
-            #     case AreaBossFloor.ONE: self.switch_to_floor_1()
-            #     case AreaBossFloor.TEN: self.switch_to_floor_10()
-            #     case AreaBossFloor.DEFAULT: logger.info("Not change floor")
+            match reward_floor:
+                case AreaBossFloor.ONE: self.switch_to_floor_1()
+                case AreaBossFloor.TEN: self.switch_to_floor_10()
+                case AreaBossFloor.DEFAULT: logger.info("Not change floor")
         result = True
         if not self.start_fight():
             result = False
@@ -180,6 +190,16 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
                 break
 
         return self.run_general_battle(self.config.area_boss.general_battle)
+    
+    def switch_to_level_60(self):
+        while 1:
+            self.screenshot()
+            if self.appear(self.I_AB_LEVEL_60):
+                break
+            if self.appear(self.I_AB_LEVEL_HANDLE):
+                x, y = self.I_AB_LEVEL_HANDLE.front_center()
+                self.S_AB_LEVEL_RIGHT.roi_front = (x, y, 10, 10)
+                self.swipe(self.S_AB_LEVEL_RIGHT)
 
     def get_difficulty(self) -> bool:
         """
@@ -242,30 +262,36 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
     def fight_reward_boss(self):
         BOSS_REWARD_PHOTO1 = [self.C_AB_BOSS_REWARD_PHOTO_1, self.C_AB_BOSS_REWARD_PHOTO_2, self.C_AB_BOSS_REWARD_PHOTO_3]
         BOSS_REWARD_PHOTO2 = [self.C_AB_BOSS_REWARD_PHOTO_MINUS_2, self.C_AB_BOSS_REWARD_PHOTO_MINUS_1]
-        bossName = self.get_hot_in_reward() # 获取挑战人数最多的Boss的名字
-        self.open_filter()
-        # 滑动到最顶层
-        logger.info("Swipe to top")
-        for i in range(random.randint(1, 3)):
-            self.swipe(self.S_AB_FILTER_DOWN)
+        filter_statue, bossName = self.get_hot_in_reward() # 获取挑战人数最多的Boss的名字
+        if bossName == "direct_attack":
+            print("直接攻击")
+            return self.boss_fight(self.I_BATTLE_1, True, fileter_open=False)
+        else:
+            if not filter_statue:
+                self.open_filter()
+            # 滑动到最顶层
+            logger.info("Swipe to top")
+            for i in range(random.randint(1, 3)):
+                self.swipe(self.S_AB_FILTER_DOWN)
 
-        for PHOTO in BOSS_REWARD_PHOTO1:
-            name = self.get_bossName(PHOTO)
-            if self.check_common_chars(str(name), bossName):
-                return self.boss_fight(PHOTO, True, fileter_open=False)
-            else:
-                self.ui_click_until_disappear(self.I_AB_CLOSE_RED)
-                self.open_filter()
-        # 倒数一和二
-        for i in range(random.randint(1, 3)):
-            self.swipe(self.S_AB_FILTER_UP)
-        for PHOTO in BOSS_REWARD_PHOTO2:
-            name = self.get_bossName(PHOTO)
-            if self.check_common_chars(str(name), bossName):
-                return self.boss_fight(PHOTO, True, fileter_open=False)
-            else:
-                self.ui_click_until_disappear(self.I_AB_CLOSE_RED)
-                self.open_filter()
+            for PHOTO in BOSS_REWARD_PHOTO1:
+                name = self.get_bossName(PHOTO)
+                if self.check_common_chars(str(name), bossName):
+                    return self.boss_fight(PHOTO, True, fileter_open=False)
+                else:
+                    self.ui_click_until_disappear(self.I_AB_CLOSE_RED)
+                    self.open_filter()
+            # 倒数一和二
+            for i in range(random.randint(1, 3)):
+                self.swipe(self.S_AB_FILTER_UP)
+            for PHOTO in BOSS_REWARD_PHOTO2:
+                name = self.get_bossName(PHOTO)
+                if self.check_common_chars(str(name), bossName):
+                    return self.boss_fight(PHOTO, True, fileter_open=False)
+                else:
+                    self.ui_click_until_disappear(self.I_AB_CLOSE_RED)
+                    self.open_filter()
+
     def get_hot_in_reward(self):
         """
             返回挑战人数最多的悬赏鬼王
@@ -275,10 +301,13 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
         self.switch_to_reward()
         lst = []
         boosName = []
+        filter_open_flag = False
         num = self.get_num_challenge(self.C_AB_BOSS_REWARD_PHOTO_1)
         #如果num为0则不在进行nameOcr
         if num:
             name = self.get_bossName(self.C_AB_BOSS_REWARD_PHOTO_1)
+            if name == "direct_attack":
+                return filter_open_flag, str("direct_attack")
         else:
             name = "声望不够"
         lst.append(num)
@@ -289,6 +318,8 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
         num = self.get_num_challenge(self.C_AB_BOSS_REWARD_PHOTO_2)
         if num:
             name = self.get_bossName(self.C_AB_BOSS_REWARD_PHOTO_1)
+            if name == "direct_attack":
+                return filter_open_flag, str("direct_attack")
         else:
             name = "声望不够"
         boosName.append(name)
@@ -299,6 +330,8 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
         num = self.get_num_challenge(self.C_AB_BOSS_REWARD_PHOTO_3)
         if num:
             name = self.get_bossName(self.C_AB_BOSS_REWARD_PHOTO_1)
+            if name == "direct_attack":
+                return filter_open_flag, str("direct_attack")
         else:
             name = "声望不够"
         boosName.append(name)
@@ -312,6 +345,8 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
         num = self.get_num_challenge(self.C_AB_BOSS_REWARD_PHOTO_MINUS_2)
         if num:
             name = self.get_bossName(self.C_AB_BOSS_REWARD_PHOTO_1)
+            if name == "direct_attack":
+                return filter_open_flag, str("direct_attack")
         else:
             name = "声望不够"
         boosName.append(name)
@@ -325,8 +360,11 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
         num = self.get_num_challenge(self.C_AB_BOSS_REWARD_PHOTO_MINUS_1)
         if num:
             name = self.get_bossName(self.C_AB_BOSS_REWARD_PHOTO_1)
+            if name == "direct_attack":
+                return filter_open_flag, str("direct_attack")
         else:
             name = "声望不够"
+            filter_open_flag = True
         boosName.append(name)
         lst.append(num)
         self.ui_click_until_disappear(self.I_AB_CLOSE_RED)
@@ -337,7 +375,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
             if val > num:
                 index = idx
                 num = val
-        return boosName[index]
+        return filter_open_flag, boosName[index]
 
     def get_num_challenge(self, click_area):
         """
@@ -367,6 +405,8 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AreaBossAssets):
             return 0
         ocrName = self.O_AB_BOSS_NAME.detect_and_ocr(self.device.image)
         bossName = re.sub(r"[\'\[\]]", "", str([result.ocr_text for result in ocrName]))
+        if self.appear(self.I_NUM_THRESHOLD, threshold=0.8):
+            return str("direct_attack")
         return bossName
 
     def open_boss_detail(self, battle: RuleImage, try_num: int = 3) -> bool:
@@ -447,7 +487,7 @@ if __name__ == '__main__':
     from module.config.config import Config
     from module.device.device import Device
 
-    c = Config('oas1')
+    c = Config('日常1')
     d = Device(c)
     t = ScriptTask(c, d)
     # time.sleep(3)
