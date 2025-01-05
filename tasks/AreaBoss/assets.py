@@ -101,8 +101,6 @@ class AreaBossAssets:
 	I_AB_JI_FLOOR_TEN = RuleImage(roi_front=(390,370,60,40), roi_back=(390,370,60,40), threshold=0.8, method="Template matching", file="./tasks/AreaBoss/res/ab_ji_floor_ten.png")
 	# 小组内未取得名次 
 	I_AB_GROUP_RANK_NONE = RuleImage(roi_front=(890,415,95,85), roi_back=(890,415,95,85), threshold=0.8, method="Template matching", file="./tasks/AreaBoss/res/ab_rank_none.png")
-	# 挑战人数阈值到达后直接判定为最热鬼王 
-	I_NUM_THRESHOLD = RuleImage(roi_front=(686,641,21,22), roi_back=(686,641,21,22), threshold=0.8, method="Template matching", file="./tasks/AreaBoss/res/res_num_threshold.png")
 
 
 	# Ocr Rule Assets

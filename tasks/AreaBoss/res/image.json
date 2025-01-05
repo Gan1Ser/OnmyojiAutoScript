@@ -196,14 +196,5 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "小组内未取得名次"
-  },
-  {
-    "itemName": "num_threshold",
-    "imageName": "res_num_threshold.png",
-    "roiFront": "686,641,21,22",
-    "roiBack": "686,641,21,22",
-    "method": "Template matching",
-    "threshold": 0.8,
-    "description": "挑战人数阈值到达后直接判定为最热鬼王"
   }
 ]
