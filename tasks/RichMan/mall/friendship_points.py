@@ -9,7 +9,7 @@ from module.atom.ocr import RuleOcr
 
 from tasks.RichMan.mall.special import Special
 from tasks.RichMan.config import FriendshipPoints as FriendshipPointsConfig
-
+import re
 
 class FriendshipPoints(Special):
 
@@ -53,16 +53,20 @@ class FriendshipPoints(Special):
         if _remain == 0:
             logger.warning('Remain number is 0')
             return False
-        # 检查钱
-        if check_money:
-            current_money = money_ocr.ocr(self.device.image)
-            if not isinstance(current_money, int):
-                logger.warning('Money ocr failed')
-                return False
-            money_enough = current_money >= buy_money
-            if not money_enough:
-                logger.warning(f'No enough money {current_money}')
-                return False
+        # 检查总勋章
+        current_money = money_ocr.ocr(self.device.image)
+        if '万' in current_money:
+            # 点击购买
+            return self.buy_one(buy_button, buy_check)
+        else:
+            current_money = int(current_money)
+        # if not isinstance(current_money, int):
+        #     logger.warning('Money ocr failed')
+        #     return False
+        money_enough = current_money >= buy_money
+        if not money_enough:
+            logger.warning(f'No enough money {current_money}')
+            return False
         # 点击购买
         return self.buy_one(buy_button, buy_check)
 
@@ -97,19 +101,25 @@ class FriendshipPoints(Special):
                 logger.warning(f'Remain number is {_remain}, buy number is {buy_number}')
                 buy_number = _remain
         # 检查钱够不够
-        if check_money:
-            current_money = money_ocr.ocr(self.device.image)
-            if not isinstance(current_money, int):
-                logger.warning('Money ocr failed')
+        current_money = money_ocr.ocr(self.device.image)
+        if '万' in current_money:
+            # 使用正则表达式提取字符串中的数字
+            match = re.search(r'\d+', current_money)
+            if match:
+                current_money = int(match.group()) * 10000
+        else:
+            current_money = int(current_money)
+        # if not isinstance(current_money, int):
+        #     logger.warning('Money ocr failed')
+        #     return
+        money_enough = current_money >= buy_money * buy_number
+        if not money_enough:
+            logger.warning(f'Money is not enough {current_money}')
+            # 判断够不够买2个
+            if current_money < buy_money * 2:
+                logger.warning('Money is not enough 2')
                 return
-            money_enough = current_money >= buy_money * buy_number
-            if not money_enough:
-                logger.warning(f'Money is not enough {current_money}')
-                # 判断够不够买2个
-                if current_money < buy_money * 2:
-                    logger.warning('Money is not enough 2')
-                    return
-                buy_number = current_money // buy_money
+            buy_number = current_money // buy_money
         # 购买
         logger.info(f'Buy number is {buy_number}')
         if buy_number >= buy_max:
