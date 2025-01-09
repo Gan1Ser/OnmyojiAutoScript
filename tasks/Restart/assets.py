@@ -63,6 +63,16 @@ class RestartAssets:
 	I_HARVEST_SOUL1 = RuleImage(roi_front=(418,480,34,29), roi_back=(307,454,275,135), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_soul1.png")
 	# 缘结神社自选御魂 
 	I_HARVEST_SOUL_4 = RuleImage(roi_front=(422,476,33,38), roi_back=(287,452,293,131), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_soul_4.png")
+	# 望月幽庭勾玉 
+	I_HARVEST_JADE_2 = RuleImage(roi_front=(508,529,27,30), roi_back=(508,529,27,30), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_jade_2.png")
+	# 望月幽庭签到 
+	I_HARVEST_SIGN_5 = RuleImage(roi_front=(422,532,21,27), roi_back=(422,532,21,27), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_5.png")
+	# 望月幽庭福袋 
+	I_HARVEST_SIGN_999_2 = RuleImage(roi_front=(419,538,25,26), roi_back=(419,538,25,26), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_999_2.png")
+	# 望月幽庭食盒 
+	I_HARVEST_AP_2 = RuleImage(roi_front=(508,531,25,24), roi_back=(508,531,25,24), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_ap_2.png")
+	# 望月幽庭自选御魂 
+	I_HARVEST_SOUL_5 = RuleImage(roi_front=(418,531,27,30), roi_back=(418,531,27,30), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_soul_5.png")
 
 
 	# Click Rule Assets
@@ -76,7 +86,7 @@ class RestartAssets:
 	# 庭院卷轴关闭 
 	I_LOGIN_SCROOLL_CLOSE = RuleImage(roi_front=(1181,634,28,39), roi_back=(1162,595,77,112), threshold=0.7, method="Template matching", file="./tasks/Restart/login/login_login_scrooll_close.png")
 	# description 
-	I_LOGIN_RED_CLOSE = RuleImage(roi_front=(912,0,360,290), roi_back=(912,0,360,290), threshold=0.8, method="Template matching", file="./tasks/Restart/login/login_login_red_close.png")
+	I_LOGIN_RED_CLOSE = RuleImage(roi_front=(849,105,52,28), roi_back=(849,105,52,28), threshold=0.8, method="Template matching", file="./tasks/Restart/login/login_login_red_close.png")
 	# description 
 	I_LOGIN_YELLOW_CLOSE = RuleImage(roi_front=(29,17,46,44), roi_back=(0,0,94,86), threshold=0.8, method="Template matching", file="./tasks/Restart/login/login_login_yellow_close.png")
 	# 用于判断是否出现登录选区的 
