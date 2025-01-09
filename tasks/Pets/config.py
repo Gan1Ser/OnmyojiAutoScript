@@ -12,6 +12,9 @@ class PetsConfig(ConfigBase):
     pets_happy: bool = Field(default=True)
     # 大餐
     pets_feast: bool = Field(default=True)
+    # 是否执行一次御魂
+    orochi_enable: bool = Field(title='是否执行一次御魂', default=True, description='是否执行一次御魂')
+
 
 class Pets(ConfigBase):
     scheduler: Scheduler = Field(default_factory=Scheduler)
