@@ -168,12 +168,12 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
 
                 # 2. 攻打 2 个 GENERAL
                 if self.general_fight_count < 4:
-                    self.general_fight_count = self.fight_and_switch(EmemyType.GENERAL, 2, self.general_fight_count,
+                    self.general_fight_count = self.fight_and_switch(EmemyType.GENERAL, 4, self.general_fight_count,
                                                                 lambda: self.switch_area())
 
                 # 3. 攻打 3 个 ELITE
                 if self.elite_fight_count < 6:
-                    self.elite_fight_count = self.fight_and_switch(EmemyType.ELITE, 2, self.elite_fight_count,
+                    self.elite_fight_count = self.fight_and_switch(EmemyType.ELITE, 6, self.elite_fight_count,
                                                               lambda: self.switch_area())
 
                 # 检查是否已完成所有任务
