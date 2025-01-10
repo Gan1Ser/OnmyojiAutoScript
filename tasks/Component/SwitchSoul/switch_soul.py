@@ -100,7 +100,7 @@ class SwitchSoul(BaseTask, SwitchSoulAssets):
                 break
             cur_text = ocr_text
             # 向上滑动
-            self.swipe(self.S_SS_GROUP_SWIPE_UP, 0.5)
+            self.swipe(self.S_SS_GROUP_SWIPE_UP, 1.5)
             # 等待滑动动画
             sleep(0.5)
 
