@@ -28,6 +28,7 @@ class TrueOrochiScheduler(Scheduler):
 
 class TrueOrochiConfig(BaseModel):
     find_true_orochi: bool = Field(default=True, description='find_true_orochi_help')
+    reset_day: int = Field(default=0, description='0代表周一，依次类推，范围：0-6')
     # green_enable: bool = Field(default=False, description='green_enable_help')
     # green_mark_type: GreenMarkType = Field(default=GreenMarkType.LEFT_1, description='green_mark_type_help')
     current_success: int = Field(default=0, description='current_success_help')
