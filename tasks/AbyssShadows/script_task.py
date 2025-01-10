@@ -221,12 +221,18 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
             if not self.find_enemy(enemy_type):
                 logger.warning(f"Failed to find {enemy_type.name} enemy, exit")
                 return fight_count
-            fight_count += 1
+            if enemy_type == EmemyType.BOSS:
+                fight_count += 1
+            elif enemy_type == EmemyType.GENERAL:
+                fight_count += 2
+            elif enemy_type == EmemyType.ELITE:
+                fight_count += 3
             logger.info(
                 f"Current fight times: boss {self.boss_fight_count} times, general {self.general_fight_count} times, elite {self.elite_fight_count} times")
 
             # 完成攻打后切换区域
-            if fight_count < required_count:
+            current_area = self.check_current_area()
+            if fight_count < required_count and current_area != AreaType.LEOPARD:
                 next_area_func()
         return fight_count
 
