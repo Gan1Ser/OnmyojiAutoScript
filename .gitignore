@@ -272,3 +272,4 @@ adb_port.ini
 *.zip
 console.bat
 .vscode/*
+tasks/AbyssShadows/__pycache__/config.cpython-310.pyc
