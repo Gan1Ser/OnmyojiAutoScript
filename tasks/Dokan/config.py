@@ -16,6 +16,11 @@ from tasks.Component.config_scheduler import Scheduler
 class DokanConfig(BaseModel):
     # # 寮管理开启道馆
     dokan_enable: bool = Field(default=False, description='寮管理开启道馆')
+
+    # 跳过周五、周六、周日
+    dokan_skip_fri_sat_sun: bool = Field(default=False, description='自动跳过周五，周六，周日的道馆任务设置为周一执行')
+    # 自定义运行时间
+    doken_time: Time = Field(default=Time(hour=19, minute=0, second=0))
     # # 选择哪一个竂
     # dokan_declear_war_priority: int = Field(default=0, description='dokan_declear_war_priority_help')
 

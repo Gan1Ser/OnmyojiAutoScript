@@ -89,10 +89,15 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets, RichManAssets):
         :return:
         """
         cfg: Dokan = self.config.dokan
-
         # 攻击优先顺序
         attack_priority: int = cfg.dokan_config.dokan_attack_priority
-
+        # 是否跳过周五、周六、周日的道馆任务并设置为周一执行
+        if cfg.dokan_config.dokan_skip_fri_sat_sun:
+            if datetime.now().weekday() in [4, 5, 6]:
+            # 计算下周一的日期
+                days_until_monday = (7 - datetime.now().weekday()) % 7
+                self.custom_next_run(task='Dokan', custom_time=cfg.dokan_config.doken_time, time_delta=days_until_monday)
+                raise TaskEnd
         # 自动换御魂
         if cfg.switch_soul_config.enable:
             self.ui_get_current_page()
@@ -426,6 +431,8 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets, RichManAssets):
 
     def goto_dokan(self):
 
+        cfg: Dokan = self.config.dokan
+
         if self.is_in_dokan():
             return True
 
@@ -456,7 +463,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets, RichManAssets):
         logger.info(DOKAN_STATUS_str)
         if '挑战成功' in DOKAN_STATUS_str or '0次' in DOKAN_STATUS_str:
             self.goto_main()
-            self.set_next_run(task='Dokan', finish=True, server=True, success=True)
+            self.set_next_run(task='Dokan', finish=True, server=True, success=True, target=cfg.dokan_config.doken_time)
             raise TaskEnd
         elif '集结中' in DOKAN_STATUS_str:
             self.goto_dokan_click()
@@ -477,7 +484,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets, RichManAssets):
                 if self.goto_dokan_num >= 10:
                     logger.info(f"寮成员{self.goto_dokan_num}次未进入道馆结束任务!")
                     self.goto_main()
-                    self.set_next_run(task='Dokan', finish=True, server=True, success=True)
+                    self.set_next_run(task='Dokan', finish=True, server=True, success=True, target=cfg.dokan_config.doken_time)
                     raise TaskEnd
             return False
 
