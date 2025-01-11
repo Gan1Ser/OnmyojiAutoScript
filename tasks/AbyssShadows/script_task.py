@@ -179,6 +179,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
                 # 检查是否已完成所有任务
                 if self.boss_fight_count >= 2 and self.general_fight_count >= 4 and self.elite_fight_count >= 6:
                     logger.info("All fights completed")
+                    success = True
                     break
                 else:
                     #没打满我也没办法就最后一张图，看看有没有剩余的吧没有也不想跑了
