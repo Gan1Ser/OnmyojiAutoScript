@@ -191,6 +191,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
                             break
                     logger.info(f"Current fight times: boss {self.boss_fight_count} times, general {self.general_fight_count}  times, elite {self.elite_fight_count} times")
                     logger.warning("All enemy types have been defeated, but not enough emeny to fight, exit")
+                    success = True
                     break
 
         # 保持好习惯，一个任务结束了就返回到庭院，方便下一任务的开始
