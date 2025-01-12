@@ -177,6 +177,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
                                                               lambda: self.switch_area())
 
                 # 检查是否已完成所有任务
+                print(f"Current fight times: boss {self.boss_fight_count} times, general {self.general_fight_count} times, elite {self.elite_fight_count} times")
                 if self.boss_fight_count >= 2 and self.general_fight_count >= 4 and self.elite_fight_count >= 6:
                     logger.info("All fights completed")
                     success = True
@@ -199,6 +200,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
 
         # 设置下次运行时间
         if success:
+            print("我要重新设置时间了")
             if today == 4:
                 # 周五推迟到周六
                 logger.info(f"The next abyss shadows day is Saturday")
@@ -219,16 +221,17 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, AbyssShadowsAssets):
 
     #攻击并进行区域切换
     def fight_and_switch(self, enemy_type, required_count, fight_count, next_area_func):
-        while fight_count < required_count:
+        while fight_count < required_count: # 0-2
             if not self.find_enemy(enemy_type):
                 logger.warning(f"Failed to find {enemy_type.name} enemy, exit")
                 return fight_count
-            if enemy_type == EmemyType.BOSS:
-                fight_count += 1
-            elif enemy_type == EmemyType.GENERAL:
-                fight_count += 2
-            elif enemy_type == EmemyType.ELITE:
-                fight_count += 3
+            else:
+                if enemy_type == EmemyType.BOSS:
+                    fight_count += 1
+                elif enemy_type == EmemyType.GENERAL:
+                    fight_count += 2
+                elif enemy_type == EmemyType.ELITE:
+                    fight_count += 3
             logger.info(
                 f"Current fight times: boss {self.boss_fight_count} times, general {self.general_fight_count} times, elite {self.elite_fight_count} times")
 
