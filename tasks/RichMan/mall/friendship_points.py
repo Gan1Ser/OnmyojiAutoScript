@@ -32,13 +32,12 @@ class FriendshipPoints(Special):
             self.buy_mall_more(buy_button=self.I_FS_BROKEN, remain_number=False, money_ocr=self.O_MALL_RESOURCE_5,
                                  buy_number=con.broken_amulet, buy_max=99, buy_money=100)
 
-    def buy_mall_one(self, buy_button: RuleImage, buy_check: RuleImage, money_ocr: RuleOcr, buy_money: int, check_money: bool=True):
+    def buy_mall_one(self, buy_button: RuleImage, buy_check: RuleImage, money_ocr: RuleOcr, buy_money: int):
         """
         针对只能买一个的
         :param buy_button:
         :param buy_check:
         :param money_ocr:
-        :param check_money:
         :param buy_money: 买这一个花多少
         :return:
         """
@@ -71,7 +70,7 @@ class FriendshipPoints(Special):
         return self.buy_one(buy_button, buy_check)
 
     def buy_mall_more(self, buy_button: RuleImage, remain_number: bool, money_ocr: RuleOcr,
-                       buy_number: int, buy_max: int, buy_money: int, check_money: bool=True):
+                       buy_number: int, buy_max: int, buy_money: int):
         """
         针对可以买多个的
         :param money_ocr:  检查钱的第几个
