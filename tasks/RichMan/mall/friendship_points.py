@@ -58,6 +58,8 @@ class FriendshipPoints(Special):
             # 点击购买
             return self.buy_one(buy_button, buy_check)
         else:
+            # 使用正则表达式提取字符串中的数字
+            current_money = re.sub(r'\D', '', current_money)
             current_money = int(current_money)
         # if not isinstance(current_money, int):
         #     logger.warning('Money ocr failed')
