@@ -2,7 +2,7 @@
 # @author runhey
 # github https://github.com/runhey
 import time
-
+import re
 from typing import Union
 
 from module.atom.image import RuleImage
