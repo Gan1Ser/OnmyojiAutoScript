@@ -431,7 +431,6 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets, RichManAssets):
 
     def goto_dokan(self):
 
-        cfg: Dokan = self.config.dokan
 
         if self.is_in_dokan():
             return True
@@ -463,7 +462,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets, RichManAssets):
         logger.info(DOKAN_STATUS_str)
         if '挑战成功' in DOKAN_STATUS_str or '0次' in DOKAN_STATUS_str:
             self.goto_main()
-            self.set_next_run(task='Dokan', finish=True, server=True, success=True, target=cfg.dokan_config.doken_time)
+            self.set_next_run(task='Dokan', finish=True, server=True, success=True)
             raise TaskEnd
         elif '集结中' in DOKAN_STATUS_str:
             self.goto_dokan_click()
@@ -484,7 +483,7 @@ class ScriptTask(GeneralBattle, GameUi, SwitchSoul, DokanAssets, RichManAssets):
                 if self.goto_dokan_num >= 10:
                     logger.info(f"寮成员{self.goto_dokan_num}次未进入道馆结束任务!")
                     self.goto_main()
-                    self.set_next_run(task='Dokan', finish=True, server=True, success=True, target=cfg.dokan_config.doken_time)
+                    self.set_next_run(task='Dokan', finish=True, server=True, success=True)
                     raise TaskEnd
             return False
 
