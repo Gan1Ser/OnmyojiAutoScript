@@ -60,7 +60,6 @@ class Bondlings(Buy, MallNavbar):
                 # 契灵御魂已经买光
                 logger.warning('本周契灵御魂已经买光')
                 return
-        pos = self.O_BL_RES_SOULS_new.ocr_full(self.device.image)
 
         # 检查是否出现了购买按钮
         if not self.appear(buy_button):
@@ -83,9 +82,9 @@ class Bondlings(Buy, MallNavbar):
         money_enough = cu >= buy_money * buy_number
         if not money_enough:
             logger.warning(f'Money is not enough {cu}')
-            # 判断够不够买2个
-            if cu < buy_money * 2:
-                logger.warning('Money is not enough 2')
+            # 判断够不够买1个
+            if cu < buy_money * 1:
+                logger.warning('Money is not enough 1')
                 return
             buy_number = cu // buy_money
         # 购买

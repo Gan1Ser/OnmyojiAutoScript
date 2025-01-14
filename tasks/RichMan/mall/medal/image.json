@@ -47,11 +47,11 @@
   {
     "itemName": "me_challenge_pass",
     "imageName": "medal_me_challenge_pass.png",
-    "roiFront": "618,390,146,129",
+    "roiFront": "843,134,146,116",
     "roiBack": "114,102,914,478",
     "method": "Template matching",
     "threshold": 0.8,
-    "description": "御灵挑战券"
+    "description": "式神挑战券"
   },
   {
     "itemName": "me_red",
