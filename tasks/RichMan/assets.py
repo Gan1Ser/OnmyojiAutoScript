@@ -18,7 +18,7 @@ class RichManAssets:
 	# description 
 	I_GUILD_CLOSE_RED = RuleImage(roi_front=(1029,120,53,57), roi_back=(1029,120,53,57), threshold=0.8, method="Template matching", file="./tasks/RichMan/guild/guild_guild_close_red.png")
 	# 蓝票 
-	I_GUILD_BLUE = RuleImage(roi_front=(343,220,74,70), roi_back=(248,162,722,433), threshold=0.8, method="Template matching", file="./tasks/RichMan/guild/guild_guild_blue.png")
+	I_GUILD_BLUE = RuleImage(roi_front=(344,216,73,73), roi_back=(248,162,722,433), threshold=0.8, method="Template matching", file="./tasks/RichMan/guild/guild_guild_blue.png")
 	# 黑蛋碎片 
 	I_GUILD_SCRAP = RuleImage(roi_front=(795,219,71,68), roi_back=(251,160,718,430), threshold=0.8, method="Template matching", file="./tasks/RichMan/guild/guild_guild_scrap.png")
 	# 皮肤券 
@@ -165,6 +165,8 @@ class RichManAssets:
 	I_MALL_BONDLINGS_SURE = RuleImage(roi_front=(1194,421,69,74), roi_back=(1194,421,69,74), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/navbar/navbar_mall_bondlings_sure.png")
 	# 已选中契灵商店 
 	I_MALL_BONDLINGS_ON = RuleImage(roi_front=(99,417,1021,37), roi_back=(99,417,1021,37), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/navbar/navbar_mall_bondlings_on.png")
+	# 随机御魂 
+	I_ME_SOULS_NEW = RuleImage(roi_front=(980,417,140,37), roi_back=(980,417,140,37), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/navbar/navbar_mall_bondlings_over.png")
 	# 契灵商店 
 	I_MALL_BONDLINGS_CHECK = RuleImage(roi_front=(355,186,34,104), roi_back=(355,186,34,104), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/navbar/navbar_mall_bondlings_check.png")
 	# 杂货铺 

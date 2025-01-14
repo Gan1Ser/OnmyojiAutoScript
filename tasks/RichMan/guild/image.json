@@ -29,7 +29,7 @@
   {
     "itemName": "guild_blue",
     "imageName": "guild_guild_blue.png",
-    "roiFront": "343,220,74,70",
+    "roiFront": "342,218,76,72",
     "roiBack": "248,162,722,433",
     "method": "Template matching",
     "threshold": 0.8,

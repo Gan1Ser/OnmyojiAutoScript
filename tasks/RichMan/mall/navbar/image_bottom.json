@@ -63,6 +63,15 @@
     "description": "已选中契灵商店"
   },
   {
+    "itemName": "me_souls_new",
+    "imageName": "navbar_mall_bondlings_over.png",
+    "roiFront": "980,417,140,37",
+    "roiBack": "980,417,140,37",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "随机御魂"
+  },
+  {
     "itemName": "mall_bondlings_check",
     "imageName": "navbar_mall_bondlings_check.png",
     "roiFront": "355,186,34,104",
