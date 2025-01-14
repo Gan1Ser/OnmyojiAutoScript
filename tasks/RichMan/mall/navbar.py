@@ -91,29 +91,39 @@ class MallNavbar(GameUi, RichManAssets):
         """
         self.ui_click(self.I_UI_BACK_YELLOW, self.I_CHECK_MALL)
 
-    def mall_resource(self, index: int) -> int:
-        """
-        获取商城资源，
-        :param index: 从左开始数
-        :return:
-        """
-        match = {
-            1: self.O_MALL_RESOURCE_1,
-            2: self.O_MALL_RESOURCE_2,
-            3: self.O_MALL_RESOURCE_3,
-            4: self.O_MALL_RESOURCE_4,
-            5: self.O_MALL_RESOURCE_5,
-            6: self.O_MALL_RESOURCE_6,
-        }
-        self.screenshot()
-        result = match[index].ocr(self.device.image)
-        match = re.search(r'\d+', result)
+def mall_resource(self, index: int) -> int:
+    """
+    获取商城资源，
+    :param index: 从左开始数
+    :return:
+    """
+    match = {
+        1: self.O_MALL_RESOURCE_1,
+        2: self.O_MALL_RESOURCE_2,
+        3: self.O_MALL_RESOURCE_3,
+        4: self.O_MALL_RESOURCE_4,
+        5: self.O_MALL_RESOURCE_5,
+        6: self.O_MALL_RESOURCE_6,
+    }
+    self.screenshot()
+    result = match[index].ocr(self.device.image)
+
+    if not isinstance(result, str):
+        result = str(result)
+    
+    match = re.search(r'\d+', result)
+    if match:
         result = int(match.group())
-        if not isinstance(result, int):
-            logger.warning(f'Get mall resource {index} error, result: {result}')
-        if result == 0:
-            logger.warning(f'Get mall resource {index} error, result: {result}')
-        return result
+    else:
+        logger.warning(f'Get mall resource {index} error, no digits found in result: {result}')
+        result = 0
+    
+    if not isinstance(result, int):
+        logger.warning(f'Get mall resource {index} error, result: {result}')
+    if result == 0:
+        logger.warning(f'Get mall resource {index} error, result: {result}')
+    
+    return result
 
     def mall_check_money(self, index: int, least: int) -> bool:
         return self.mall_resource(index) >= least
