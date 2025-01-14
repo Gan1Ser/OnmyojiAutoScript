@@ -29,8 +29,8 @@
   {
     "itemName": "guild_blue",
     "imageName": "guild_guild_blue.png",
-    "roiFront": "794,186,74,73",
-    "roiBack": "315,164,584,370",
+    "roiFront": "343,220,74,70",
+    "roiBack": "248,162,722,433",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "蓝票"
@@ -38,8 +38,8 @@
   {
     "itemName": "guild_scrap",
     "imageName": "guild_guild_scrap.png",
-    "roiFront": "570,439,71,68",
-    "roiBack": "331,160,559,372",
+    "roiFront": "795,219,71,68",
+    "roiBack": "251,160,718,430",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "黑蛋碎片"
