@@ -13,7 +13,7 @@ from tasks.RichMan.mall.special import Special
 from tasks.RichMan.config import HonorRoom
 
 
-class Honor(Special):
+class Honor(Special, MallNavbar):
 
     def execute_honor(self, con: HonorRoom = None):
         if not con:
