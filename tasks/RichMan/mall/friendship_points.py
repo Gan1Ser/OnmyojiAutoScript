@@ -103,12 +103,13 @@ class FriendshipPoints(Special):
                 buy_number = _remain
         # 检查钱够不够
         current_money = money_ocr.ocr(self.device.image)
-        if '万' in current_money:
+        if '万' in str(current_money):
             # 使用正则表达式提取字符串中的数字
             match = re.search(r'\d+', current_money)
             if match:
                 current_money = int(match.group()) * 10000
         else:
+            current_money = re.sub(r'\D', '', current_money)
             current_money = int(current_money)
         # if not isinstance(current_money, int):
         #     logger.warning('Money ocr failed')
