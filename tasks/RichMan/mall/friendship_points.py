@@ -54,6 +54,7 @@ class FriendshipPoints(Special):
             return False
         # 检查总勋章
         current_money = money_ocr.ocr(self.device.image)
+        logger.info(f"真正的结果是什么？{current_money}")
         if '万' in str(current_money):
             # 点击购买
             return self.buy_one(buy_button, buy_check)
