@@ -131,7 +131,7 @@ class RichManAssets:
 	# 体力 
 	I_ME_AP = RuleImage(roi_front=(842,395,145,123), roi_back=(156,111,862,454), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/medal/medal_me_ap.png")
 	# 随机御魂 
-	I_ME_SOULS = RuleImage(roi_front=(173,391,148,133), roi_back=(121,116,898,476), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/medal/medal_me_souls.png")
+	I_ME_SOULS = RuleImage(roi_front=(644,126,95,118), roi_back=(121,116,898,476), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/medal/medal_me_souls.png")
 	# 白蛋 
 	I_ME_WHITE = RuleImage(roi_front=(399,391,142,131), roi_back=(115,114,908,452), threshold=0.8, method="Template matching", file="./tasks/RichMan/mall/medal/medal_me_white.png")
 	# 式神挑战券 

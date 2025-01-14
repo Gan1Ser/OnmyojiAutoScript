@@ -29,7 +29,7 @@
   {
     "itemName": "me_souls",
     "imageName": "medal_me_souls.png",
-    "roiFront": "173,391,148,133",
+    "roiFront": "644,126,95,118",
     "roiBack": "121,116,898,476",
     "method": "Template matching",
     "threshold": 0.8,
