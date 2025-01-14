@@ -20,10 +20,10 @@
   {
     "itemName": "login_red_close",
     "imageName": "login_login_red_close.png",
-    "roiFront": "849,108,52,21",
-    "roiBack": "849,108,52,21",
+    "roiFront": "800,0,480,290",
+    "roiBack": "800,0,480,290",
     "method": "Template matching",
-    "threshold": 0.7,
+    "threshold": 0.8,
     "description": "description"
   },
   {
