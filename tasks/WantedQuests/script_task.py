@@ -151,6 +151,8 @@ class ScriptTask(WQExplore, SecretScriptTask, WantedQuestsAssets):
                 continue
             if self.appear_then_click(self.I_WQ_DONE, interval=1):
                 continue
+            if self.appear_then_click(self.I_WQ_DONE_NEW, interval=1):
+                continue
             if self.appear_then_click(self.I_TRACE_ENABLE, interval=1):
                 continue
             if self.special_main and self.click(self.C_SPECIAL_MAIN, interval=3):
@@ -188,6 +190,8 @@ class ScriptTask(WQExplore, SecretScriptTask, WantedQuestsAssets):
             if self.appear_then_click(self.I_WQ_SEAL, interval=1):
                 continue
             if self.appear_then_click(self.I_WQ_DONE, interval=1):
+                continue
+            if self.appear_then_click(self.I_WQ_DONE_NEW, interval=1):
                 continue
             if self.special_main and self.click(self.C_SPECIAL_MAIN, interval=3):
                 logger.info('Click special main left to find wanted quests')

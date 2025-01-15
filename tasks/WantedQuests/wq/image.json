@@ -142,5 +142,14 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "庭院悬赏任务界面 单个任务点开后的界面 是否为现世任务标志"
+  },
+  {
+    "itemName": "wq_done_new",
+    "imageName": "wq_wq_done_new.png",
+    "roiFront": "63,323,43,33",
+    "roiBack": "9,109,576,401",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "望月幽庭_对号"
   }
 ]

@@ -166,6 +166,8 @@ class WantedQuestsAssets:
 	I_WQ_TRACE_ONE_CHECK_OPENED = RuleImage(roi_front=(510,175,210,60), roi_back=(510,175,210,60), threshold=0.8, method="Template matching", file="./tasks/WantedQuests/wq/wq_trace_one_check_opened.png")
 	# 庭院悬赏任务界面 单个任务点开后的界面 是否为现世任务标志 
 	I_WQ_TRACE_ONE_REALWORLD = RuleImage(roi_front=(850,470,180,180), roi_back=(850,470,180,180), threshold=0.8, method="Template matching", file="./tasks/WantedQuests/wq/wq_trace_one_realworld.png")
+	# 望月幽庭_对号 
+	I_WQ_DONE_NEW = RuleImage(roi_front=(63,323,43,33), roi_back=(9,109,576,401), threshold=0.8, method="Template matching", file="./tasks/WantedQuests/wq/wq_wq_done_new.png")
 
 
 	# Image Rule Assets
