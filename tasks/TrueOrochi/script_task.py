@@ -77,7 +77,7 @@ class ScriptTask(OrochiScriptTask, TrueOrochiAssets):
                         logger.info('Find true orochi')
                         battle = True
                         break
-                    if count_orochi_ten >= 10:
+                    if count_orochi_ten >= 20:
                         logger.warning('Not find true orochi')
                         battle = False
                         break
