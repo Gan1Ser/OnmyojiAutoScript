@@ -102,6 +102,7 @@ class ScriptTask(GameUi, GeneralBattle, GeneralInvite, SwitchSoul, HuntAssets):
             if self.appear(self.I_KIRIN_END):
                 # 你的阴阳寮已经打过的麒麟了
                 logger.warning('Your guild have already challenged the Kirin')
+                self.ui_click_until_disappear(self.I_UI_BACK_RED)
                 self.plan_tomorrow_hunt()
                 raise TaskEnd('Hunt')
             if self.appear_then_click(self.I_KIRIN_CHALLAGE, interval=0.9):
