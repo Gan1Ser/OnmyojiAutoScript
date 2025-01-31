@@ -107,6 +107,8 @@ class RestartAssets:
 	I_LOGIN_LOGIN_ONMYOJI_GENIE = RuleImage(roi_front=(80,110,280,120), roi_back=(80,110,280,120), threshold=0.8, method="Template matching", file="./tasks/Restart/login/login_login_onmyoji_genie.png")
 	# 已有角色 
 	I_CHARACTARS = RuleImage(roi_front=(246,535,100,31), roi_back=(219,523,173,57), threshold=0.8, method="Template matching", file="./tasks/Restart/login/login_charactars.png")
+	# 关闭加成按钮选项 
+	I_PLUS_OFF_BUTTON = RuleImage(roi_front=(488,400,100,47), roi_back=(488,400,100,47), threshold=0.8, method="Template matching", file="./tasks/Restart/login/login_plus_off_button.png")
 
 
 	# Ocr Rule Assets

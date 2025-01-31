@@ -115,5 +115,14 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "已有角色"
+  },
+  {
+    "itemName": "plus_off_button",
+    "imageName": "login_plus_off_button.png",
+    "roiFront": "488,400,100,47",
+    "roiBack": "488,400,100,47",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "关闭加成按钮选项"
   }
 ]
