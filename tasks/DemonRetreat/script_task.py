@@ -29,7 +29,7 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
         # 判断是否为周六，只有周六才可以进行退治
 
 
-        cfg: DemonRetreat = self.config.demonretreat
+        cfg: DemonRetreat = self.config.demon_retreat
 
         if cfg.switch_soul_config.enable:
             self.ui_get_current_page()
@@ -102,7 +102,7 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
         return False
 
     def demon_retreat(self):
-        cfg: DemonRetreat = self.config.demonretreat
+        cfg: DemonRetreat = self.config.demon_retreat
         logger.hr('demon retreat', 2)
         # 来晚了直接进入战斗
 
