@@ -77,13 +77,8 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
         while 1:
             self.screenshot()
             # 进入神社
-            if self.appear_then_click(self.I_SHRINE, interval=1):
+            if self.appear_then_click(self.I_SHRINE, interval=1.5):
                 logger.info("Enter I_SHRINE")
-                continue
-            # 查找首领退治
-            if not self.appear(self.I_HUNT, threshold=0.8):
-                #没必要似乎位置是固定的
-                self.swipe(self.S_TO_ABBSY_SHADOWS, interval=3)
                 continue
 
             # 进入首领退治
