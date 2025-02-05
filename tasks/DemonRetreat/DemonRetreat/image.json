@@ -1,0 +1,38 @@
+[
+  {
+    "itemName": "shrine",
+    "imageName": "DemonRetreat_shrine.png",
+    "roiFront": "870,624,65,61",
+    "roiBack": "870,624,65,61",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "神社"
+  },
+  {
+    "itemName": "hunt",
+    "imageName": "DemonRetreat_hunt.png",
+    "roiFront": "661,164,187,165",
+    "roiBack": "661,164,187,165",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "首领退治"
+  },
+  {
+    "itemName": "hunt_check",
+    "imageName": "DemonRetreat_hunt_check.png",
+    "roiFront": "570,12,143,46",
+    "roiBack": "570,12,143,46",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "检查是否成功进入首领退治"
+  },
+  {
+    "itemName": "demon_gather",
+    "imageName": "DemonRetreat_demon_gather.png",
+    "roiFront": "26,487,76,48",
+    "roiBack": "26,487,76,48",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "description"
+  }
+]
