@@ -111,14 +111,21 @@ class ScriptTask(GameUi, GeneralBattle, GeneralInvite, SwitchSoul, HuntAssets):
                 continue
         logger.info('Arrive the Kirin')
         self.ui_click(self.I_KIRIN_CHALLAGE, self.I_KIRIN_GATHER)
-        # 等待进入战斗
-        # 等待挑战, 5秒也是等
-        sleep(5)
-        self.device.stuck_record_add('BATTLE_STATUS_S')
-        self.wait_until_disappear(self.I_KIRIN_GATHER)
-        self.device.stuck_record_clear()
-        self.device.stuck_record_add('BATTLE_STATUS_S')
-        self.run_general_battle()
+        # 来晚了直接进入战斗
+        if not self.appear(self.I_LATER_ENTER_CHECK):
+            logger.info("arrive later")
+            self.ui_click_until_disappear(self.I_ENTER_FIRE, interval=1)
+            self.device.stuck_record_add('BATTLE_STATUS_S')
+            self.run_general_battle()
+        else:
+            # 等待进入战斗
+            # 等待挑战, 5秒也是等
+            sleep(5)
+            self.device.stuck_record_add('BATTLE_STATUS_S')
+            self.wait_until_disappear(self.I_KIRIN_GATHER)
+            self.device.stuck_record_clear()
+            self.device.stuck_record_add('BATTLE_STATUS_S')
+            self.run_general_battle()
 
 
     def netherworld(self):

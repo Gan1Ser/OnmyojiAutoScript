@@ -25,5 +25,23 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "已结束"
+  },
+  {
+    "itemName": "later_enter_check",
+    "imageName": "kirin_later_enter_check.png",
+    "roiFront": "651,69,21,27",
+    "roiBack": "651,69,21,27",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "检测是否迟到"
+  },
+  {
+    "itemName": "enter_fire",
+    "imageName": "kirin_enter_fire.png",
+    "roiFront": "1088,600,100,59",
+    "roiBack": "1088,600,100,59",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "开启挑战"
   }
 ]
