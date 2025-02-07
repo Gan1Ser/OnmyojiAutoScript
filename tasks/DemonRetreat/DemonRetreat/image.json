@@ -43,5 +43,14 @@
     "method": "Template matching",
     "threshold": 0.7,
     "description": "非退治时间进行检查"
+  },
+  {
+    "itemName": "enter_fire",
+    "imageName": "DemonRetreat_enter_fire.png",
+    "roiFront": "1141,581,100,67",
+    "roiBack": "1141,581,100,67",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "迟到直接进入战斗"
   }
 ]

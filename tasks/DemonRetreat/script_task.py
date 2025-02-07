@@ -117,15 +117,22 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
     def demon_retreat(self):
         cfg: DemonRetreat = self.config.demon_retreat
         logger.hr('demon retreat', 2)
-        # 来晚了直接进入战斗
 
-        # 等待进入战斗
-        sleep(5)
-        self.device.stuck_record_add('BATTLE_STATUS_S')
-        self.wait_until_disappear(self.I_DEMON_GATHER)
-        self.device.stuck_record_clear()
-        self.device.stuck_record_add('BATTLE_STATUS_S')
-        success = self.run_demon_battle(cfg.general_battle)
+        # 来晚了直接进入战斗
+        if not set(self.O_LATER_ENTER_CHECK.ocr(image=self.device.image)).intersection(set("集结")):
+            logger.info("arrive later")
+            self.ui_click_until_disappear(self.I_ENTER_FIRE, interval=1)
+            self.device.stuck_record_add('BATTLE_STATUS_S')
+            success = self.run_demon_battle(cfg.general_battle)
+        else:
+            # 等待进入战斗
+            sleep(5)
+            self.device.stuck_record_add('BATTLE_STATUS_S')
+            self.wait_until_disappear(self.I_DEMON_GATHER)
+            self.device.stuck_record_clear()
+            self.device.stuck_record_add('BATTLE_STATUS_S')
+            success = self.run_demon_battle(cfg.general_battle)
+
         return success
 
 
@@ -136,7 +143,7 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
         重写通用战斗
         三轮战斗 战斗过程中检测挑战
         """
-        # TODO 战斗过程中切换预设....没完成
+        # TODO 战斗过程中切换预设
         logger.hr("General battle start", 2)
         self.current_count += 1
         logger.info(f"Current count: {self.current_count}")

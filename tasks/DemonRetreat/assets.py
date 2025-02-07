@@ -10,11 +10,6 @@ from module.atom.list import RuleList
 class DemonRetreatAssets: 
 
 
-	# Click Rule Assets
-	# description 
-	C_HUNT_ENTER = RuleClick(roi_front=(1090,597,94,59), roi_back=(1090,597,94,59), name="hunt_enter")
-
-
 	# Image Rule Assets
 	# 神社 
 	I_SHRINE = RuleImage(roi_front=(870,624,65,61), roi_back=(870,624,65,61), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_shrine.png")
@@ -26,5 +21,12 @@ class DemonRetreatAssets:
 	I_DEMON_GATHER = RuleImage(roi_front=(26,487,76,48), roi_back=(26,487,76,48), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_demon_gather.png")
 	# 非退治时间进行检查 
 	I_DEMON_BACK_CHECK = RuleImage(roi_front=(27,26,42,36), roi_back=(14,2,86,86), threshold=0.7, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_demon_back_check.png")
+	# 迟到直接进入战斗 
+	I_ENTER_FIRE = RuleImage(roi_front=(1141,581,100,67), roi_back=(1141,581,100,67), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_enter_fire.png")
+
+
+	# Ocr Rule Assets
+	# 检查是否迟到 
+	O_LATER_ENTER_CHECK = RuleOcr(roi=(928,16,48,35), area=(928,16,48,35), mode="Single", method="Default", keyword="", name="later_enter_check")
 
 
