@@ -34,5 +34,14 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "description"
+  },
+  {
+    "itemName": "demon_back_check",
+    "imageName": "DemonRetreat_demon_back_check.png",
+    "roiFront": "27,26,42,36",
+    "roiBack": "14,2,86,86",
+    "method": "Template matching",
+    "threshold": 0.7,
+    "description": "非退治时间进行检查"
   }
 ]

@@ -26,10 +26,27 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
         首领退治主函数
         """
 
-        # 判断是否为周六，只有周六才可以进行退治
-
-
         cfg: DemonRetreat = self.config.demon_retreat
+
+        # 判断是否为周六，只有周六才可以进行退治
+        current_date = datetime.now()
+        current_day_of_week = current_date.weekday()  # Monday is 0 and Sunday is 6
+
+        if current_day_of_week == 5:
+            # 是周六，继续运行写好的任务代码
+            pass
+        else:
+            # 不是周六
+            if current_day_of_week < 5:
+                # 周一至周五
+                days_until_saturday = 5 - current_day_of_week
+            else:
+                # 周日
+                days_until_saturday = 5 - current_day_of_week + 7
+
+                # 设置下次运行时间
+            self.custom_next_run(task='DemonRetreat', custom_time=cfg.demon_retreat_time.custom_run_time, time_delta=days_until_saturday)
+            raise TaskEnd
 
         if cfg.switch_soul_config.enable:
             self.ui_get_current_page()
@@ -73,7 +90,6 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
         self.ui_goto(page_guild)
 
         goto_demon_retreat_num = 0
-
         while 1:
             self.screenshot()
             # 进入神社
@@ -90,10 +106,12 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
                 goto_demon_retreat_num += 1
                 if not self.appear(self.I_HUNT_CHECK):
                     logger.info("Enter demon_retreat false")
-                    time.sleep(20)
-                if goto_demon_retreat_num >= 10:
+                    sleep(3)
+                    if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=2.5):
+                        pass
+                    sleep(20)
+                if goto_demon_retreat_num >= 5:
                     break
-
         return False
 
     def demon_retreat(self):
@@ -209,7 +227,7 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
 if __name__ == '__main__':
     from module.config.config import Config
     from module.device.device import Device
-    c = Config('oas1')
+    c = Config('日常1')
     d = Device(c)
     t = ScriptTask(c, d)
     t.screenshot()

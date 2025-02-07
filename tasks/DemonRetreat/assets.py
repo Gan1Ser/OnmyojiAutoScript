@@ -24,5 +24,7 @@ class DemonRetreatAssets:
 	I_HUNT_CHECK = RuleImage(roi_front=(570,12,143,46), roi_back=(570,12,143,46), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_hunt_check.png")
 	# description 
 	I_DEMON_GATHER = RuleImage(roi_front=(26,487,76,48), roi_back=(26,487,76,48), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_demon_gather.png")
+	# 非退治时间进行检查 
+	I_DEMON_BACK_CHECK = RuleImage(roi_front=(27,26,42,36), roi_back=(14,2,86,86), threshold=0.7, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_demon_back_check.png")
 
 
