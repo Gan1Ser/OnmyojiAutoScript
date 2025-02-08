@@ -23,6 +23,8 @@ class DemonRetreatAssets:
 	I_DEMON_BACK_CHECK = RuleImage(roi_front=(27,26,42,36), roi_back=(14,2,86,86), threshold=0.7, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_demon_back_check.png")
 	# 迟到直接进入战斗 
 	I_ENTER_FIRE = RuleImage(roi_front=(1141,581,100,67), roi_back=(1141,581,100,67), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_enter_fire.png")
+	# 取消退出 
+	I_NEW = RuleImage(roi_front=(488,401,100,44), roi_back=(488,401,100,44), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_new.png")
 
 
 	# Ocr Rule Assets

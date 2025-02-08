@@ -93,22 +93,27 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
         while 1:
             self.screenshot()
             # 进入神社
-            if self.appear_then_click(self.I_SHRINE, interval=1.5):
+            if self.appear_then_click(self.I_SHRINE, interval=2):
                 logger.info("Enter I_SHRINE")
                 continue
+
+            # 确保不离开退治
+            if self.appear_then_click(self.I_DEMON_BACK_CHECK):
+                pass
 
             # 进入首领退治
             if self.appear(self.I_HUNT_CHECK):
                 logger.info("Enter demon_retreat success")
                 return True
 
-            if self.appear_then_click(self.I_HUNT, interval=1.5):
+            if self.appear_then_click(self.I_HUNT, interval=2):
                 goto_demon_retreat_num += 1
-                sleep(2)
-                if self.appear(self.I_HUNT_CHECK):
+                if self.appear(self.I_HUNT_CHECK, interval=2):
+                    if self.appear_then_click(self.I_DEMON_BACK_CHECK):
+                        pass
                     logger.info("Enter demon_retreat success")
                     return True
-                if not self.appear(self.I_HUNT_CHECK):
+                if not self.appear(self.I_HUNT_CHECK, interval=2):
                     logger.info("Enter demon_retreat false")
                     sleep(3)
                     if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=2.5):
@@ -210,7 +215,8 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
                 return True
             # 战斗过程中出现准备
             if self.appear_then_click(self.I_PREPARE_HIGHLIGHT, interval=1.5):
-                pass
+                self.device.stuck_record_clear()
+                self.device.stuck_record_add('BATTLE_STATUS_S')
             # 如果出现失败 就点击，返回False
             if self.appear(self.I_FALSE, threshold=0.8):
                 logger.info("Battle result is false")
