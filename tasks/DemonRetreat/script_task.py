@@ -104,6 +104,10 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
 
             if self.appear_then_click(self.I_HUNT, interval=1.5):
                 goto_demon_retreat_num += 1
+                sleep(2)
+                if self.appear(self.I_HUNT_CHECK):
+                    logger.info("Enter demon_retreat success")
+                    return True
                 if not self.appear(self.I_HUNT_CHECK):
                     logger.info("Enter demon_retreat false")
                     sleep(3)
@@ -170,7 +174,7 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
             logger.info("Click prepare ensure button")
 
             # 照顾一下某些模拟器慢的
-            time.sleep(0.1)
+            sleep(0.1)
 
         # 绿标
         self.wait_until_disappear(self.I_BUFF)
