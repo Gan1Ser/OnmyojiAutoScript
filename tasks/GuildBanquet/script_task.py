@@ -1,7 +1,7 @@
 # This Python file uses the following encoding: utf-8
 # @author ohspecial
 # github https://github.com/ohspecial
-from datetime import datetime, timedelta
+from datetime import datetime ,timedelta
 from enum import Enum
 import time
 
@@ -23,17 +23,15 @@ WEEKDAYDICT = {
     6: '星期日'
 }
 
-
-class Weekday(str, Enum):
+class Weekday(str,Enum):
     Monday: str = "星期一"
-    Tuesday: str = "星期二"
+    Tuesday: str = "星期二" 
     Wednesday: str = "星期三"
     Thursday: str = "星期四"
     Friday: str = "星期五"
     Saturday: str = "星期六"
     Sunday: str = "星期日"
-
-
+    
 class ScriptTask(GameUi, GuildBanquetAssets):
 
     def run(self):
@@ -41,14 +39,15 @@ class ScriptTask(GameUi, GuildBanquetAssets):
         # 第一天宴会日期及时间
         self.banquet_day_1 = self.get_key_from_value(WEEKDAYDICT, self.run_time.day_1.value)
         self.banquet_day_1_start_time = self.run_time.run_time_1
-
+        
         # 第二天宴会日期及时间
         self.banquet_day_2 = self.get_key_from_value(WEEKDAYDICT, self.run_time.day_2.value)
         self.banquet_day_2_start_time = self.run_time.run_time_2
-
+        
+        
         self.ui_get_current_page()
         self.ui_goto(page_guild)
-
+        
         if self.appear(self.I_FLAG):
             wait_count = 0
             wait_timer = Timer(270)
@@ -61,8 +60,8 @@ class ScriptTask(GameUi, GuildBanquetAssets):
                 time_now = datetime.now()
                 time_later = time_now + timedelta(minutes=5)
                 self.set_next_run(task='GuildBanquet',
-                                  finish=True,
-                                  target=time_later)
+                              finish=True,
+                              target=time_later)
             self.ui_get_current_page()
             self.ui_goto(page_main)
             raise TaskEnd
@@ -81,13 +80,14 @@ class ScriptTask(GameUi, GuildBanquetAssets):
                 last_flag_status = actual_status
                 last_check_time = current_time
                 logger.debug(f"Actual detection at {current_time}, status: {actual_status}")
-
+                
                 # 重置日志计时器
                 last_log_time = current_time
             else:
                 # 未达间隔时沿用上次结果
                 logger.debug(f"Using cached status: {last_flag_status}")
-
+                
+                
             # 条件2: 状态判断逻辑
             if last_flag_status:
                 if current_time - last_log_time >= 10:
@@ -113,7 +113,7 @@ class ScriptTask(GameUi, GuildBanquetAssets):
         self.ui_goto(page_main)
         self.plan_next_run()
         raise TaskEnd
-
+    
     def check_runtime(self) -> bool:
         """
         检查时间, 一般寮不会晚上10点再开吧。。。。。
@@ -129,38 +129,41 @@ class ScriptTask(GameUi, GuildBanquetAssets):
     def plan_next_run(self):
         # 安排次日宴会，便于复用
         today = datetime.now().weekday()
-
+        
         if today < self.banquet_day_1:
             logger.info(f"Plan next run: {self.banquet_day_1_start_time}")
-            self.custom_next_run(task='GuildBanquet', custom_time=self.banquet_day_1_start_time,
-                                 time_delta=self.banquet_day_1 - today)
+            self.custom_next_run(task='GuildBanquet', custom_time=self.banquet_day_1_start_time, time_delta=self.banquet_day_1 - today) 
         elif self.banquet_day_1 <= today < self.banquet_day_2:
             logger.info(f"Plan next run: {self.banquet_day_2_start_time}")
-            self.custom_next_run(task='GuildBanquet', custom_time=self.banquet_day_2_start_time,
-                                 time_delta=self.banquet_day_2 - today)
+            self.custom_next_run(task='GuildBanquet', custom_time=self.banquet_day_2_start_time, time_delta=self.banquet_day_2 - today)
         elif self.banquet_day_2 <= today:
             logger.info(f"Plan next run: {self.banquet_day_1_start_time}")
-            self.custom_next_run(task='GuildBanquet', custom_time=self.banquet_day_1_start_time,
-                                 time_delta=7 - today + self.banquet_day_1)
-
+            self.custom_next_run(task='GuildBanquet', custom_time=self.banquet_day_1_start_time, time_delta=7 - today + self.banquet_day_1) 
+    
     def get_key_from_value(self, dict, value):
         return [k for k, v in dict.items() if v == value][0]
-
+    
     def get_weekday_enum(self, value: str) -> Weekday:
         for day in Weekday:
             if day.value == value:
                 return day
-
+        
     def set_config(self):
         """
         修改周几配置时会出现警告
         UserWarning: Pydantic serializer warnings:
   Expected `enum` but got `Weekday` with value `<Weekday.Thursday: '星期四'>` - serialized value may not be as expected
         """
+        
         try:
             # 当结束宴会时，设置宴会时间的日期及时间，宴会时间设置为运行结束时间提前15分钟
             next_time = datetime.now() - timedelta(minutes=15)
-            today = datetime.now().weekday()
+            next_time = next_time.replace(second=0, microsecond=0)
+            # 计算下次运行时间
+            next_time = datetime.time(next_time)
+            
+            today = datetime.now().weekday()          
+            
             # 修改配置文件
             if today == self.banquet_day_1:
                 self.run_time.run_time_1 = next_time
@@ -170,7 +173,7 @@ class ScriptTask(GameUi, GuildBanquetAssets):
                 self.run_time.day_1 = self.get_weekday_enum(WEEKDAYDICT.get(today))
                 self.run_time.run_time_1 = next_time
             elif today > self.banquet_day_2:
-                self.run_time.day_2 = self.get_weekday_enum(WEEKDAYDICT.get(today))
+                self.run_time.day_2 = self.get_weekday_enum(WEEKDAYDICT.get(today))    
                 self.run_time.run_time_2 = next_time
             else:
                 # 如果当前时间在两个配置时间之间，则默认把工作日设置第一天，周末设为第二天
@@ -178,10 +181,10 @@ class ScriptTask(GameUi, GuildBanquetAssets):
                     self.run_time.day_1 = self.get_weekday_enum(WEEKDAYDICT.get(today))
                     self.run_time.run_time_1 = next_time
                 else:  # 周末
-                    self.run_time.day_2 = self.get_weekday_enum(WEEKDAYDICT.get(today))
+                    self.run_time.day_2 = self.get_weekday_enum(WEEKDAYDICT.get(today))       
                     self.run_time.run_time_2 = next_time
             logger.info(f"Set next run time: {self.run_time}")
-
+            
             self.config.save()
         except Exception as e:
             logger.error(f"Error setting banquet config: {e}")
@@ -191,8 +194,8 @@ class ScriptTask(GameUi, GuildBanquetAssets):
 if __name__ == '__main__':
     from module.config.config import Config
     from module.device.device import Device
-
     c = Config('oas1')
     d = Device(c)
     t = ScriptTask(c, d)
     t.run()
+
