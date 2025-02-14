@@ -453,6 +453,16 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                     if self.click(action_click, interval=1.5):
                         continue
                 return True
+            if self.appear(self.I_REWARD_CHECK):
+                logger.info('Win battle')
+                while 1:
+                    self.screenshot()
+                    action_click = random.choice([self.C_REWARD_1, self.C_REWARD_2, self.C_REWARD_3])
+                    if not self.appear(self.I_GREED_GHOST):
+                        break
+                    if self.click(action_click, interval=1.5):
+                        continue
+                return True
             if self.appear(self.I_REWARD):
                 # 魂
                 logger.info('Win battle')
