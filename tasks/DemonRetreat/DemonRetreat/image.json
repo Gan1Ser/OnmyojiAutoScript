@@ -79,5 +79,14 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "全部领取"
+  },
+  {
+    "itemName": "pray",
+    "imageName": "DemonRetreat_pray.png",
+    "roiFront": "1176,385,43,70",
+    "roiBack": "1176,385,43,70",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "祈愿"
   }
 ]

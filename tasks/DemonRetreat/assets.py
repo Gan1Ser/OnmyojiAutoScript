@@ -29,6 +29,8 @@ class DemonRetreatAssets:
 	I_RANK_LSIT = RuleImage(roi_front=(542,5,200,54), roi_back=(542,5,200,54), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_rank_lsit.png")
 	# 全部领取 
 	I_REWARD_ALL = RuleImage(roi_front=(535,540,177,60), roi_back=(535,540,177,60), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_reward_all.png")
+	# 祈愿 
+	I_PRAY = RuleImage(roi_front=(1176,385,43,70), roi_back=(1176,385,43,70), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_pray.png")
 
 
 	# Ocr Rule Assets

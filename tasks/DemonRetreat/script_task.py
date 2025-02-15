@@ -60,12 +60,29 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
         # 进入妖怪退治
         if not self.goto_demon_retreat():
             logger.warning("Failed to enter demon retreat")
+            if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=1):
+                pass
             self.goto_main()
             self.set_next_run(task='DemonRetreat', finish=False, server=True, success=False)
             raise TaskEnd
 
         # 首领退治战斗
         success = self.demon_retreat()
+
+        # 战斗结束 回到寮信息界面 准备领取奖励
+        # 先返回
+        if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=1.5):
+            pass
+        while 1:
+            if self.appear_then_click(self.I_SHRINE, interval=1.5):
+                logger.warning("Claim rewards")
+                continue
+            if self.appear_then_click(self.I_HUNT, interval=1.5):
+                continue
+            if self.appear_then_click(self.I_REWARD_ALL, interval=1.5):
+                self.ui_reward_appear_click(True)
+                logger.info('Claim rewards finished')
+                break
 
         # 保持好习惯，一个任务结束了就返回到庭院，方便下一任务的开始
         self.goto_main()
@@ -85,6 +102,7 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
         """
         进入首领退治
         """
+        cfg: DemonRetreat = self.config.demon_retreat
         self.ui_get_current_page()
         logger.info("Entering demon_retreat")
         self.ui_goto(page_guild)
@@ -96,37 +114,39 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
             if self.appear_then_click(self.I_SHRINE, interval=1):
                 logger.info("Enter I_SHRINE")
                 continue
+            # 进入首领退治
+            if self.appear_then_click(self.I_HUNT, interval=1.5):
+                goto_demon_retreat_num += 1
 
             # 确保不离开退治
             if self.appear_then_click(self.I_QUIT_BACK, interval=1):
                 pass
-
-            # 进入首领退治
             if self.appear(self.I_HUNT_CHECK):
+                if self.appear_then_click(self.I_QUIT_BACK, interval=1):
+                    pass
                 logger.info("Enter demon_retreat success")
                 return True
 
-            if self.appear_then_click(self.I_HUNT, interval=1):
-                goto_demon_retreat_num += 1
-                if self.appear(self.I_HUNT_CHECK):
-                    if self.appear_then_click(self.I_QUIT_BACK, interval=1):
-                        pass
-                    logger.info("Enter demon_retreat success")
-                    return True
-                if self.appear_then_click(self.I_REWARD_ALL):
-                    logger.info("Already challenged demon_retreat")
-                    sleep(3)
-                    if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=1):
-                        pass
-                    return True
-                if self.appear(self.I_RANK_LSIT):
-                    logger.info("Enter demon_retreat false")
-                    sleep(3)
-                    if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=1):
-                        pass
-                    sleep(20)
-                if goto_demon_retreat_num >= 5:
-                    break
+            # 周六打完了，但是迟到了只能领取奖励
+            if self.appear_then_click(self.I_REWARD_ALL, interval=1):
+                logger.info("Already challenged demon_retreat")
+                sleep(1)
+                if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=1):
+                    pass
+                logger.info(f"The next time the demon retreat is next Saturday")
+                self.custom_next_run(task='DemonRetreat', custom_time=cfg.demon_retreat_time.custom_run_time,
+                                     time_delta=7)
+                raise TaskEnd
+
+            if self.appear(self.I_RANK_LSIT):
+                logger.info("Enter demon_retreat false")
+                sleep(3)
+                if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=1):
+                    pass
+                sleep(20)
+            # 超过五次没有进入进入认为失败
+            if goto_demon_retreat_num >= 5:
+                break
         return False
 
     def demon_retreat(self):
