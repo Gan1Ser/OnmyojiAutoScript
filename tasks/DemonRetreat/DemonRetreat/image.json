@@ -54,7 +54,7 @@
     "description": "迟到直接进入战斗"
   },
   {
-    "itemName": "new",
+    "itemName": "quit_back",
     "imageName": "DemonRetreat_new.png",
     "roiFront": "488,401,100,44",
     "roiBack": "488,401,100,44",
