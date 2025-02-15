@@ -61,5 +61,23 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "取消退出"
+  },
+  {
+    "itemName": "rank_lsit",
+    "imageName": "DemonRetreat_rank_lsit.png",
+    "roiFront": "542,5,200,54",
+    "roiBack": "542,5,200,54",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "退治排行榜"
+  },
+  {
+    "itemName": "reward_all",
+    "imageName": "DemonRetreat_reward_all.png",
+    "roiFront": "535,540,177,60",
+    "roiBack": "535,540,177,60",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "全部领取"
   }
 ]

@@ -107,15 +107,19 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
                 return True
 
             if self.appear_then_click(self.I_HUNT, interval=1):
-                # 等待有些慢的过场动画
-                sleep(5)
                 goto_demon_retreat_num += 1
                 if self.appear(self.I_HUNT_CHECK):
                     if self.appear_then_click(self.I_QUIT_BACK, interval=1):
                         pass
                     logger.info("Enter demon_retreat success")
                     return True
-                if not self.appear(self.I_HUNT_CHECK):
+                if self.appear_then_click(self.I_REWARD_ALL):
+                    logger.info("Already challenged demon_retreat")
+                    sleep(3)
+                    if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=1):
+                        pass
+                    return True
+                if self.appear(self.I_RANK_LSIT):
                     logger.info("Enter demon_retreat false")
                     sleep(3)
                     if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=1):

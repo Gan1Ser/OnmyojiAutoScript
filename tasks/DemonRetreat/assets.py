@@ -25,6 +25,10 @@ class DemonRetreatAssets:
 	I_ENTER_FIRE = RuleImage(roi_front=(1141,581,100,67), roi_back=(1141,581,100,67), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_enter_fire.png")
 	# 取消退出 
 	I_QUIT_BACK = RuleImage(roi_front=(488,401,100,44), roi_back=(488,401,100,44), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_new.png")
+	# 退治排行榜 
+	I_RANK_LSIT = RuleImage(roi_front=(542,5,200,54), roi_back=(542,5,200,54), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_rank_lsit.png")
+	# 全部领取 
+	I_REWARD_ALL = RuleImage(roi_front=(535,540,177,60), roi_back=(535,540,177,60), threshold=0.8, method="Template matching", file="./tasks/DemonRetreat/DemonRetreat/DemonRetreat_reward_all.png")
 
 
 	# Ocr Rule Assets
