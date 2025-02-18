@@ -462,6 +462,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                         break
                     if self.click(action_click, interval=1.5):
                         continue
+                    # 队长确保不卡在再次邀请界面
+                    if self.appear(self.I_GI_SURE):
+                        break
                 return True
             if self.appear(self.I_REWARD):
                 # 魂
