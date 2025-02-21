@@ -3,8 +3,7 @@
 # github https://github.com/runhey
 from enum import Enum
 from pydantic import BaseModel, ValidationError, validator, Field
-
-from module.logger import logger
+from tasks.Component.config_base import ConfigBase, Time
 
 
 class WhenTaskQueueEmpty(str, Enum):
@@ -28,5 +27,7 @@ class Optimization(BaseModel):
                                           description='task_hoarding_duration_help')
     when_task_queue_empty: WhenTaskQueueEmpty = Field(default=WhenTaskQueueEmpty.GOTO_MAIN,
                                                       description='when_task_queue_empty_help')
-    # schedule_rule: ScheduleRule = Field(default=ScheduleRule.FILTER, description='schedule_rule_help')
+    limit_time: Time = Field(default=Time(minute=30), description='limit_time_help')
+
+# schedule_rule: ScheduleRule = Field(default=ScheduleRule.FILTER, description='schedule_rule_help')
 
