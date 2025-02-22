@@ -329,8 +329,17 @@ class Script:
                 elif method == 'close_emulator':
                     logger.info('close emulator during wait')
                     limit_time = self.config.script.optimization.limit_time
+                    selection_behavior = self.config.script.optimization.selection_behavior
                     if task.next_run > datetime.now() + timedelta(hours=limit_time.hour, minutes=limit_time.minute, seconds=limit_time.second):
                         self.device.emulator_stop()
+                    elif selection_behavior == 'close_game':
+                        logger.info('Close game during wait')
+                        self.device.app_stop()
+                        self.device.release_during_wait()
+                        if not self.wait_until(task.next_run):
+                            del_cached_property(self, 'config')
+                            continue
+                        self.run('Restart')
                     else:
                         self.run('GotoMain')
                     self.device.release_during_wait()
