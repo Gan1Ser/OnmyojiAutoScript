@@ -71,18 +71,20 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DemonRetreatAssets, AbyssSha
 
         # 战斗结束 回到寮信息界面 准备领取奖励
         # 先返回
-        if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=1.5):
-            pass
         while 1:
-            if self.appear_then_click(self.I_SHRINE, interval=1.5):
+            self.screenshot()
+            if self.appear_then_click(self.I_PRAY, interval=1):
                 logger.warning("Claim rewards")
-                continue
-            if self.appear_then_click(self.I_HUNT, interval=1.5):
+            if self.appear_then_click(self.I_HUNT, interval=1):
                 continue
             if self.appear_then_click(self.I_REWARD_ALL, interval=1.5):
                 self.ui_reward_appear_click(True)
                 logger.info('Claim rewards finished')
                 break
+            if self.appear(self.I_RANK_LSIT):
+                logger.info("No rewards to claim")
+                if self.appear_then_click(self.I_DEMON_BACK_CHECK, interval=1):
+                    break
 
         # 保持好习惯，一个任务结束了就返回到庭院，方便下一任务的开始
         self.goto_main()
