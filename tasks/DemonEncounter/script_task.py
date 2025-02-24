@@ -144,7 +144,19 @@ class ScriptTask(GameUi, GeneralBattle, DemonEncounterAssets, SwitchSoul):
                 continue
             if self.appear_then_click(self.I_BOSS_SONGSTRESS, interval=1):
                 continue
-            if self.config.demon_encounter.best_demon_boss_config.enable and today < 5:
+                # 配置字段
+            select_fields = {
+                0: 'best_demon_kiryou_select',
+                1: 'best_demon_shinkirou_select',
+                2: 'best_demon_tsuchigumo_select',
+                3: 'best_demon_gashadokuro_select',
+                4: 'best_demon_namazu_select'
+            }
+            
+            # 获取当前星期几
+            select_field = select_fields.get(today)
+            
+            if self.config.demon_encounter.best_demon_boss_config.enable and select_field and getattr(self.config.demon_encounter.best_demon_boss_config, select_field) and today < 5:
                 if self.appear_then_click(self.I_DE_BOSS_BEST, interval=4):
                     continue
                 if self.click(self.C_DM_BOSS_CLICK, interval=1.7):
