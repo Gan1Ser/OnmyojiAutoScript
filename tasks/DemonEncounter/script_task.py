@@ -147,11 +147,13 @@ class ScriptTask(GameUi, GeneralBattle, DemonEncounterAssets, SwitchSoul):
             if self.config.demon_encounter.best_demon_boss_config.enable and today < 5:
                 if self.appear_then_click(self.I_DE_BOSS_BEST, interval=4):
                     continue
+                if self.click(self.C_DM_BOSS_CLICK, interval=1.7):
+                    continue
             else:
                 if self.appear_then_click(self.I_DE_BOSS, interval=4):
                     continue
-            if self.click(self.C_DM_BOSS_CLICK, interval=1.7):
-                continue
+                if self.click(self.C_DM_BOSS_CLICK, interval=1.7):
+                    continue
 
         logger.info('Boss battle start')
         # 点击集结挑战
