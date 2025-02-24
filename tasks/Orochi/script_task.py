@@ -451,7 +451,10 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                     if (not self.appear(self.I_GREED_GHOST)) and (not self.appear(self.I_REWARD_CHECK)):
                         break
                     if self.click(action_click, interval=1.5):
-                        continue
+                        pass
+                    # 队长确保不卡在再次邀请界面
+                    if self.appear(self.I_GI_SURE):
+                        break
                 return True
             if self.appear(self.I_REWARD_CHECK):
                 logger.info('Win battle')
@@ -461,7 +464,7 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                     if (not self.appear(self.I_GREED_GHOST)) and (not self.appear(self.I_REWARD_CHECK)):
                         break
                     if self.click(action_click, interval=1.5):
-                        continue
+                        pass
                     # 队长确保不卡在再次邀请界面
                     if self.appear(self.I_GI_SURE):
                         break
