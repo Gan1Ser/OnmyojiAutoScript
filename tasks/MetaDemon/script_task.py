@@ -49,6 +49,9 @@ class ScriptTask(GeneralBattle, SwitchSoul, GameUi, MetaDemonAssets):
             if boss_timer.reached():
                 self.config.notifier.push(title='超鬼王', message='识别超时退出')
                 break
+            if self.appear(self.I_BACK_CHECK):
+                self.click(self.I_RED_BACK, interval=1.5)
+                break
             if self.appear_then_click(RestartAssets.I_HARVEST_CHAT_CLOSE):
                 boss_timer.reset()
                 continue
@@ -71,7 +74,7 @@ class ScriptTask(GeneralBattle, SwitchSoul, GameUi, MetaDemonAssets):
                 continue
             if self.appear_then_click(self.I_A6, interval=1):
                 boss_timer.reset()
-                continue    
+                continue
 
         config: MetaDemon = self.config.model.meta_demon
         # 主循环
@@ -82,6 +85,7 @@ class ScriptTask(GeneralBattle, SwitchSoul, GameUi, MetaDemonAssets):
                 break
             if self.appear_then_click(self.I_UI_BACK_YELLOW, interval=1):
                 continue
+        self.set_next_run(task="MetaDemon", success=True)
         raise TaskEnd
 
     @cached_property

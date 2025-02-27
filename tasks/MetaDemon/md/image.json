@@ -124,14 +124,32 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "准备"
+  },
+  {
+    "itemName": "a6",
+    "imageName": "Screenshots_a6.png",
+    "roiFront": "435,147,100,100",
+    "roiBack": "435,147,100,100",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "description"
+  },
+  {
+    "itemName": "back_check",
+    "imageName": "md_back_check.png",
+    "roiFront": "378,257,68,32",
+    "roiBack": "378,257,68,32",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "超鬼王打完了"
+  },
+  {
+    "itemName": "red_back",
+    "imageName": "md_red_back.png",
+    "roiFront": "925,181,47,48",
+    "roiBack": "925,181,47,48",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "红色的叉叉"
   }
-  ,  {
-  "itemName": "a6",
-  "imageName": "Screenshots_a6.png",
-  "roiFront": "435,147,100,100",
-  "roiBack": "435,147,100,100",
-  "method": "Template matching",
-  "threshold": 0.8,
-  "description": "description"
-}
 ]
