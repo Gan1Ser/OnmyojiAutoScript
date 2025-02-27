@@ -4,6 +4,7 @@
 from tasks.Component.config_base import ConfigBase, TimeDelta, DateTime, Time
 from pydantic import BaseModel, ValidationError, validator, Field
 from enum import Enum
+from tasks.Component.SwitchSoul.switch_soul_config import SwitchSoulConfig
 
 # 鬼王的难度为： 易、中、高、难、极 五个 对应英文：easy、medium、hard、difficult、extreme
 
@@ -21,6 +22,7 @@ class MetaDemonConfig(ConfigBase):
 class MetaDemon(ConfigBase):
     scheduler: Scheduler = Field(default_factory=Scheduler)
     meta_demon_config: MetaDemonConfig = Field(default_factory=MetaDemonConfig)
+    switch_soul: SwitchSoulConfig = Field(default_factory=SwitchSoulConfig)
 
 
 
