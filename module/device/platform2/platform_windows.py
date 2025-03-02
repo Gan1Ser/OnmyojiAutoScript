@@ -317,7 +317,7 @@ class PlatformWindows(PlatformBase, EmulatorManager):
 
         if new_window != 0 and new_window != current_window:
             logger.info(f'Minimize new window: {new_window}')
-            minimize_window(new_window)
+            # minimize_window(new_window)
         if current_window:
             logger.info(f'De-flash current window: {current_window}')
             flash_window(current_window, flash=False)
