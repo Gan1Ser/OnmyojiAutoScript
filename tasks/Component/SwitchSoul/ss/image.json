@@ -20,7 +20,7 @@
   {
     "itemName": "sou_switch_1",
     "imageName": "ss_sou_switch_1.png",
-    "roiFront": "971,148,37,35",
+    "roiFront": "964,140,48,48",
     "roiBack": "971,148,37,35",
     "method": "Template matching",
     "threshold": 0.8,
@@ -29,7 +29,7 @@
   {
     "itemName": "sou_switch_2",
     "imageName": "ss_sou_switch_2.png",
-    "roiFront": "978,304,27,29",
+    "roiFront": "964,293,49,45",
     "roiBack": "978,304,27,29",
     "method": "Template matching",
     "threshold": 0.8,
@@ -38,7 +38,7 @@
   {
     "itemName": "sou_switch_3",
     "imageName": "ss_sou_switch_3.png",
-    "roiFront": "973,454,26,26",
+    "roiFront": "964,443,45,45",
     "roiBack": "973,454,26,26",
     "method": "Template matching",
     "threshold": 0.8,
@@ -47,7 +47,7 @@
   {
     "itemName": "sou_switch_4",
     "imageName": "ss_sou_switch_4.png",
-    "roiFront": "971,600,37,26",
+    "roiFront": "962,593,50,33",
     "roiBack": "971,600,37,26",
     "method": "Template matching",
     "threshold": 0.8,
@@ -151,5 +151,14 @@
     "method": "Template matching",
     "threshold": 0.9,
     "description": "需要切换的预设按钮(颜色深一点)"
+  },
+  {
+    "itemName": "check_block",
+    "imageName": "ss_check_block.png",
+    "roiFront": "572,408,137,49",
+    "roiBack": "572,408,137,49",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "误触点到式神检查"
   }
 ]
