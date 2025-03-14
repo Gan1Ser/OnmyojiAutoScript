@@ -47,7 +47,7 @@
   {
     "itemName": "exploration_goto_soul_zone",
     "imageName": "page_exploration_goto_soul_zone.png",
-    "roiFront": "159,633,55,55",
+    "roiFront": "159,649,55,37",
     "roiBack": "138,620,89,75",
     "method": "Template matching",
     "threshold": 0.8,
@@ -83,7 +83,7 @@
   {
     "itemName": "exploration_goto_secret_zones",
     "imageName": "page_exploration_goto_secret_zones.png",
-    "roiFront": "549,633,53,40",
+    "roiFront": "545,650,52,32",
     "roiBack": "524,614,100,87",
     "method": "Template matching",
     "threshold": 0.8,

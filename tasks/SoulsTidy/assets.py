@@ -21,7 +21,7 @@ class SoulsTidyAssets:
 	# 点击御魂 
 	I_ST_SOULS = RuleImage(roi_front=(1170,226,70,80), roi_back=(1170,226,70,80), threshold=0.8, method="Template matching", file="./tasks/SoulsTidy/simple/simple_st_souls.png")
 	# 更换 
-	I_ST_REPLACE = RuleImage(roi_front=(856,170,100,100), roi_back=(856,170,100,100), threshold=0.8, method="Template matching", file="./tasks/SoulsTidy/simple/simple_st_replace.png")
+	I_ST_REPLACE = RuleImage(roi_front=(860,164,100,100), roi_back=(860,164,100,100), threshold=0.8, method="Template matching", file="./tasks/SoulsTidy/simple/simple_st_replace.png")
 	# 奉纳 
 	I_ST_BONGNA = RuleImage(roi_front=(1154,202,77,97), roi_back=(1154,202,77,97), threshold=0.8, method="Template matching", file="./tasks/SoulsTidy/simple/simple_st_bongna.png")
 	# 贪吃鬼 

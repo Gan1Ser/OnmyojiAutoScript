@@ -11,8 +11,8 @@
   {
     "itemName": "st_replace",
     "imageName": "simple_st_replace.png",
-    "roiFront": "856,170,100,100",
-    "roiBack": "856,170,100,100",
+    "roiFront": "860,164,100,100",
+    "roiBack": "860,164,100,100",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "更换"
