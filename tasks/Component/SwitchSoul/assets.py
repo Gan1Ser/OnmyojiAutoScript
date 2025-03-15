@@ -35,13 +35,13 @@ class SwitchSoulAssets:
 	# 预设 
 	I_SOUL_PRESET = RuleImage(roi_front=(335,73,90,51), roi_back=(310,57,169,72), threshold=0.8, method="Template matching", file="./tasks/Component/SwitchSoul/ss/ss_soul_preset.png")
 	# description 
-	I_SOU_SWITCH_1 = RuleImage(roi_front=(964,140,48,48), roi_back=(971,148,37,35), threshold=0.8, method="Template matching", file="./tasks/Component/SwitchSoul/ss/ss_sou_switch_1.png")
+	I_SOU_SWITCH_1 = RuleImage(roi_front=(971,149,34,32), roi_back=(962,141,51,48), threshold=0.8, method="Template matching", file="./tasks/Component/SwitchSoul/ss/ss_sou_switch_1.png")
 	# description 
-	I_SOU_SWITCH_2 = RuleImage(roi_front=(964,293,49,45), roi_back=(978,304,27,29), threshold=0.8, method="Template matching", file="./tasks/Component/SwitchSoul/ss/ss_sou_switch_2.png")
+	I_SOU_SWITCH_2 = RuleImage(roi_front=(967,296,42,39), roi_back=(961,292,54,49), threshold=0.8, method="Template matching", file="./tasks/Component/SwitchSoul/ss/ss_sou_switch_2.png")
 	# description 
-	I_SOU_SWITCH_3 = RuleImage(roi_front=(964,443,45,45), roi_back=(973,454,26,26), threshold=0.8, method="Template matching", file="./tasks/Component/SwitchSoul/ss/ss_sou_switch_3.png")
+	I_SOU_SWITCH_3 = RuleImage(roi_front=(968,448,41,38), roi_back=(962,442,52,48), threshold=0.8, method="Template matching", file="./tasks/Component/SwitchSoul/ss/ss_sou_switch_3.png")
 	# description 
-	I_SOU_SWITCH_4 = RuleImage(roi_front=(962,593,50,33), roi_back=(971,600,37,26), threshold=0.8, method="Template matching", file="./tasks/Component/SwitchSoul/ss/ss_sou_switch_4.png")
+	I_SOU_SWITCH_4 = RuleImage(roi_front=(967,597,42,25), roi_back=(962,592,53,34), threshold=0.8, method="Template matching", file="./tasks/Component/SwitchSoul/ss/ss_sou_switch_4.png")
 	# description 
 	I_SOU_SWITCH_SURE = RuleImage(roi_front=(668,401,180,61), roi_back=(668,401,180,61), threshold=0.8, method="Template matching", file="./tasks/Component/SwitchSoul/ss/ss_sou_switch_sure.png")
 	# 用于判断是否在式神录里面 

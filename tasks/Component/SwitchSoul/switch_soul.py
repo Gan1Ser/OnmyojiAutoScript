@@ -129,12 +129,12 @@ class SwitchSoul(BaseTask, SwitchSoulAssets):
                 while 1:
                     self.click(self.I_SOU_SWITCH_SURE, 3)
                     self.screenshot()
+                    if self.appear_then_click(self.I_CHECK_BLOCK, 3):
+                        continue
                     if not self.appear(self.I_SOU_SWITCH_SURE):
                         break
                 continue
-            if self.appear_then_click(self.I_CHECK_BLOCK, 3):
-                continue
-            if not self.appear_then_click(target_team, interval=1):
+            if not self.appear_then_click(target_team, interval=3):
                 logger.warning(f'Click team {team} failed in group {group}')
 
         logger.info(f'Switch soul_one group {group} team {team}')
