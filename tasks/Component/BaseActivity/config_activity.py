@@ -66,3 +66,6 @@ class GeneralClimb(ConfigBase):
         return def_value
 
 
+    # @field_validator('ap_mode', mode='after')
+    # def check_mode(cls, value):
+    #     return ApMode.AP_GAME
