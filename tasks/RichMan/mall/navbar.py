@@ -107,22 +107,12 @@ class MallNavbar(GameUi, RichManAssets):
         }
         self.screenshot()
         result = match[index].ocr(self.device.image)
-
-        if not isinstance(result, str):
-            result = str(result)
-
-        match = re.search(r'\d+', result)
-        if match:
-            result = int(match.group())
-        else:
-            logger.warning(f'Get mall resource {index} error, no digits found in result: {result}')
-            result = 0
-
+        # match = re.search(r'\d+', result)
+        # result = int(match.group())
         if not isinstance(result, int):
             logger.warning(f'Get mall resource {index} error, result: {result}')
         if result == 0:
             logger.warning(f'Get mall resource {index} error, result: {result}')
-
         return result
 
     def mall_check_money(self, index: int, least: int) -> bool:

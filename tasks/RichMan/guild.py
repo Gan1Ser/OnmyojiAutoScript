@@ -70,7 +70,6 @@ class Guild(Buy, GameUi, RichManAssets):
         if not self.buy_check_money(self.O_GUILD_TOTAL, 240):
             return False
         number = self.check_remain(self.I_GUILD_BLUE)
-        print(f"剩余的蓝票{number}")
         if number == 0:
             logger.warning('No mystery amulet can buy')
             return False
@@ -85,7 +84,6 @@ class Guild(Buy, GameUi, RichManAssets):
         if not self.buy_check_money(self.O_GUILD_TOTAL, 200):
             return False
         number = self.check_remain(self.I_GUILD_SCRAP)
-        print(f"剩余的黑碎{number}")
         if number == 0:
             logger.warning('No black daruma can buy')
             return False
@@ -104,8 +102,6 @@ class Guild(Buy, GameUi, RichManAssets):
             return False
         # 检查功勋商店皮肤券 本周剩余数量
         number = self.check_remain(self.I_GUILD_SKIN)
-        print(f"剩余的黑碎{number}")
-
         if number == 0:
             logger.warning('No skin ticket can buy')
             return False
@@ -116,9 +112,7 @@ class Guild(Buy, GameUi, RichManAssets):
 
     def check_remain(self, image: RuleImage) -> int:
         self.O_GUILD_REMAIN.roi[0] = image.roi_front[0] - 38
-        self.O_GUILD_REMAIN.roi[1] = image.roi_front[1] + 84
-        self.O_GUILD_REMAIN.roi[2] = image.roi_front[2] + 78
-        self.O_GUILD_REMAIN.roi[3] = image.roi_front[3] - 42
+        self.O_GUILD_REMAIN.roi[1] = image.roi_front[1] + 83
         logger.info(f'Image roi {image.roi_front}')
         logger.info(f'Image roi {self.O_GUILD_REMAIN.roi}')
         self.screenshot()
@@ -138,7 +132,7 @@ if __name__ == '__main__':
     from module.config.config import Config
     from module.device.device import Device
 
-    c = Config('日常2')
+    c = Config('oas1')
     d = Device(c)
     t = Guild(c, d)
 
