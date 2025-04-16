@@ -189,13 +189,12 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
             # return True
 
         elif current_ap == ApMode.AP_GAME:
-            cu, res, total = self.O_REMAIN_AP.ocr(image=self.device.image)
-            if cu == total and cu + res == total:
-                if cu > total:
-                    logger.warning(f'Game ap {cu} more than total {total}')
-                    return True
-                logger.warning(f'Game ap not enough: {cu}')
-                return False
+            cu = self.O_REMAIN_AP.ocr(image=self.device.image)
+            if cu > 0:
+                logger.warning(f'Game ap {cu} more than 0')
+                return True
+            logger.warning(f'Game ap not enough: {cu}')
+            return False
 
             return True
 
