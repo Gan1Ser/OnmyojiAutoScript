@@ -33,6 +33,11 @@ class GlobalGameAssets:
 	I_CHAT_CLOSE_BUTTON = RuleImage(roi_front=(632,343,49,103), roi_back=(632,343,49,103), threshold=0.8, method="Template matching", file="./tasks/GlobalGame/gg/gg_chat_close_button.png")
 
 
+	# Ocr Rule Assets
+	# 检测账号是否被挤下去 
+	O_SQUEEZE = RuleOcr(roi=(462,302,363,46), area=(462,302,363,46), mode="Full", method="Default", keyword="", name="squeeze")
+
+
 	# Click Rule Assets
 	# description 
 	C_UI_REWARD = RuleClick(roi_front=(919,160,208,368), roi_back=(72,107,244,503), name="ui_reward")

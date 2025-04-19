@@ -1,0 +1,11 @@
+[
+  {
+    "itemName": "squeeze",
+    "roiFront": "462,302,363,46",
+    "roiBack": "462,302,363,46",
+    "mode": "Full",
+    "method": "Default",
+    "keyword": "",
+    "description": "检测账号是否被挤下去"
+  }
+]

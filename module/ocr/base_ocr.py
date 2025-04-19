@@ -159,7 +159,7 @@ class BaseCor:
                     text=f'[{result}]')
         return result
 
-    def detect_and_ocr(self, image) -> list[BoxedResult]:
+    def detect_and_ocr(self, image, logDisplay: bool = True) -> list[BoxedResult]:
         """
         注意：这里使用了预处理和后处理
         :param image:
@@ -181,9 +181,9 @@ class BaseCor:
                 continue
             result.ocr_text = self.after_process(result.ocr_text)
             results.append(result)
-
-        logger.attr(name='%s %ss' % (self.name, float2str(time.time() - start_time)),
-                    text=str([result.ocr_text for result in results]))
+            if logDisplay:
+                logger.attr(name='%s %ss' % (self.name, float2str(time.time() - start_time)),
+                            text=str([result.ocr_text for result in results]))
         return results
 
     def match(self, result: str, included: bool=False) -> bool:
