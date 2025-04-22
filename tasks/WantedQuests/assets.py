@@ -52,10 +52,10 @@ class WantedQuestsAssets:
 	O_WQ_INFO_3 = RuleOcr(roi=(612,376,305,44), area=(612,376,305,44), mode="Single", method="Default", keyword="", name="wq_info_3")
 	# Ocr-description 
 	O_WQ_INFO_4 = RuleOcr(roi=(613,446,315,44), area=(613,446,315,44), mode="Single", method="Default", keyword="", name="wq_info_4")
-	# 怪物名称,如酒吞，阎魔等
-	O_WQ_MONSTER_TYPE = RuleOcr(roi=(165, 215, 45, 175), area=(165, 215, 45, 175), mode="Full", method="Default", keyword="", name="wq_monster_type")
-	#
-	O_WQ_TEXT_ALL = RuleOcr(roi=(20, 140, 110, 390), area=(20, 140, 110, 390), mode="Full", method="Default", keyword="", name="wq_text_all")
+	# 怪物名称,如酒吞，阎魔等 
+	O_WQ_MONSTER_TYPE = RuleOcr(roi=(165,215,45,175), area=(165,215,45,175), mode="Full", method="Default", keyword="", name="wq_monster_type")
+	#  
+	O_WQ_TEXT_ALL = RuleOcr(roi=(20,140,110,390), area=(20,140,110,390), mode="Full", method="Default", keyword="", name="wq_text_all")
 
 
 	# Image Rule Assets
@@ -172,8 +172,8 @@ class WantedQuestsAssets:
 	I_WQ_TRACE_ONE_REALWORLD = RuleImage(roi_front=(850,470,180,180), roi_back=(850,470,180,180), threshold=0.8, method="Template matching", file="./tasks/WantedQuests/wq/wq_trace_one_realworld.png")
 	# 望月幽庭_对号 
 	I_WQ_DONE_NEW = RuleImage(roi_front=(63,323,43,33), roi_back=(9,109,576,401), threshold=0.8, method="Template matching", file="./tasks/WantedQuests/wq/wq_wq_done_new.png")
-	# 探索界面,左侧任务列表右上角右下角标志
-	I_WQ_LIST_TOP_BOTTOM_CHECK = RuleImage(roi_front=(120, 125, 25, 425), roi_back=(120, 125, 25, 425), threshold=0.8, method="Template matching", file="./tasks/WantedQuests/wq/wq_list_top_bottom_check.png")
+	# 探索界面,左侧任务列表右上角右下角标志 
+	I_WQ_LIST_TOP_BOTTOM_CHECK = RuleImage(roi_front=(120,125,25,425), roi_back=(120,125,25,425), threshold=0.8, method="Template matching", file="./tasks/WantedQuests/wq/wq_list_top_bottom_check.png")
 
 
 	# Image Rule Assets
@@ -186,6 +186,7 @@ class WantedQuestsAssets:
 
 
 	# Swipe Rule Assets
- 	# 手指向上滑动
- 	S_WQ_LIST_UP = RuleSwipe(roi_front=(60,250,2,4), roi_back=(65,200,2,4), mode="default", name="wq_list_up")
+	# 手指向上滑动 
+	S_WQ_LIST_UP = RuleSwipe(roi_front=(60,250,2,4), roi_back=(65,200,2,4), mode="default", name="wq_list_up")
+
 
