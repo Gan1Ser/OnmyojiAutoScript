@@ -428,9 +428,9 @@ class SoloExploration(BaseExploration):
         logger.info("Start battle process")
         while 1:
             self.screenshot()
-            if self.appear(self.I_SE_BATTLE_WIN):
+            if self.appear(self.I_WIN):
                 logger.info('Win battle')
-                self.ui_click_until_disappear(self.I_SE_BATTLE_WIN, interval=2)
+                self.ui_click_until_disappear(self.I_WIN, interval=2)
                 return True
             if self.appear_then_click(self.I_WIN, interval=1):
                 continue
