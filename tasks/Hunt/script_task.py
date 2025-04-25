@@ -113,6 +113,8 @@ class ScriptTask(GameUi, GeneralBattle, GeneralInvite, SwitchSoul, HuntAssets):
         self.ui_click(self.I_KIRIN_CHALLAGE, self.I_KIRIN_GATHER)
         # 来晚了直接进入战斗
         if not self.appear(self.I_LATER_ENTER_CHECK):
+            # 等待挑战, 5秒也是等
+            sleep(5)
             logger.info("arrive later")
             self.ui_click_until_disappear(self.I_ENTER_FIRE, interval=1)
             self.device.stuck_record_add('BATTLE_STATUS_S')
