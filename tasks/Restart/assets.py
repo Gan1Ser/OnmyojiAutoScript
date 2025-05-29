@@ -52,7 +52,7 @@ class RestartAssets:
 	# 点击庭院阴阳师出现的姿度按钮 
 	I_HARVEST_ZIDU = RuleImage(roi_front=(910,508,95,95), roi_back=(785,475,135,135), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_zidu.png")
 	# 缘结神社食盒 
-	I_HARVEST_AP_1 = RuleImage(roi_front=(841,488,24,24), roi_back=(718,447,408,147), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_ap_1.png")
+	I_HARVEST_AP_1 = RuleImage(roi_front=(841,488,24,24), roi_back=(841,488,24,24), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_ap_1.png")
 	# 缘结神社999福袋 
 	I_HARVEST_SIGN_999_1 = RuleImage(roi_front=(427,491,21,21), roi_back=(267,443,291,145), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_999_1.png")
 	# 缘结神社签到 
@@ -73,6 +73,16 @@ class RestartAssets:
 	I_HARVEST_AP_2 = RuleImage(roi_front=(508,531,25,24), roi_back=(508,531,25,24), threshold=0.9, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_ap_2.png")
 	# 望月幽庭自选御魂 
 	I_HARVEST_SOUL_5 = RuleImage(roi_front=(418,531,27,30), roi_back=(418,531,27,30), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_soul_5.png")
+	# 鹿庭勾玉 
+	I_HARVEST_JADE_3 = RuleImage(roi_front=(427,454,27,32), roi_back=(427,454,27,32), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_jade_3.png")
+	# 鹿庭签到 
+	I_HARVEST_HARVEST_SIGN_6 = RuleImage(roi_front=(347,459,28,27), roi_back=(347,459,28,27), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_harvest_sign_6.png")
+	# 鹿庭999 
+	I_HARVEST_SIGN_999_3 = RuleImage(roi_front=(349,464,23,26), roi_back=(349,464,23,26), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_sign_999_3.png")
+	# 鹿庭御魂 
+	I_HARVEST_HARVEST_SOUL_6 = RuleImage(roi_front=(346,455,28,34), roi_back=(346,455,28,34), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_harvest_soul_6.png")
+	# 鹿庭食盒 
+	I_HARVEST_AP_3 = RuleImage(roi_front=(425,456,29,28), roi_back=(425,456,29,28), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_ap_3.png")
 
 
 	# Click Rule Assets

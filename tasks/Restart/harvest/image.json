@@ -183,7 +183,7 @@
     "itemName": "harvest_ap_1",
     "imageName": "harvest_harvest_ap_1.png",
     "roiFront": "841,488,24,24",
-    "roiBack": "718,447,408,147",
+    "roiBack": "841,488,24,24",
     "method": "Template matching",
     "threshold": 0.9,
     "description": "缘结神社食盒"
@@ -277,5 +277,50 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "望月幽庭自选御魂"
+  },
+  {
+    "itemName": "harvest_jade_3",
+    "imageName": "harvest_harvest_jade_3.png",
+    "roiFront": "427,454,27,32",
+    "roiBack": "427,454,27,32",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "鹿庭勾玉"
+  },
+  {
+    "itemName": "harvest_harvest_sign_6",
+    "imageName": "harvest_harvest_harvest_sign_6.png",
+    "roiFront": "347,459,28,27",
+    "roiBack": "347,459,28,27",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "鹿庭签到"
+  },
+  {
+    "itemName": "harvest_sign_999_3",
+    "imageName": "harvest_harvest_sign_999_3.png",
+    "roiFront": "349,464,23,26",
+    "roiBack": "349,464,23,26",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "鹿庭999"
+  },
+  {
+    "itemName": "harvest_harvest_soul_6",
+    "imageName": "harvest_harvest_harvest_soul_6.png",
+    "roiFront": "346,455,28,34",
+    "roiBack": "346,455,28,34",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "鹿庭御魂"
+  },
+  {
+    "itemName": "harvest_ap_3",
+    "imageName": "harvest_harvest_ap_3.png",
+    "roiFront": "425,456,29,28",
+    "roiBack": "425,456,29,28",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "鹿庭食盒"
   }
 ]

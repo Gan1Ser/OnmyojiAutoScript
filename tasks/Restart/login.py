@@ -136,24 +136,28 @@ class LoginHandler(BaseTask, RestartAssets):
             self.I_HARVEST_JADE,
             self.I_HARVEST_JADE_1,
             self.I_HARVEST_JADE_2,
+            self.I_HARVEST_JADE_3,
         ]
         #签到列表
         SIGN_List = [
             self.I_HARVEST_SIGN,
             self.I_HARVEST_SIGN_1, #无2,3,4
             self.I_HARVEST_SIGN_5,
+            self.I_HARVEST_HARVEST_SIGN_6,
         ]
         #福袋列表
         SIGN_999_List = [
             self.I_HARVEST_SIGN_999,
             self.I_HARVEST_SIGN_999_1,
             self.I_HARVEST_SIGN_999_2,
+            self.I_HARVEST_SIGN_999_3,
         ]
         #体力列表
         AP_List = [
             self.I_HARVEST_AP,
             self.I_HARVEST_AP_1,
             self.I_HARVEST_AP_2,
+            self.I_HARVEST_AP_3,
         ]
         #御魂加成列表
         SOUL_List = [
@@ -165,6 +169,7 @@ class LoginHandler(BaseTask, RestartAssets):
             self.I_HARVEST_SOUL_1,
             self.I_HARVEST_SOUL_4,
             self.I_HARVEST_SOUL_5,
+            self.I_HARVEST_HARVEST_SOUL_6,
         ]
         while 1:
             self.screenshot()
