@@ -51,7 +51,7 @@ class WeeklyTriflesAssets:
 
 	# Image Rule Assets
 	# 点击“式神” 
-	I_WT_SHIKIAGMI = RuleImage(roi_front=(494,650,56,49), roi_back=(494,650,56,49), threshold=0.8, method="Template matching", file="./tasks/WeeklyTrifles/collect/collect_wt_shikiagmi.png")
+	I_WT_SHIKIAGMI = RuleImage(roi_front=(405,648,56,49), roi_back=(405,648,56,49), threshold=0.8, method="Template matching", file="./tasks/WeeklyTrifles/collect/collect_wt_shikiagmi.png")
 	# 点击式神绘卷 
 	I_WT_SCROLL = RuleImage(roi_front=(1128,615,77,67), roi_back=(1128,615,77,67), threshold=0.8, method="Template matching", file="./tasks/WeeklyTrifles/collect/collect_wt_scroll.png")
 	# 点击分享 
