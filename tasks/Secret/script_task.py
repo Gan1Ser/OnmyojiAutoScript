@@ -213,6 +213,7 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, SecretAssets):
         if self.appear(self.I_CHAT_CLOSE_BUTTON):
             self.ui_click_until_disappear(self.I_CHAT_CLOSE_BUTTON, interval=2)
         text_pos = self.O_SE_NO_PASS.ocr(self.device.image)
+        target_layer = self.O_SE_LAYER_8.ocr_single(self.device.image)
         if text_pos != (0, 0, 0, 0):
             # 如果能找得到 未通关 ，那可以挑战
             layer = confirm_layer(self.O_SE_JADE, text_pos)
@@ -220,6 +221,8 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, SecretAssets):
                 self.C_SE_CLICK_LAYER.roi_front = text_pos
                 self.click(self.C_SE_CLICK_LAYER, interval=1)
                 return layer
+            elif (target_layer == "捌"):
+                return 8
             else:
                 return None
 
