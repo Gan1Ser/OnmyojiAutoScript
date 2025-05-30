@@ -47,8 +47,8 @@
   {
     "itemName": "main_goto_guild",
     "imageName": "page_main_goto_guild.png",
-    "roiFront": "544,611,50,47",
-    "roiBack": "520,583,99,105",
+    "roiFront": "540,611,50,54",
+    "roiBack": "540,611,50,54",
     "method": "Template matching",
     "threshold": 0.7,
     "description": "description"
@@ -110,8 +110,8 @@
   {
     "itemName": "check_mall",
     "imageName": "page_check_mall.png",
-    "roiFront": "239,502,100,100",
-    "roiBack": "239,502,100,100",
+    "roiFront": "147,527,82,82",
+    "roiBack": "147,527,82,82",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "description"
@@ -137,8 +137,8 @@
   {
     "itemName": "check_collection",
     "imageName": "page_check_collection.png",
-    "roiFront": "384,619,100,100",
-    "roiBack": "384,619,100,100",
+    "roiFront": "380,620,100,100",
+    "roiBack": "380,620,100,100",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "description"
