@@ -179,8 +179,8 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, SecretAssets):
             :param roi:
             :return:
             """
-            ocr_target.roi[0] = int(roi[0]) - 118
-            ocr_target.roi[1] = int(roi[1]) + 37
+            # ocr_target.roi[0] = int(roi[0]) - 118
+            # ocr_target.roi[1] = int(roi[1]) + 37
             # print(f'检测到的未通过ROI: {roi}')
             # print(f'检测到的勾玉数量ROI: {ocr_target.roi}')
             jade_num = ocr_target.ocr(self.device.image)
@@ -213,7 +213,8 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, SecretAssets):
         if self.appear(self.I_CHAT_CLOSE_BUTTON):
             self.ui_click_until_disappear(self.I_CHAT_CLOSE_BUTTON, interval=2)
         text_pos = self.O_SE_NO_PASS.ocr(self.device.image)
-        target_layer = self.O_SE_LAYER_8.ocr_single(self.device.image)
+        target_layer_8 = self.O_SE_LAYER_8.ocr_single(self.device.image)
+        target_layer_9 = self.O_SE_LAYER_9.ocr_single(self.device.image)
         if text_pos != (0, 0, 0, 0):
             # 如果能找得到 未通关 ，那可以挑战
             layer = confirm_layer(self.O_SE_JADE, text_pos)
@@ -221,8 +222,10 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, SecretAssets):
                 self.C_SE_CLICK_LAYER.roi_front = text_pos
                 self.click(self.C_SE_CLICK_LAYER, interval=1)
                 return layer
-            elif (target_layer == "捌"):
+            elif (target_layer_8 == "捌"):
                 return 8
+            elif (target_layer_9 == "玖"):
+                return 9
             else:
                 return None
 
