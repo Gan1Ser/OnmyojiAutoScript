@@ -2,7 +2,7 @@
 # @author runhey
 # github https://github.com/runhey
 from datetime import time, timedelta
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, validator, field_validator
 from enum import Enum
 
 from module.logger import logger
@@ -64,7 +64,6 @@ class GeneralClimb(ConfigBase):
         elif isinstance(value, int):
             return def_value
         return def_value
-
 
     # @field_validator('ap_mode', mode='after')
     # def check_mode(cls, value):
