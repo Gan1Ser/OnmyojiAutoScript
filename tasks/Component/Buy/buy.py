@@ -39,8 +39,17 @@ class Buy(BaseTask, BuyAssets):
             elif isinstance(start_click, RuleClick):
                 if self.click(start_click, interval=1):
                     continue
+            if not self.appear(check_image):
+                logger.warning('Not except thing')
+                break
         while 1:
             self.screenshot()
+
+            if not self.appear(check_image):
+                logger.warning('Not except thing')
+                while 1:
+                    if self.click(self.C_BUY_CANCEL, interval=1):
+                        return False
 
             if self.appear(self.I_BUY_RMB):
                 # 用人民币购买的，就取消
