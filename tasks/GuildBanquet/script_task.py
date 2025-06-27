@@ -58,7 +58,7 @@ class ScriptTask(GameUi, GuildBanquetAssets):
             # 如果没有找到FLAG，并且没超过晚上10点，可能是宴会时间没开始，5分钟后尝试再次查找，超过10点则直接退出
             if self.check_runtime():
                 time_now = datetime.now()
-                time_later = time_now + timedelta(minutes=5)
+                time_later = time_now + timedelta(minutes=2)
                 self.set_next_run(task='GuildBanquet',
                               finish=True,
                               target=time_later)
