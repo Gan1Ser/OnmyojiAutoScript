@@ -2,8 +2,8 @@
   {
     "itemName": "room_gift",
     "imageName": "store_room_gift.png",
-    "roiFront": "1152,644,52,53",
-    "roiBack": "1127,611,103,94",
+    "roiFront": "1141,639,52,44",
+    "roiBack": "1121,618,103,94",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "礼包屋"
