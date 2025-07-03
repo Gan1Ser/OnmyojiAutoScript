@@ -161,6 +161,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
             # 检查猫咪奖励
             if self.appear_then_click(self.I_PET_PRESENT, action=self.C_WIN_3, interval=1):
                 continue
+            # 检查御魂自选
+            if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                continue
 
             if self.current_count >= self.limit_count:
                 if self.is_in_room():
@@ -232,6 +235,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
             # 检查猫咪奖励
             if self.appear_then_click(self.I_PET_PRESENT, action=self.C_WIN_3, interval=1):
                 continue
+            # 检查御魂自选
+            if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                continue
 
             if self.current_count >= self.limit_count:
                 logger.info('Orochi count limit out')
@@ -289,7 +295,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
             # 检查猫咪奖励
             if self.appear_then_click(self.I_PET_PRESENT, action=self.C_WIN_3, interval=1):
                 continue
-
+            # 检查御魂自选
+            if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                continue
             if not is_in_orochi():
                 continue
 
@@ -356,7 +364,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
             # 检查猫咪奖励
             if self.appear_then_click(self.I_PET_PRESENT, action=self.C_WIN_3, interval=1):
                 continue
-
+            # 检查御魂自选
+            if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                continue
             if self.current_count >= self.limit_count:
                 if self.is_in_room():
                     logger.info('Orochi count limit out')
@@ -371,7 +381,6 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                 if self.is_room_dead():
                     logger.warning('Orochi task failed')
                     success = False
-                    break
                 continue
 
             # 点击挑战
@@ -433,6 +442,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
         logger.info("Start battle process")
         while 1:
             self.screenshot()
+            # 检查御魂自选
+            if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                continue
             action_click = random.choice([self.C_WIN_1, self.C_WIN_2, self.C_WIN_3])
             if self.appear_then_click(self.I_WIN, action=action_click ,interval=0.8):
                 # 赢的那个鼓
@@ -447,6 +459,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                     continue
                 while 1:
                     self.screenshot()
+                    # 检查御魂自选
+                    if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                        continue
                     action_click = random.choice([self.C_REWARD_1, self.C_REWARD_2, self.C_REWARD_3])
                     if (not self.appear(self.I_GREED_GHOST)) and (not self.appear(self.I_REWARD_CHECK)):
                         break
@@ -460,6 +475,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                 logger.info('Win battle')
                 while 1:
                     self.screenshot()
+                    # 检查御魂自选
+                    if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                        continue
                     action_click = random.choice([self.C_REWARD_1, self.C_REWARD_2, self.C_REWARD_3])
                     if (not self.appear(self.I_GREED_GHOST)) and (not self.appear(self.I_REWARD_CHECK)):
                         break
@@ -475,6 +493,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                 appear_greed_ghost = self.appear(self.I_GREED_GHOST)
                 while 1:
                     self.screenshot()
+                    # 检查御魂自选
+                    if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                        continue
                     action_click = random.choice([self.C_REWARD_1, self.C_REWARD_2, self.C_REWARD_3])
                     if self.appear_then_click(self.I_REWARD, action=action_click, interval=1.5):
                         continue
@@ -484,6 +505,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
 
             if self.appear(self.I_FALSE):
                 logger.warning('False battle')
+                # 检查御魂自选
+                if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                    continue
                 self.ui_click_until_disappear(self.I_FALSE)
                 return False
 

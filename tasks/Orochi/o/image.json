@@ -70,5 +70,14 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "获得奖励检查"
+  },
+  {
+    "itemName": "souls_exit",
+    "imageName": "o_souls_exit.png",
+    "roiFront": "1044,122,40,37",
+    "roiBack": "1044,122,40,37",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "退出御魂自选"
   }
 ]
