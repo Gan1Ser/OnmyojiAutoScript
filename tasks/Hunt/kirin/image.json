@@ -29,8 +29,8 @@
   {
     "itemName": "later_enter_check",
     "imageName": "kirin_later_enter_check.png",
-    "roiFront": "651,69,21,27",
-    "roiBack": "651,69,21,27",
+    "roiFront": "658,69,21,27",
+    "roiBack": "658,69,21,27",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "检测是否迟到"

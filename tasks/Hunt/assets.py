@@ -30,7 +30,7 @@ class HuntAssets:
 	# 已结束 
 	I_KIRIN_END = RuleImage(roi_front=(1049,579,143,59), roi_back=(1049,579,143,59), threshold=0.8, method="Template matching", file="./tasks/Hunt/kirin/kirin_kirin_end.png")
 	# 检测是否迟到 
-	I_LATER_ENTER_CHECK = RuleImage(roi_front=(651,69,21,27), roi_back=(651,69,21,27), threshold=0.8, method="Template matching", file="./tasks/Hunt/kirin/kirin_later_enter_check.png")
+	I_LATER_ENTER_CHECK = RuleImage(roi_front=(658,69,21,27), roi_back=(658,69,21,27), threshold=0.8, method="Template matching", file="./tasks/Hunt/kirin/kirin_later_enter_check.png")
 	# 开启挑战 
 	I_ENTER_FIRE = RuleImage(roi_front=(1088,600,100,59), roi_back=(1088,600,100,59), threshold=0.8, method="Template matching", file="./tasks/Hunt/kirin/kirin_enter_fire.png")
 
