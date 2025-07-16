@@ -66,17 +66,33 @@ class SoloExploration(BaseExploration):
                 if self.appear(self.I_BATTLE_REWARD):
                     if self.ui_get_reward(self.I_BATTLE_REWARD):
                         continue
-                # boss
-                if self.appear(self.I_BOSS_BATTLE_BUTTON):
-                    if self.fire(self.I_BOSS_BATTLE_BUTTON):
-                        logger.info(f'Boss battle, minions cnt {self.minions_cnt}')
-                    continue
-                # 小怪
-                fight_button = self.search_up_fight()
-                if fight_button is not None:
-                    if self.fire(fight_button):
-                        logger.info(f'Fight, minions cnt {self.minions_cnt}')
-                    continue
+
+                is_scrolls_mode = self._config.scrolls.scrolls_enable
+                if is_scrolls_mode:
+                    # 绘卷模式：先打能看到的小怪，再打Boss
+                    fight_button = self.search_up_fight()
+                    if fight_button is not None:
+                        if self.fire(fight_button):
+                            logger.info(f'Fight, minions cnt {self.minions_cnt}')
+                        continue
+                    # 没有小怪时才攻击Boss
+                    if self.appear(self.I_BOSS_BATTLE_BUTTON):
+                        if self.fire(self.I_BOSS_BATTLE_BUTTON):
+                            logger.info(f'Boss battle, minions cnt {self.minions_cnt}')
+                        continue
+                else:
+                    # boss
+                    if self.appear(self.I_BOSS_BATTLE_BUTTON):
+                        if self.fire(self.I_BOSS_BATTLE_BUTTON):
+                            logger.info(f'Boss battle, minions cnt {self.minions_cnt}')
+                        continue
+                    # 小怪
+                    fight_button = self.search_up_fight()
+                    if fight_button is not None:
+                        if self.fire(fight_button):
+                            logger.info(f'Fight, minions cnt {self.minions_cnt}')
+                        continue
+
                 # 向后拉,寻找怪
                 if search_fail_cnt >= 4:
                     search_fail_cnt = 0
@@ -198,17 +214,31 @@ class SoloExploration(BaseExploration):
                 else:
                     logger.warning('Team emoji appear again, clear friend_leave_timer')
                     friend_leave_timer = Timer(10)
-                # boss
-                if self.appear(self.I_BOSS_BATTLE_BUTTON):
-                    if self.fire(self.I_BOSS_BATTLE_BUTTON):
-                        logger.info(f'Boss battle, minions cnt {self.minions_cnt}')
-                    continue
-                # 小怪
-                fight_button = self.search_up_fight()
-                if fight_button is not None:
-                    if self.fire(fight_button):
-                        logger.info(f'Fight, minions cnt {self.minions_cnt}')
-                    continue
+                is_scrolls_mode = self._config.scrolls.scrolls_enable
+
+                if is_scrolls_mode:
+                    # 绘卷模式：先打小怪，再打Boss
+                    fight_button = self.search_up_fight()
+                    if fight_button is not None:
+                        if self.fire(fight_button):
+                            logger.info(f'Fight, minions cnt {self.minions_cnt}')
+                        continue
+                    if self.appear(self.I_BOSS_BATTLE_BUTTON):
+                        if self.fire(self.I_BOSS_BATTLE_BUTTON):
+                            logger.info(f'Boss battle, minions cnt {self.minions_cnt}')
+                        continue
+                else:
+                    # 非绘卷模式：Boss优先
+                    if self.appear(self.I_BOSS_BATTLE_BUTTON):
+                        if self.fire(self.I_BOSS_BATTLE_BUTTON):
+                            logger.info(f'Boss battle, minions cnt {self.minions_cnt}')
+                        continue
+                    fight_button = self.search_up_fight()
+                    if fight_button is not None:
+                        if self.fire(fight_button):
+                            logger.info(f'Fight, minions cnt {self.minions_cnt}')
+                        continue
+
                 # 向后拉,寻找怪
                 if search_fail_cnt >= 4:
                     search_fail_cnt = 0
