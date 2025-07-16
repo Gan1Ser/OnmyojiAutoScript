@@ -142,5 +142,14 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "description"
+  },
+  {
+    "itemName": "check_reword",
+    "imageName": "as_check_reword.png",
+    "roiFront": "554,201,73,48",
+    "roiBack": "215,144,897,504",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "检测紫蛇皮"
   }
 ]

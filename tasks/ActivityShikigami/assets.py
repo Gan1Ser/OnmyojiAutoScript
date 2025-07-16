@@ -76,6 +76,8 @@ class ActivityShikigamiAssets:
 	I_RED_EXIT = RuleImage(roi_front=(1071,141,49,46), roi_back=(1071,141,49,46), threshold=0.8, method="Template matching", file="./tasks/ActivityShikigami/as/as_red_exit.png")
 	# description 
 	I_TOGGLE_BUTTON = RuleImage(roi_front=(1193,463,27,25), roi_back=(1169,146,73,403), threshold=0.8, method="Template matching", file="./tasks/ActivityShikigami/as/as_toggle_button.png")
+	# 检测紫蛇皮 
+	I_CHECK_REWORD = RuleImage(roi_front=(554,201,73,48), roi_back=(215,144,897,504), threshold=0.8, method="Template matching", file="./tasks/ActivityShikigami/as/as_check_reword.png")
 
 
 	# Ocr Rule Assets
