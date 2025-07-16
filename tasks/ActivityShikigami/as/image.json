@@ -47,7 +47,7 @@
   {
     "itemName": "lock",
     "imageName": "as_lock.png",
-    "roiFront": "877,647,25,22",
+    "roiFront": "806,648,25,22",
     "roiBack": "761,639,255,50",
     "method": "Template matching",
     "threshold": 0.8,
