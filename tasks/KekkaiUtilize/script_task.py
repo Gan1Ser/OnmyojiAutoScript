@@ -308,6 +308,7 @@ class ScriptTask(GameUi, ReplaceShikigami, KekkaiUtilizeAssets):
                 timer_click.reset()
                 x, y = check_image.coord()
                 self.device.click(x=x, y=y, control_name=check_image.name)
+                time.sleep(3)
         if friend == SelectFriendList.DIFFERENT_SERVER:
             time.sleep(1)
         time.sleep(0.5)

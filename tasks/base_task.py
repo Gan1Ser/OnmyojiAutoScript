@@ -155,7 +155,7 @@ class BaseTask(GlobalGameAssets, CostumeBase):
         # 判断勾协
         self._burst()
         # 判断挤号
-        self._squeeze()
+        # self._squeeze()
 
 
         # # 判断网络异常
