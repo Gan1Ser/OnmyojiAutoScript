@@ -18,6 +18,9 @@ from module.logger import logger
 from module.exception import TaskEnd
 from module.base.protect import random_sleep
 
+import cv2
+import numpy as np
+from module.atom.ocr import RuleOcr
 
 class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
 
@@ -194,7 +197,7 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
         """
         self.screenshot()
         if current_ap == ApMode.AP_ACTIVITY:
-            res: int = self.O_REMAIN_AP_ACTIVITY2.ocr_digit(self.device.image)
+            res: int = self.O_REMAIN_AP_ACTIVITY2.ocr_digit(self._prepare_image_for_ocr(self.device.image,asset=self.O_REMAIN_AP_ACTIVITY2))
             if res <= 0:
                 logger.warning(f'Activity ap {res} not enough')
                 return False
@@ -206,7 +209,7 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
             # return True
 
         elif current_ap == ApMode.AP_GAME:
-            cu: int = self.O_REMAIN_AP.ocr_digit(self.device.image)
+            cu: int = self.O_REMAIN_AP.ocr_digit(self._prepare_image_for_ocr(self.device.image,asset=self.O_REMAIN_AP))
             if cu > 0:
                 logger.warning(f'Game ap {cu} more than 0')
                 return True
@@ -286,12 +289,35 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
             if random_click_swipt_enable:
                 self.random_click_swipt()
 
+    def _prepare_image_for_ocr(self, image: np.ndarray, asset: RuleOcr) -> np.ndarray:
+        """
+        预处理
+        """
+        logger.info(f"Applying user-specified pre-processing for asset: {asset.name}")
+
+        image_copy = image.copy()
+
+        x, y, w, h = asset.roi
+        roi_to_process = image_copy[y:y + h, x:x + w]
+
+        if len(roi_to_process.shape) == 3:
+            gray_image = cv2.cvtColor(roi_to_process, cv2.COLOR_BGR2GRAY)
+        else:
+            gray_image = roi_to_process
+
+        _, binary_image = cv2.threshold(gray_image, 100, 255, cv2.THRESH_BINARY_INV)
+
+        processed_roi_bgr = cv2.cvtColor(binary_image, cv2.COLOR_GRAY2BGR)
+
+        image_copy[y:y + h, x:x + w] = processed_roi_bgr
+
+        return image_copy
 
 if __name__ == '__main__':
     from module.config.config import Config
     from module.device.device import Device
 
-    c = Config('oas1')
+    c = Config('01-陈闯')
     d = Device(c)
     t = ScriptTask(c, d)
 
