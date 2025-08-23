@@ -2,6 +2,7 @@ import traceback
 
 from tasks.GameUi.assets import GameUiAssets as G
 from tasks.RyouToppa.assets import RyouToppaAssets
+from tasks.RealmRaid.assets import RealmRaidAssets
 
 class Page:
     parent = None
@@ -58,7 +59,8 @@ page_soul_zones = Page(G.I_CHECK_SOUL_ZONES)
 page_soul_zones.link(button=G.I_BACK_BLUE, destination=page_exploration)
 page_exploration.link(button=G.I_EXPLORATION_GOTO_SOUL_ZONE, destination=page_soul_zones)
 # 结界突破 realm raid
-page_realm_raid = Page(G.I_CHECK_REALM_RAID)
+# page_realm_raid = Page(G.I_CHECK_REALM_RAID)
+page_realm_raid = Page(RealmRaidAssets.I_RR_PERSON)
 page_realm_raid.link(button=G.I_REALM_RAID_GOTO_EXPLORATION, destination=page_exploration)
 page_exploration.link(button=G.I_EXPLORATION_GOTO_REALM_RAID, destination=page_realm_raid)
 # 寮结界突破右上角 kekkai toppa
