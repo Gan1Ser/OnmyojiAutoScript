@@ -2,7 +2,7 @@
   {
     "itemName": "shi",
     "imageName": "as_shi.png",
-    "roiFront": "1183,241,47,38",
+    "roiFront": "1183,319,47,38",
     "roiBack": "1164,134,83,318",
     "method": "Template matching",
     "threshold": 0.7,
@@ -20,16 +20,16 @@
   {
     "itemName": "battle",
     "imageName": "as_battle.png",
-    "roiFront": "744,327,35,135",
-    "roiBack": "680,230,154,315",
+    "roiFront": "475,194,35,135",
+    "roiBack": "454,107,154,315",
     "method": "Template matching",
     "threshold": 0.7,
-    "description": "不尽山途"
+    "description": "霜火寂境"
   },
   {
     "itemName": "battle_1",
     "imageName": "as_battle_1.png",
-    "roiFront": "541,663,191,26",
+    "roiFront": "541,197,149,26",
     "roiBack": "506,622,273,96",
     "method": "Template matching",
     "threshold": 0.7,
@@ -47,8 +47,8 @@
   {
     "itemName": "lock",
     "imageName": "as_lock.png",
-    "roiFront": "806,648,25,22",
-    "roiBack": "761,639,255,50",
+    "roiFront": "884,648,28,25",
+    "roiBack": "761,613,255,76",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "上锁图标"
@@ -56,8 +56,8 @@
   {
     "itemName": "unlock",
     "imageName": "as_unlock.png",
-    "roiFront": "804,646,28,25",
-    "roiBack": "768,633,150,58",
+    "roiFront": "884,648,28,25",
+    "roiBack": "758,607,242,85",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "还未上锁图片"
@@ -83,7 +83,7 @@
   {
     "itemName": "ap_activity",
     "imageName": "as_ap_activity.png",
-    "roiFront": "1152,552,21,25",
+    "roiFront": "1140,550,21,25",
     "roiBack": "1108,542,84,54",
     "method": "Template matching",
     "threshold": 0.8,
@@ -92,8 +92,8 @@
   {
     "itemName": "switch",
     "imageName": "as_switch.png",
-    "roiFront": "1242,553,23,23",
-    "roiBack": "1222,541,54,49",
+    "roiFront": "1215,551,23,23",
+    "roiBack": "1204,538,74,49",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "切换按键"
@@ -128,8 +128,8 @@
   {
     "itemName": "red_exit",
     "imageName": "as_red_exit.png",
-    "roiFront": "1071,141,49,46",
-    "roiBack": "1071,141,49,46",
+    "roiFront": "1108,88,39,38",
+    "roiBack": "1071,52,110,135",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "红色退出"
@@ -142,14 +142,5 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "description"
-  },
-  {
-    "itemName": "check_reword",
-    "imageName": "as_check_reword.png",
-    "roiFront": "554,201,73,48",
-    "roiBack": "215,144,897,504",
-    "method": "Template matching",
-    "threshold": 0.8,
-    "description": "检测紫蛇皮"
   }
 ]

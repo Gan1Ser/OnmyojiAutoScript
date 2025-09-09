@@ -3,6 +3,7 @@
 # github https://github.com/runhey
 import random
 from datetime import datetime, timedelta, time
+import time
 
 from tasks.base_task import BaseTask
 from tasks.Component.GeneralBattle.general_battle import GeneralBattle
@@ -18,9 +19,6 @@ from module.logger import logger
 from module.exception import TaskEnd
 from module.base.protect import random_sleep
 
-import cv2
-import numpy as np
-from module.atom.ocr import RuleOcr
 
 class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
 
@@ -48,6 +46,7 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
         self.ui_get_current_page()
         self.ui_goto(page_main)
 
+        # 某些活动需要开启御魂加成
         # self.open_buff()
         # self.soul(is_open=True)
         # self.close_buff()
@@ -157,7 +156,10 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
                 break
             if self.appear_then_click(self.I_SHI, interval=1):
                 continue
+            if self.ocr_appear_click(self.O_ENTRY_ACTIVITY, interval=1):
+                continue
             if self.appear_then_click(self.I_TOGGLE_BUTTON, interval=3):
+                time.sleep(2)
                 continue
             if self.appear_then_click(self.I_SKIP_BUTTON, interval=1.5):
                 continue
@@ -169,7 +171,6 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
                 continue
             if self.appear_then_click(self.I_BATTLE, interval=2):
                 continue
-
 
     def main_home(self) -> bool:
         """
@@ -197,7 +198,7 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
         """
         self.screenshot()
         if current_ap == ApMode.AP_ACTIVITY:
-            res: int = self.O_REMAIN_AP_ACTIVITY2.ocr_digit(self._prepare_image_for_ocr(self.device.image,asset=self.O_REMAIN_AP_ACTIVITY2))
+            res: int = self.O_REMAIN_AP_ACTIVITY2.ocr_digit(self.device.image)
             if res <= 0:
                 logger.warning(f'Activity ap {res} not enough')
                 return False
@@ -209,7 +210,7 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
             # return True
 
         elif current_ap == ApMode.AP_GAME:
-            cu: int = self.O_REMAIN_AP.ocr_digit(self._prepare_image_for_ocr(self.device.image,asset=self.O_REMAIN_AP))
+            cu: int = self.O_REMAIN_AP.ocr_digit(self.device.image)
             if cu > 0:
                 logger.warning(f'Game ap {cu} more than 0')
                 return True
@@ -254,7 +255,7 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
                     self.appear_then_click(self.I_SWITCH, interval=2)
 
     def battle_wait(self, random_click_swipt_enable: bool) -> bool:
-        # 重写
+        # 重写，不出现达摩版本999专用
         self.device.stuck_record_add('BATTLE_STATUS_S')
         self.device.click_record_clear()
         logger.info("Start battle process")
@@ -262,21 +263,21 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
         self.C_RANDOM_RIGHT.name = "BATTLE_RANDOM"
         self.C_RANDOM_TOP.name = "BATTLE_RANDOM"
         self.C_RANDOM_BOTTOM.name = "BATTLE_RANDOM"
+        click_count = 0
         while 1:
             self.screenshot()
             # 如果出现了 “获得奖励”
             reward_click = random.choice([self.C_RANDOM_LEFT, self.C_RANDOM_RIGHT, self.C_RANDOM_TOP, self.C_RANDOM_BOTTOM])
             if self.appear_then_click(self.I_UI_REWARD, action=reward_click, interval=1.3):
+                click_count += 1
                 continue
             # 如果出现了 “鼓”
-            if self.appear(self.I_WIN):
+            if self.appear(self.I_WIN) or click_count >= 1:
                 logger.info("Win")
                 while 1:
                     self.screenshot()
-                    if self.appear(self.I_FIRE):
+                    if not self.appear(self.I_WIN):
                         break
-                    if self.appear_then_click(self.I_CHECK_REWORD, action=reward_click, interval=1.3):
-                        continue
                     if self.appear_then_click(self.I_WIN, action=self.C_RANDOM_ALL, interval=1.1):
                         continue
                 return True
@@ -289,35 +290,57 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
             if random_click_swipt_enable:
                 self.random_click_swipt()
 
-    def _prepare_image_for_ocr(self, image: np.ndarray, asset: RuleOcr) -> np.ndarray:
-        """
-        预处理
-        """
-        logger.info(f"Applying user-specified pre-processing for asset: {asset.name}")
+    """
+    def battle_wait(self, random_click_swipt_enable: bool) -> bool:
+        # 重写，出现达摩版本月度常用
+        self.device.stuck_record_add('BATTLE_STATUS_S')
+        self.device.click_record_clear()
+        logger.info("Start battle process")
+        self.C_RANDOM_LEFT.name = "BATTLE_RANDOM"
+        self.C_RANDOM_RIGHT.name = "BATTLE_RANDOM"
+        self.C_RANDOM_TOP.name = "BATTLE_RANDOM"
+        self.C_RANDOM_BOTTOM.name = "BATTLE_RANDOM"
+        click_count = 0
+        while 1:
+            self.screenshot()
+            # 如果出现了 “鼓”
+            if self.appear_then_click(self.I_WIN, interval=2.3):
+                logger.info("Win")
+                continue
+            #  出现 “魂” 和 紫蛇皮
+            if self.appear(self.I_REWARD):
+                logger.info('Win battle')
+                self.wait_until_appear(self.I_REWARD_PURPLE_SNAKE_SKIN, wait_time=5)
+                while 1:
+                    self.screenshot()
+                    appear_reward = self.appear(self.I_REWARD)
+                    appear_reward_purple_snake_skin = self.appear(self.I_REWARD_PURPLE_SNAKE_SKIN)
+                    if not appear_reward and not appear_reward_purple_snake_skin and click_count >= 1:
+                        break
+                    if appear_reward or appear_reward_purple_snake_skin:
+                        reward_click = random.choice(
+                            [self.C_RANDOM_LEFT, self.C_RANDOM_RIGHT, self.C_RANDOM_TOP])
+                        self.click(reward_click, interval=1.8)
+                        click_count += 1
+                        continue
+                return True
 
-        image_copy = image.copy()
+            # 失败 -> 正常人不会失败
+            if self.appear(self.I_FALSE):
+                logger.warning('False battle')
+                self.ui_click_until_disappear(self.I_FALSE)
+                return False
+            # 如果开启战斗过程随机滑动
+            if random_click_swipt_enable:
+                self.random_click_swipt()
+    """
 
-        x, y, w, h = asset.roi
-        roi_to_process = image_copy[y:y + h, x:x + w]
-
-        if len(roi_to_process.shape) == 3:
-            gray_image = cv2.cvtColor(roi_to_process, cv2.COLOR_BGR2GRAY)
-        else:
-            gray_image = roi_to_process
-
-        _, binary_image = cv2.threshold(gray_image, 100, 255, cv2.THRESH_BINARY_INV)
-
-        processed_roi_bgr = cv2.cvtColor(binary_image, cv2.COLOR_GRAY2BGR)
-
-        image_copy[y:y + h, x:x + w] = processed_roi_bgr
-
-        return image_copy
 
 if __name__ == '__main__':
     from module.config.config import Config
     from module.device.device import Device
 
-    c = Config('01-陈闯')
+    c = Config('oas1')
     d = Device(c)
     t = ScriptTask(c, d)
 
