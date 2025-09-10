@@ -283,7 +283,8 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
                         break
                     if self.appear_then_click(self.I_WIN, action=self.C_RANDOM_ALL, interval=1.1):
                         continue
-                return True
+                if self.appear(self.I_FIRE):
+                    return True
             # 失败 -> 正常人不会失败
             if self.appear(self.I_FALSE):
                 logger.warning('False battle')
