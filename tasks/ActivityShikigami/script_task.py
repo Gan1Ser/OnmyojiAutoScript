@@ -297,26 +297,71 @@ class ScriptTask(GameUi, BaseActivity, SwitchSoul, ActivityShikigamiAssets):
     def _prepare_image_for_ocr(self, image: np.ndarray, asset: RuleOcr) -> np.ndarray:
         """
         预处理
+        Parameters
+        ----------
+        image
+        asset
+
+        Returns
+        -------
+
         """
-        logger.info(f"Applying user-specified pre-processing for asset: {asset.name}")
-
         image_copy = image.copy()
-
         x, y, w, h = asset.roi
-        roi_to_process = image_copy[y:y + h, x:x + w]
 
+        roi_to_process = image_copy[y:y + h, x:x + w]
         if len(roi_to_process.shape) == 3:
             gray_image = cv2.cvtColor(roi_to_process, cv2.COLOR_BGR2GRAY)
         else:
             gray_image = roi_to_process
 
-        _, binary_image = cv2.threshold(gray_image, 100, 255, cv2.THRESH_BINARY_INV)
+        # 自适应二值化
+        _, binary_norm = cv2.threshold(gray_image, 127, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+        _, binary_inv = cv2.threshold(gray_image, 127, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)
 
-        processed_roi_bgr = cv2.cvtColor(binary_image, cv2.COLOR_GRAY2BGR)
+        if cv2.countNonZero(binary_norm) < cv2.countNonZero(binary_inv):
+            binary_correct = binary_norm
+        else:
+            binary_correct = binary_inv
 
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 1))
+        dilated_image = cv2.dilate(binary_correct, kernel, iterations=1)
+
+        # 找轮廓
+        contours, _ = cv2.findContours(dilated_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        processed_roi_content = None
+        if contours:
+            all_points = np.concatenate(contours, axis=0)
+            bx, by, bw, bh = cv2.boundingRect(all_points)
+
+            processed_roi_content = binary_correct[by:by + bh, bx:bx + bw]
+
+        centered_roi = np.full((h, w), 255, dtype=np.uint8)  # 255代表白色
+
+        if processed_roi_content is not None:
+            content_h, content_w = processed_roi_content.shape
+
+            if content_h <= h and content_w <= w:
+                # 计算居中粘贴的位置，放到中间
+                start_y = (h - content_h) // 2
+                start_x = (w - content_w) // 2
+
+                paste_area = centered_roi[start_y:start_y + content_h, start_x:start_x + content_w]
+
+                paste_area[processed_roi_content == 255] = 0
+            else:
+                logger.warning(f"Content for asset '{asset.name}' is larger than ROI. Skipping centering.")
+                # 内容过大，直接使用原始二值图的反转作为结果
+                centered_roi = cv2.bitwise_not(binary_correct)
+        else:
+            logger.warning(f"No content found in ROI for asset: {asset.name}. ROI will be blank.")
+
+        processed_roi_bgr = cv2.cvtColor(centered_roi, cv2.COLOR_GRAY2BGR)
         image_copy[y:y + h, x:x + w] = processed_roi_bgr
 
         return image_copy
+
 
 
     """
