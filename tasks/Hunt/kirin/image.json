@@ -2,8 +2,8 @@
   {
     "itemName": "kirin_challage",
     "imageName": "kirin_kirin_challage.png",
-    "roiFront": "1143,602,72,38",
-    "roiBack": "1143,602,72,38",
+    "roiFront": "1134,597,90,54",
+    "roiBack": "1134,597,90,54",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "麒麟的挑战"
@@ -20,28 +20,10 @@
   {
     "itemName": "kirin_end",
     "imageName": "kirin_kirin_end.png",
-    "roiFront": "1143,602,72,38",
-    "roiBack": "1143,602,72,38",
+    "roiFront": "1126,601,104,44",
+    "roiBack": "1126,601,104,44",
     "method": "Template matching",
     "threshold": 0.8,
-    "description": "已结束"
-  },
-  {
-    "itemName": "later_enter_check",
-    "imageName": "kirin_later_enter_check.png",
-    "roiFront": "658,69,21,27",
-    "roiBack": "658,69,21,27",
-    "method": "Template matching",
-    "threshold": 0.8,
-    "description": "检测是否迟到"
-  },
-  {
-    "itemName": "enter_fire",
-    "imageName": "kirin_enter_fire.png",
-    "roiFront": "1088,600,100,59",
-    "roiBack": "1088,600,100,59",
-    "method": "Template matching",
-    "threshold": 0.8,
-    "description": "开启挑战"
+    "description": "麒麟已挑战"
   }
 ]
