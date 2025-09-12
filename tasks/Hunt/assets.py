@@ -24,11 +24,11 @@ class HuntAssets:
 
 	# Image Rule Assets
 	# 麒麟的挑战 
-	I_KIRIN_CHALLAGE = RuleImage(roi_front=(1064,559,117,108), roi_back=(1064,559,117,108), threshold=0.8, method="Template matching", file="./tasks/Hunt/kirin/kirin_kirin_challage.png")
+	I_KIRIN_CHALLAGE = RuleImage(roi_front=(1143,602,72,38), roi_back=(1143,602,72,38), threshold=0.8, method="Template matching", file="./tasks/Hunt/kirin/kirin_kirin_challage.png")
 	# 集合 
 	I_KIRIN_GATHER = RuleImage(roi_front=(28,480,75,64), roi_back=(28,480,75,64), threshold=0.8, method="Template matching", file="./tasks/Hunt/kirin/kirin_kirin_gather.png")
 	# 已结束 
-	I_KIRIN_END = RuleImage(roi_front=(1049,579,143,59), roi_back=(1049,579,143,59), threshold=0.8, method="Template matching", file="./tasks/Hunt/kirin/kirin_kirin_end.png")
+	I_KIRIN_END = RuleImage(roi_front=(1143,602,72,38), roi_back=(1143,602,72,38), threshold=0.8, method="Template matching", file="./tasks/Hunt/kirin/kirin_kirin_end.png")
 	# 检测是否迟到 
 	I_LATER_ENTER_CHECK = RuleImage(roi_front=(658,69,21,27), roi_back=(658,69,21,27), threshold=0.8, method="Template matching", file="./tasks/Hunt/kirin/kirin_later_enter_check.png")
 	# 开启挑战 

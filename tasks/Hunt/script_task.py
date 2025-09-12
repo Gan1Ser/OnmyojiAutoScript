@@ -102,36 +102,18 @@ class ScriptTask(GameUi, GeneralBattle, GeneralInvite, SwitchSoul, HuntAssets):
         # TODO: 没有碰到：（1）麒麟未开 （2）麒麟已经挑战完毕
         while 1:
             self.screenshot()
+            self.check_and_invite()
 
             if self.appear(self.I_KIRIN_END):
                 # 你的阴阳寮已经打过的麒麟了
                 logger.warning('Your guild have already challenged the Kirin')
-                self.ui_click_until_disappear(self.I_UI_BACK_RED)
-                self.plan_tomorrow_hunt()
-                raise TaskEnd('Hunt')
+                return
             if self.appear_then_click(self.I_KIRIN_CHALLAGE, interval=0.9):
-                break
-            if self.click(self.C_HUNT_ENTER, interval=2.9):
                 continue
+            if self.appear(self.I_PREPARE_HIGHLIGHT):
+                break
         logger.info('Arrive the Kirin')
-        self.ui_click(self.I_KIRIN_CHALLAGE, self.I_KIRIN_GATHER)
-        # 来晚了直接进入战斗
-        if not self.appear(self.I_LATER_ENTER_CHECK):
-            # 等待挑战, 5秒也是等
-            sleep(5)
-            logger.info("arrive later")
-            self.ui_click_until_disappear(self.I_ENTER_FIRE, interval=1)
-            self.device.stuck_record_add('BATTLE_STATUS_S')
-            self.run_general_battle()
-        else:
-            # 等待进入战斗
-            # 等待挑战, 5秒也是等
-            sleep(5)
-            self.device.stuck_record_add('BATTLE_STATUS_S')
-            self.wait_until_disappear(self.I_KIRIN_GATHER)
-            self.device.stuck_record_clear()
-            self.device.stuck_record_add('BATTLE_STATUS_S')
-            self.run_general_battle()
+        self.run_general_battle()
 
 
     def netherworld(self):
