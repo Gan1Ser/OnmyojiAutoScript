@@ -90,8 +90,8 @@
     "description": "description"
   },
   {
-    "itemName": "check_hunt",
-    "imageName": "page_check_hunt.png",
+    "itemName": "check_netherworld",
+    "imageName": "page_check_netherworld.png",
     "roiFront": "575,30,46,25",
     "roiBack": "553,1,81,68",
     "method": "Template matching",
@@ -160,5 +160,14 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "description"
+  },
+  {
+    "itemName": "check_kirin",
+    "imageName": "page_check_kirin.png",
+    "roiFront": "88,13,105,46",
+    "roiBack": "88,13,105,46",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "检查麒麟"
   }
 ]
