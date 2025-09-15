@@ -106,10 +106,14 @@ page_town.link(button=G.I_TOWN_GOTO_DUEL, destination=page_duel)
 page_demon_encounter = Page(G.I_CHECK_DEMON_ENCOUNTER)
 page_demon_encounter.link(button=G.I_DEMON_ENCOUNTER_GOTO_TOWN, destination=page_town)
 page_town.link(button=G.I_TOWN_GOTO_DEMON_ENCOUNTER, destination=page_demon_encounter)
-# 狩猎战 hunt
-page_hunt = Page(G.I_CHECK_HUNT)
-page_hunt.link(button=G.I_BACK_BL, destination=page_town)
-page_town.link(button=G.I_TOWN_GOTO_HUNT, destination=page_hunt)
+# 麒麟 kirin
+page_kirin = Page(G.I_CHECK_KIRIN)
+page_kirin.link(button=G.I_BACK_YOLLOW, destination=page_town)
+page_town.link(button=G.I_TOWN_GOTO_HUNT, destination=page_kirin)
+# 阴界之门 netherworld
+page_netherworld = Page(G.I_CHECK_NETHERWORLD)
+page_netherworld.link(button=G.I_BACK_BLUE, destination=page_town)
+page_town.link(button=G.I_TOWN_GOTO_HUNT, destination=page_netherworld)
 # 协同斗技 draft_duel
 page_draft_duel = Page(G.I_CHECK_DRAFT_DUEL)
 page_draft_duel.link(button=G.I_BACK_YOLLOW, destination=page_town)
