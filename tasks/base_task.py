@@ -1,36 +1,29 @@
 # This Python file uses the following encoding: utf-8
 # @author runhey
 # github https://github.com/runhey
-import numpy as np
 
 from time import sleep
-from datetime import datetime, timedelta, time
-from typing import Union
-import re
 
-from dev_tools.decorator import usage_time
-
-from module.config.utils import convert_to_underscore
-from module.atom.image import RuleImage
-from module.atom.click import RuleClick
-from module.atom.long_click import RuleLongClick
-from module.atom.swipe import RuleSwipe
-from module.atom.ocr import RuleOcr
-from module.atom.list import RuleList
-from module.atom.gif import RuleGif
-from module.ocr.base_ocr import OcrMode, OcrMethod
+from datetime import datetime, timedelta
 from module.atom.animate import RuleAnimate
-from module.logger import logger
+from module.atom.click import RuleClick
+from module.atom.gif import RuleGif
+from module.atom.image import RuleImage
+from module.atom.list import RuleList
+from module.atom.long_click import RuleLongClick
+from module.atom.ocr import RuleOcr
+from module.atom.swipe import RuleSwipe
 from module.base.timer import Timer
 from module.config.config import Config
-from module.config.utils import get_server_next_update, nearest_future, dict_to_kv, parse_tomorrow_server
 from module.device.device import Device
-from tasks.GlobalGame.assets import GlobalGameAssets
-from tasks.GlobalGame.config_emergency import FriendInvitation, WhenNetworkAbnormal, WhenNetworkError
+from module.exception import ScriptError
+from module.logger import logger
+from module.ocr.base_ocr import OcrMode
 from tasks.Component.Costume.costume_base import CostumeBase
-from tasks.Component.config_base import ConfigBase, Time
-
-from module.exception import GameStuckError, ScriptError, TaskEnd
+from tasks.Component.config_base import Time
+from tasks.GlobalGame.assets import GlobalGameAssets
+from tasks.GlobalGame.config_emergency import FriendInvitation
+from typing import Union
 
 
 class BaseTask(GlobalGameAssets, CostumeBase):
@@ -118,33 +111,8 @@ class BaseTask(GlobalGameAssets, CostumeBase):
         self.device.detect_record = detect_record
         # 如果接受邀请则立即执行悬赏任务
         if click_button == self.I_G_ACCEPT:
-            self.set_next_run(task='WantedQuests', target=datetime.now())
+            self.set_next_run(task='WantedQuests', target=datetime.now().replace(microsecond=0))
         return True
-
-    def _squeeze(self) -> bool:
-        delay_time = self.config.global_game.emergency.delay_time
-        appear_squeeze = self.O_SQUEEZE.detect_and_ocr(self.device.image, logDisplay=False)
-        re_squeeze = re.sub(r"[\'\[\]]", "", str([result.ocr_text for result in appear_squeeze]))
-        # 将两个字符串转为集合，去除重复的字符
-        set_re_squeeze = set(re_squeeze)
-        set_str = set("检测到账号在其他设备登录")
-        # 计算交集，判断交集的元素个数
-        common_chars = set_re_squeeze & set_str  # & 是集合的交集运算符
-        if len(common_chars) < 6:
-            return False
-        logger.warning(f"The account was pushed down")
-        datetime_now = datetime.now()
-        logger.warning('Delay pending tasks')
-        # 所有任务均推迟一个小时
-        for pending_tasks in self.config.pending_task:
-            self.set_next_run(task=pending_tasks.command, server=False,
-                              target=datetime_now + timedelta(hours=delay_time.hour, minutes=delay_time.minute, seconds=delay_time.minute))
-
-        for waiting_tasks in self.config.waiting_task:
-            if waiting_tasks.next_run < datetime_now + timedelta(hours=delay_time.hour, minutes=delay_time.minute, seconds=delay_time.minute):
-                self.set_next_run(task=waiting_tasks.command, server=False,
-                                  target=waiting_tasks.next_run + timedelta(hours=delay_time.hour, minutes=delay_time.minute, seconds=delay_time.minute))
-        raise TaskEnd('ScriptTask end')
 
     def screenshot(self):
         """
@@ -154,16 +122,13 @@ class BaseTask(GlobalGameAssets, CostumeBase):
         self.device.screenshot()
         # 判断勾协
         self._burst()
-        # 判断挤号
-        # self._squeeze()
-
 
         # # 判断网络异常
         # if self.appear(self.I_NETWORK_ABNORMAL):
         #     logger.warning(f"Network abnormal")
         #     raise GameStuckError
-
-        # 判断网络错误
+        #
+        # # 判断网络错误
         # if self.appear(self.I_NETWORK_ERROR):
         #     logger.warning(f"Network error")
         #     raise GameStuckError
@@ -263,20 +228,25 @@ class BaseTask(GlobalGameAssets, CostumeBase):
 
     def wait_until_appear_then_click(self,
                                      target: RuleImage,
-                                     action: Union[RuleClick, RuleLongClick] = None) -> None:
+                                     action: Union[RuleClick, RuleLongClick] = None,
+                                     wait_time: int = None) -> bool:
         """
         等待直到出现目标，然后点击
+        :param wait_time:
         :param action:
         :param target:
         :return:
         """
-        self.wait_until_appear(target)
+        if not self.wait_until_appear(target, wait_time):
+            return False
+        click_x, click_y = target.coord()
         if action is None:
-            self.device.click(target.coord(), control_name=target.name)
+            self.device.click(click_x, click_y, control_name=target.name)
         elif isinstance(action, RuleLongClick):
-            self.device.long_click(target.coord(), duration=action.duration / 1000, control_name=target.name)
+            self.device.long_click(click_x, click_y, duration=action.duration / 1000, control_name=target.name)
         elif isinstance(action, RuleClick):
-            self.device.click(target.coord(), control_name=target.name)
+            self.device.click(click_x, click_y, control_name=target.name)
+        return True
 
     def wait_until_disappear(self, target: RuleImage) -> None:
         while 1:
@@ -488,7 +458,7 @@ class BaseTask(GlobalGameAssets, CostumeBase):
             self.device.click(x=x, y=y, control_name=target.name)
         return True
 
-    def list_find(self, target: RuleList, name: str | list[str]) -> bool:
+    def list_find(self, target: RuleList, name: str | list[str]) -> bool | tuple:
         """
         会一致在列表寻找目标，找到了就退出。
         如果是图片列表会一直往下找
