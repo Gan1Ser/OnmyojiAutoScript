@@ -10,7 +10,7 @@
   },
   {
     "itemName": "daoguan",
-    "imageName": "Screenshots_daoguan.png",
+    "imageName": "res_daoguan.png",
     "roiFront": "462,159,100,100",
     "roiBack": "462,159,100,100",
     "method": "Template matching",
