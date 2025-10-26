@@ -159,9 +159,9 @@ if __name__ == '__main__':
     from module.config.config import Config
     from module.device.device import Device
 
-    c = Config('oas1')
+    c = Config('03绘卷-咔呐')
     d = Device(c)
     t = ScriptTask(c, d)
-    t.set_costume(ShikigamiType.COSTUME_SHIKIGAMI_4)
+    t.set_costume(ShikigamiType.COSTUME_SHIKIGAMI_6)
     # t.set_costume(ShikigamiType.COSTUME_SHIKIGAMI_DEFAULT)
     t.run()
