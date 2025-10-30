@@ -11,8 +11,8 @@
   {
     "itemName": "d_team_swtich",
     "imageName": "duel_d_team_swtich.png",
-    "roiFront": "1082,85,38,41",
-    "roiBack": "1082,85,38,41",
+    "roiFront": "1081,84,38,41",
+    "roiBack": "1081,84,38,41",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "一键切换所有的御魂"
@@ -20,7 +20,7 @@
   {
     "itemName": "d_battle",
     "imageName": "duel_d_battle.png",
-    "roiFront": "1153,573,100,100",
+    "roiFront": "1165,575,68,69",
     "roiBack": "1123,537,154,177",
     "method": "Template matching",
     "threshold": 0.8,
@@ -38,8 +38,8 @@
   {
     "itemName": "d_auto_entry",
     "imageName": "duel_d_auto_entry.png",
-    "roiFront": "42,133,66,62",
-    "roiBack": "20,119,115,111",
+    "roiFront": "20,117,66,62",
+    "roiBack": "4,94,115,111",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "自动上阵"
@@ -47,8 +47,8 @@
   {
     "itemName": "d_help",
     "imageName": "duel_d_help.png",
-    "roiFront": "719,434,32,30",
-    "roiBack": "708,397,49,78",
+    "roiFront": "781,501,32,30",
+    "roiBack": "774,473,49,78",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "主界面的感叹号"
