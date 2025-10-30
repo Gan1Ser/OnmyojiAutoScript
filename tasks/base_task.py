@@ -298,6 +298,23 @@ class BaseTask(GlobalGameAssets, CostumeBase):
         logger.warning(f'Wait until pos stable({target}) timeout')
         return False
 
+    def maybe_screenshot(self, soft_skip: bool = False):
+        """
+        可能截图
+        :param soft_skip: True跳过截图(但保证设备一定有图才跳过,否则依然截图)
+        :return:
+        """
+        if not soft_skip or not self.exist_image():
+            return self.screenshot()
+        return self.device.image
+
+    def exist_image(self) -> bool:
+        """
+        判断当前设备是否有图片
+        :return: 有返回True，没有返回False
+        """
+        return hasattr(self.device, 'image') and self.device.image is not None
+
     def wait_until_stable(self,
                           target: RuleImage,
                           timer=Timer(0.3, count=1),
