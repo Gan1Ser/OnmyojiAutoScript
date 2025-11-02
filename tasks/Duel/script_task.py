@@ -90,6 +90,10 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DuelAssets):
             self.screenshot()
             if self.appear_then_click(self.I_REWARD, interval=0.6):
                 continue
+            if self.appear(self.I_WIN):
+                # 打赢了
+                self.ui_click_until_disappear(self.I_WIN)
+                continue
             if not self.duel_main():
                 continue
             # 检查分数
@@ -364,7 +368,7 @@ class ScriptTask(GameUi, GeneralBattle, SwitchSoul, DuelAssets):
             if self.appear(self.I_D_PREPARE):
                 # 低段位有的准备
                 self.ui_click_until_disappear(self.I_D_PREPARE)
-                self.wait_until_disappear(self.I_D_PREPARE_DONE)
+                # self.wait_until_disappear(self.I_D_PREPARE_DONE)
                 logger.info('Duel prepare')
                 break
             # 如果对方直接秒退，那自己就是赢的

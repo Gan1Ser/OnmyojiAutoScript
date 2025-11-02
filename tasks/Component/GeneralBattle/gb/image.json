@@ -29,7 +29,7 @@
   {
     "itemName": "win",
     "imageName": "gb_win.png",
-    "roiFront": "385,47,100,100",
+    "roiFront": "429,71,100,100",
     "roiBack": "296,33,414,224",
     "method": "Template matching",
     "threshold": 0.8,

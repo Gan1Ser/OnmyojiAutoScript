@@ -231,7 +231,7 @@ class CostumeShikigamiAssets:
 	# 退出式神录 
 	I_RECORD_SOUL_BACK_6 = RuleImage(roi_front=(19,9,51,44), roi_back=(19,9,51,44), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeShikigami/sk6/sk6_record_soul_back_6.png")
 	# 预设 
-	I_SOUL_PRESET_6 = RuleImage(roi_front=(335,73,90,51), roi_back=(335,73,90,51), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeShikigami/sk6/sk6_soul_preset_6.png")
+	I_SOUL_PRESET_6 = RuleImage(roi_front=(341,76,78,42), roi_back=(341,76,78,42), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeShikigami/sk6/sk6_soul_preset_6.png")
 	# 第一组切换 
 	I_SOU_SWITCH_1_6 = RuleImage(roi_front=(973,140,34,32), roi_back=(973,140,34,32), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeShikigami/sk6/sk6_sou_switch_1_6.png")
 	# 第二组切换 
