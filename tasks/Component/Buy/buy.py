@@ -62,6 +62,10 @@ class Buy(BaseTask, BuyAssets):
                         continue
                 return False
 
+            if self.appear(self.I_BUY_SUCCESS):
+                self.ui_click_until_smt_disappear(random_click(), self.I_BUY_SUCCESS, interval=0.8)
+                logger.info('Get reward success')
+                break
 
             if self.ui_reward_appear_click():
                 while 1:
