@@ -48,14 +48,14 @@ class LoginHandler(RestartAssets, GameUi):
             if self.appear_then_click(self.I_MAIN_SCROLL_CLOSE, interval=2, threshold=0.9):
                 logger.info('Open scroll')
                 continue
-            if self.appear(self.I_MAIN_SCROOLL_OPEN, interval=0.2):
+            if self.appear(self.I_MAIN_SCROLL_OPEN, interval=0.2):
                 if confirm_timer.reached():
                     logger.info('Login to main confirm')
                     break
             else:
                 confirm_timer.reset()
             # 登录成功
-            if self.appear(self.I_MAIN_SCROOLL_OPEN, interval=0.5):
+            if self.appear(self.I_MAIN_SCROLL_OPEN, interval=0.5):
                 logger.info('Login success')
                 login_success = True
 

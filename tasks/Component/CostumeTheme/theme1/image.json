@@ -1,19 +1,19 @@
 [
   {
-    "itemName": "theme1_login_scrooll_close_1",
+    "itemName": "theme1_login_scroll_close_1",
     "roiFront": "1195,650,48,52",
     "roiBack": "1193,649,51,54",
     "description": "description",
-    "imageName": "theme1_login_scrooll_close.png",
+    "imageName": "theme1_login_scroll_close_1.png",
     "method": "Template matching",
     "threshold": 0.8
   },
   {
-    "itemName": "theme1_login_scrooll_open_1",
-    "roiFront": "1214,607,27,64",
-    "roiBack": "1213,606,30,66",
+    "itemName": "theme1_login_scroll_open_1",
+    "roiFront": "1196,604,48,36",
+    "roiBack": "1195,603,51,39",
     "description": "description",
-    "imageName": "theme1_login_scrooll_open.png",
+    "imageName": "theme1_login_scroll_open_1.png",
     "method": "Template matching",
     "threshold": 0.8
   }

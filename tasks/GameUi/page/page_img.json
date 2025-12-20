@@ -18,7 +18,7 @@
     "description": "庭院卷轴关闭标识"
   },
   {
-    "itemName": "main_scrooll_open",
+    "itemName": "main_scroll_open",
     "imageName": "page_main_scroll_open.png",
     "roiFront": "1208,609,33,83",
     "roiBack": "1208,609,33,83",

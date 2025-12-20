@@ -12,7 +12,8 @@ class CostumeThemeAssets:
 
 	# Image Rule Assets
 	# description 
-	I_THEME1_LOGIN_SCROOLL_CLOSE_1 = RuleImage(roi_front=(1195,650,48,52), roi_back=(1193,649,51,54), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme1_login_scrooll_close.png")
+	I_THEME1_LOGIN_SCROLL_CLOSE_1 = RuleImage(roi_front=(1195,650,48,52), roi_back=(1193,649,51,54), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme1_login_scroll_close_1.png")
 	# description 
-	I_THEME1_LOGIN_SCROOLL_OPEN_1 = RuleImage(roi_front=(1214,607,27,64), roi_back=(1213,606,30,66), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme1_login_scrooll_open.png")
+	I_THEME1_LOGIN_SCROLL_OPEN_1 = RuleImage(roi_front=(1196,604,48,36), roi_back=(1195,603,51,39), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme1_login_scroll_open_1.png")
+
 

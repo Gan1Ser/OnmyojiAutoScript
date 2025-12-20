@@ -45,8 +45,8 @@ realm_costume_model = {
 # 主题
 theme_costume_model = {
     getattr(ThemeType, f"COSTUME_THEME_{i}"): {
-        'I_MAIN_SCROLL_CLOSE': f'I_THEME1_LOGIN_SCROOLL_CLOSE_{i}',
-        'I_MAIN_SCROLL_OPEN': f'I_THEME1_LOGIN_SCROOLL_OPEN_{i}',
+        'I_MAIN_SCROLL_CLOSE': f'I_THEME1_LOGIN_SCROLL_CLOSE_{i}',
+        'I_MAIN_SCROLL_OPEN': f'I_THEME1_LOGIN_SCROLL_OPEN_{i}',
     } for i in range(1, 2)
 }
 
