@@ -18,6 +18,15 @@
     "description": "庭院卷轴关闭标识"
   },
   {
+    "itemName": "main_scrooll_open",
+    "imageName": "page_main_scroll_open.png",
+    "roiFront": "1208,609,33,83",
+    "roiBack": "1208,609,33,83",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "庭院卷轴打开"
+  },
+  {
     "itemName": "main_goto_exploration",
     "imageName": "page_main_goto_exploration.png",
     "roiFront": "493,116,45,75",

@@ -8,8 +8,9 @@ from module.logger import logger
 from tasks.Restart.assets import RestartAssets
 from tasks.base_task import BaseTask
 import time
+from tasks.GameUi.game_ui import GameUi
 
-class LoginHandler(BaseTask, RestartAssets):
+class LoginHandler(RestartAssets, GameUi):
     character: str
     harvest_mail_cnt: int = 0
 
@@ -44,17 +45,17 @@ class LoginHandler(BaseTask, RestartAssets):
                 logger.info('Cancel continue battle')
                 continue
             # 确认进入庭院
-            if self.appear_then_click(self.I_LOGIN_SCROOLL_CLOSE, interval=2, threshold=0.9):
+            if self.appear_then_click(self.I_MAIN_SCROLL_CLOSE, interval=2, threshold=0.9):
                 logger.info('Open scroll')
                 continue
-            if self.appear(self.I_LOGIN_SCROOLL_OPEN, interval=0.2):
+            if self.appear(self.I_MAIN_SCROOLL_OPEN, interval=0.2):
                 if confirm_timer.reached():
                     logger.info('Login to main confirm')
                     break
             else:
                 confirm_timer.reset()
             # 登录成功
-            if self.appear(self.I_LOGIN_SCROOLL_OPEN, interval=0.5):
+            if self.appear(self.I_MAIN_SCROOLL_OPEN, interval=0.5):
                 logger.info('Login success')
                 login_success = True
 

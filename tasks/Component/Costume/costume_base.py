@@ -11,7 +11,7 @@ from tasks.Component.Costume.assets import CostumeAssets
 from tasks.Component.CostumeRealm.assets import CostumeRealmAssets
 from tasks.Component.CostumeBattle.assets import CostumeBattleAssets
 from tasks.Component.CostumeShikigami.assets import CostumeShikigamiAssets
-
+from tasks.Component.CostumeTheme.assets import CostumeThemeAssets
 # 庭院皮肤
 # 主界面皮肤（使用字典推导式动态生成）
 main_costume_model = {
@@ -40,6 +40,14 @@ realm_costume_model = {
                                 'I_SHI_GROWN': 'I_SHI_GROWN_2',
                                 'I_BOX_AP': 'I_BOX_AP_2',
                                 'I_BOX_EXP': 'I_BOX_EXP_2'},
+}
+
+# 主题
+theme_costume_model = {
+    getattr(ThemeType, f"COSTUME_THEME_{i}"): {
+        'I_MAIN_SCROLL_CLOSE': f'I_THEME1_LOGIN_SCROOLL_CLOSE_{i}',
+        'I_MAIN_SCROLL_OPEN': f'I_THEME1_LOGIN_SCROOLL_OPEN_{i}',
+    } for i in range(1, 2)
 }
 
 # 战斗主题（使用循环处理常规情况 + 特例处理）
@@ -89,6 +97,7 @@ class CostumeBase:
         self.check_costume_realm(config.costume_realm_type)
         self.check_costume_battle(config.costume_battle_type)
         self.check_costume_shikigami(config.costume_shikigami_type)
+        self.check_costume_theme(config.costume_theme_type)
 
     def replace_img(self,
                     asset_before: str,
@@ -136,6 +145,14 @@ class CostumeBase:
                 self.replace_img(key, assert_value, rp_roi_back=False)
             else:
                 self.replace_img(key, assert_value)
+    def check_costume_theme(self, theme_type: ThemeType):
+        if theme_type == ThemeType.COSTUME_THEME_DEFAULT:
+            return
+        logger.info(f'Switch theme theme {theme_type}')
+        costume_theme_assets = CostumeThemeAssets()
+        for key, value in theme_costume_model[theme_type].items():
+            assert_value: RuleImage = getattr(costume_theme_assets, value)
+            self.replace_img(key, assert_value)
 
     def check_costume_shikigami(self, shikigami_type: ShikigamiType):
         if shikigami_type == ShikigamiType.COSTUME_SHIKIGAMI_DEFAULT:

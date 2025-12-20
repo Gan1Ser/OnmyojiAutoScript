@@ -32,6 +32,7 @@ class RealmType(str, Enum):
 # 主题，就是庭院最右下角的展开按钮
 class ThemeType(str, Enum):
     COSTUME_THEME_DEFAULT = 'costume_theme_default'  # 伊始之卷
+    COSTUME_THEME_1 = 'costume_theme_1'  # 狐梦之守
 
 # 幕间，就是式神录这里
 class ShikigamiType(str, Enum):
