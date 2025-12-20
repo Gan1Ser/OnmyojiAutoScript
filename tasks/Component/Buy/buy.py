@@ -45,13 +45,22 @@ class Buy(BaseTask, BuyAssets):
 
             if self.appear(self.I_BUY_RMB):
                 # 用人民币购买的，就取消
+                max_tries = 3  # 最大尝试次数
+                try_count = 0
                 logger.warning('OAS do not support buy with RMB')
                 while 1:
+
+                    # 检查最大尝试次数
+                    if try_count >= max_tries:
+                        logger.info(f'Cancel buy with RMB failed after {max_tries} tries')
+                        break
+
                     self.screenshot()
                     if not self.appear(self.I_BUY_RMB):
                         break
                     if self.click(self.C_BUY_CANCEL, interval=1):
                         continue
+                    try_count += 1
                 return False
 
             if self.appear(self.I_BUY_SUCCESS):
