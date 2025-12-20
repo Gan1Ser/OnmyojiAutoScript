@@ -30,6 +30,11 @@ class MysteryShopAssets:
 	O_MS_RECORDS = RuleOcr(roi=(324,638,44,36), area=(324,638,44,36), mode="Digit", method="Default", keyword="", name="ms_records")
 
 
+	# Swipe Rule Assets
+	# description 
+	S_MYSTERY_SHOP = RuleSwipe(roi_front=(806,460,46,35), roi_back=(754,360,90,34), mode="default", name="mystery_shop")
+
+
 	# Image Rule Assets
 	# 蓝票 
 	I_MS_BLUE = RuleImage(roi_front=(850,379,117,98), roi_back=(179,81,829,471), threshold=0.7, method="Template matching", file="./tasks/MysteryShop/ms/ms_ms_blue.png")

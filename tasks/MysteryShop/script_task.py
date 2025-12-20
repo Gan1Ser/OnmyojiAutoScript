@@ -3,6 +3,7 @@
 # github https://github.com/runhey
 import re
 from time import sleep
+import random
 from datetime import timedelta, datetime, time
 from cached_property import cached_property
 
@@ -92,22 +93,29 @@ class ScriptTask(FriendshipPoints, MysteryShopAssets, GeneralInvite):
         在当前的商店进行购买
         :return:
         """
-        if shop_config.mystery_amulet:
-            while self.buy_mall_one(buy_button=self.I_MS_BLUE, buy_check=self.I_MS_CHECK_BLUE,
-                                    money_ocr=self.O_MALL_RESOURCE_5, buy_money=85):
-                pass
-        if shop_config.black_daruma_scrap:
-            while self.buy_mall_one(buy_button=self.I_MS_BLACK, buy_check=self.I_MS_CHECK_BLACK,
-                                    money_ocr=self.O_MALL_RESOURCE_5, buy_money=60):
-                pass
-        if shop_config.shop_kaiko_3:
-            while self.buy_mall_one(buy_button=self.I_MS_TAIKO_3, buy_check=self.I_MS_CHECK_TAIKO_3,
-                                    money_ocr=self.O_MALL_RESOURCE_5, buy_money=45):
-                pass
-        if shop_config.shop_kaiko_4:
-            while self.buy_mall_one(buy_button=self.I_MS_TAIKO_4, buy_check=self.I_MS_CHECK_TAIKO_4,
-                                    money_ocr=self.O_MALL_RESOURCE_5, buy_money=80):
-                pass
+        swipe_cnt, max_swipe = 0, random.randint(4, 6)
+        while swipe_cnt <= max_swipe:
+            if shop_config.mystery_amulet:
+                while self.buy_mall_one(buy_button=self.I_MS_BLUE, buy_check=self.I_MS_CHECK_BLUE,
+                                        money_ocr=self.O_MALL_RESOURCE_5, buy_money=85):
+                    pass
+            if shop_config.black_daruma_scrap:
+                while self.buy_mall_one(buy_button=self.I_MS_BLACK, buy_check=self.I_MS_CHECK_BLACK,
+                                        money_ocr=self.O_MALL_RESOURCE_5, buy_money=60):
+                    pass
+            if shop_config.shop_kaiko_3:
+                while self.buy_mall_one(buy_button=self.I_MS_TAIKO_3, buy_check=self.I_MS_CHECK_TAIKO_3,
+                                        money_ocr=self.O_MALL_RESOURCE_5, buy_money=45):
+                    pass
+            if shop_config.shop_kaiko_4:
+                while self.buy_mall_one(buy_button=self.I_MS_TAIKO_4, buy_check=self.I_MS_CHECK_TAIKO_4,
+                                        money_ocr=self.O_MALL_RESOURCE_5, buy_money=80):
+                    pass
+            self.swipe(self.S_MYSTERY_SHOP, interval=1.5)
+            sleep(2)
+            logger.attr(max_swipe - swipe_cnt, 'remain swipe times')
+            swipe_cnt += 1
+
 
     def share(self, share_config: ShareConfig = None):
         logger.hr('Share', 3)
