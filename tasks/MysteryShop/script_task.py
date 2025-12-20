@@ -69,13 +69,18 @@ class ScriptTask(FriendshipPoints, MysteryShopAssets, GeneralInvite):
             return True
 
         present_friend = self.O_MS_FRIEND.ocr(self.device.image)
-        while 1:
+        max_retry = 5  # 最大重试次数
+        retry_count = 0
+        while retry_count < max_retry:  # 有限循环
             self.screenshot()
             next_friend = self.O_MS_FRIEND.ocr(self.device.image)
             if present_friend != next_friend:
                 break
             if self.appear_then_click(self.I_MS_NEXT, interval=2.5):
+                retry_count += 1  # 点击一次，计数+1
                 continue
+            else:
+                break  # 按钮不存在，直接退出
 
         logger.info('Switch to next friend')
         return True
