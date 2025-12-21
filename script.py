@@ -43,6 +43,7 @@ _log_switch_lock = threading.Lock()#线程锁
 
 class Script:
     def __init__(self, config_name: str ='oas') -> None:
+        self._emulator_down = False
         logger.hr('Start', level=0)
         self.server = None
         self.state_queue: Queue = None
@@ -325,6 +326,7 @@ class Script:
         strategy_map = {
             "close_game": self._wait_close_game,
             "goto_main": self._wait_goto_main,
+            "close_emulator": self._handle_close_emulator,
         }
         func = strategy_map.get(method)
         if not func:
@@ -346,6 +348,22 @@ class Script:
         self.run("GotoMain")
         self.device.release_during_wait()
         return self.wait_until(next_run)
+
+    def _handle_close_emulator(self, next_run: datetime) -> bool:
+        close_emulator_limit_time = self.config.script.optimization.close_emulator_limit_time
+        if next_run > datetime.now() + timedelta(
+                hours=close_emulator_limit_time.hour,
+                minutes=close_emulator_limit_time.minute,
+                seconds=close_emulator_limit_time.second
+        ):
+            logger.info('Close emulator during wait')
+            self.device.emulator_stop()
+            self._emulator_down = True  # 标记模拟器已关闭
+            # 关键修复：添加等待逻辑，等待到下一个任务时间
+            return self.wait_until(next_run)
+        else:
+            # 不满足关闭条件时，调用_close_game逻辑（包含等待）
+            return self._wait_close_game(next_run)
 
     def _wait_stay_there(self, next_run: datetime) -> bool:
         logger.info("Stay_there (no action) during wait")
@@ -487,6 +505,11 @@ class Script:
                 self.config.task_delay(task='Restart', success=True, server=True)
                 del_cached_property(self, 'config')
                 continue
+            if self._emulator_down:
+                self.device = Device(self.config)
+                self._emulator_down = False
+            else:
+                _ = self.device # 使用缓存
 
             # Run
             logger.info(f'Scheduler: Start task `{task}`')
