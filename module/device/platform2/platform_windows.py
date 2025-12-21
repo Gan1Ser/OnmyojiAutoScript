@@ -115,7 +115,7 @@ class AdbDeviceWithStatus(AdbDevice):
 
 class PlatformWindows(PlatformBase, EmulatorManager):
     @classmethod
-    def execute(cls, command, show_window=True):
+    def execute(cls, command, show_window=False):
         """
         Args:
             command (str):
