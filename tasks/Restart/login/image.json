@@ -99,31 +99,13 @@
     "description": "已有角色"
   },
   {
-    "itemName": "create_account",
-    "imageName": "login_create_account.png",
-    "roiFront": "555,636,169,52",
-    "roiBack": "504,614,263,100",
+    "itemName": "plus_off_button",
+    "imageName": "login_plus_off_button.png",
+    "roiFront": "488,400,100,47",
+    "roiBack": "488,400,100,47",
     "method": "Template matching",
     "threshold": 0.8,
-    "description": "description"
-  },
-  {
-    "itemName": "early_server",
-    "imageName": "login_early_server.png",
-    "roiFront": "596,269,115,33",
-    "roiBack": "596,269,115,33",
-    "method": "Template matching",
-    "threshold": 0.8,
-    "description": "进入体验服过快出现弹窗"
-  },
-  {
-    "itemName": "early_server_cancel",
-    "imageName": "login_early_server_cancel.png",
-    "roiFront": "435,404,172,56",
-    "roiBack": "435,404,172,56",
-    "method": "Template matching",
-    "threshold": 0.8,
-    "description": "取消体验服切换弹窗"
+    "description": "关闭加成按钮选项"
   },
   {
     "itemName": "cancel_battle",

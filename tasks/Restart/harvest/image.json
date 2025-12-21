@@ -2,20 +2,20 @@
   {
     "itemName": "harvest_jade",
     "imageName": "harvest_harvest_jade.png",
-    "roiFront": "732,489,34,33",
-    "roiBack": "177,358,973,234",
+    "roiFront": "1091,542,31,34",
+    "roiBack": "671,434,499,158",
     "method": "Template matching",
-    "threshold": 0.8,
-    "description": "点击勾玉"
+    "threshold": 0.6,
+    "description": "琼庭院勾玉"
   },
   {
     "itemName": "harvest_sign",
     "imageName": "harvest_harvest_sign.png",
-    "roiFront": "397,500,24,34",
-    "roiBack": "70,375,1085,184",
+    "roiFront": "395,500,24,34",
+    "roiBack": "70,462,889,98",
     "method": "Template matching",
-    "threshold": 0.8,
-    "description": "签到小图标"
+    "threshold": 0.7,
+    "description": "琼庭院签到小图标"
   },
   {
     "itemName": "harvest_sign_2",
@@ -29,17 +29,17 @@
   {
     "itemName": "harvest_sign_999",
     "imageName": "harvest_harvest_sign_999.png",
-    "roiFront": "345,494,23,29",
-    "roiBack": "51,372,1109,189",
+    "roiFront": "394,508,23,29",
+    "roiBack": "51,459,888,103",
     "method": "Template matching",
-    "threshold": 0.8,
-    "description": "999签到福袋"
+    "threshold": 0.7,
+    "description": "琼庭院999签到福袋"
   },
   {
     "itemName": "harvest_mail",
     "imageName": "harvest_harvest_mail.png",
-    "roiFront": "337,505,37,25",
-    "roiBack": "38,396,1128,157",
+    "roiFront": "1137,34,36,27",
+    "roiBack": "1137,34,36,27",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "邮件小图标"
@@ -47,8 +47,8 @@
   {
     "itemName": "harvest_mail_all",
     "imageName": "harvest_harvest_mail_all.png",
-    "roiFront": "69,579,80,67",
-    "roiBack": "28,551,142,144",
+    "roiFront": "80,622,75,64",
+    "roiBack": "80,622,75,64",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "全部收取"
@@ -75,7 +75,7 @@
     "itemName": "harvest_soul",
     "imageName": "harvest_harvest_soul.png",
     "roiFront": "241,497,38,36",
-    "roiBack": "68,392,1113,159",
+    "roiBack": "68,480,930,72",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "description"
@@ -92,8 +92,8 @@
   {
     "itemName": "harvest_ap",
     "imageName": "harvest_harvest_ap.png",
-    "roiFront": "721,486,31,38",
-    "roiBack": "206,361,970,235",
+    "roiFront": "1088,544,34,31",
+    "roiBack": "206,462,970,134",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "description"
@@ -111,7 +111,7 @@
     "itemName": "harvest_sign_3",
     "imageName": "harvest_harvest_sign_3.png",
     "roiFront": "291,495,33,36",
-    "roiBack": "100,385,1014,179",
+    "roiBack": "100,473,1014,91",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "签到"
@@ -136,21 +136,21 @@
   },
   {
     "itemName": "harvest_soul_2",
-    "imageName": "harvest_harvest_soul_2.png",
-    "roiFront": "586,561,112,47",
-    "roiBack": "570,547,139,71",
+    "imageName": "harvest_soul_2.png",
+    "roiFront": "191,566,111,40",
+    "roiBack": "189,565,113,43",
     "method": "Template matching",
     "threshold": 0.8,
-    "description": "选择中间第二个御魂"
+    "description": "选择第一个御魂"
   },
   {
     "itemName": "harvest_soul_3",
-    "imageName": "harvest_harvest_soul_3.png",
+    "imageName": "harvest_soul_3.png",
     "roiFront": "313,489,188,33",
     "roiBack": "302,472,216,60",
     "method": "Template matching",
     "threshold": 0.8,
-    "description": "六星御魂标志"
+    "description": "description"
   },
   {
     "itemName": "harvest_guild_reward",
@@ -163,7 +163,7 @@
   },
   {
     "itemName": "harvest_back_pet_house",
-    "imageName": "harvest_back_pet_house.png",
+    "imageName": "harvest_harvest_back_pet_house.png",
     "roiFront": "20,15,70,70",
     "roiBack": "20,15,70,70",
     "method": "Template matching",
@@ -173,82 +173,154 @@
   {
     "itemName": "harvest_zidu",
     "imageName": "harvest_harvest_zidu.png",
-    "roiFront": "785,475,135,135",
+    "roiFront": "910,508,95,95",
     "roiBack": "785,475,135,135",
     "method": "Template matching",
     "threshold": 0.8,
     "description": "点击庭院阴阳师出现的姿度按钮"
   },
   {
-    "itemName": "harvest_mail_copy",
-    "imageName": "harvest_harvest_mail_copy.png",
-    "roiFront": "257,509,29,21",
-    "roiBack": "192,382,928,190",
+    "itemName": "harvest_ap_1",
+    "imageName": "harvest_harvest_ap_1.png",
+    "roiFront": "841,488,24,24",
+    "roiBack": "841,488,24,24",
     "method": "Template matching",
-    "threshold": 0.8,
-    "description": "description"
+    "threshold": 0.9,
+    "description": "缘结神社食盒"
   },
   {
-    "itemName": "harvest_mail_2",
-    "imageName": "harvest_harvest_mail_2.png",
-    "roiFront": "156,125,65,60",
-    "roiBack": "120,94,290,536",
+    "itemName": "harvest_sign_999_1",
+    "imageName": "harvest_harvest_sign_999_1.png",
+    "roiFront": "427,491,21,21",
+    "roiBack": "267,443,291,145",
     "method": "Template matching",
-    "threshold": 0.8,
-    "description": "description"
+    "threshold": 0.9,
+    "description": "缘结神社999福袋"
   },
   {
-    "itemName": "system_mail_open",
-    "imageName": "harvest_system_mail_open.png",
-    "roiFront": "1186,221,51,112",
-    "roiBack": "1172,184,88,166",
+    "itemName": "harvest_sign_1",
+    "imageName": "harvest_harvest_sign_1.png",
+    "roiFront": "425,484,26,28",
+    "roiBack": "319,452,254,140",
     "method": "Template matching",
-    "threshold": 0.8,
-    "description": "系统邮件打开状态"
+    "threshold": 0.9,
+    "description": "缘结神社签到"
   },
   {
-    "itemName": "special_mail_close",
-    "imageName": "harvest_special_mail_close.png",
-    "roiFront": "1188,379,53,108",
-    "roiBack": "1164,340,114,178",
+    "itemName": "harvest_jade_1",
+    "imageName": "harvest_harvest_jade_1.png",
+    "roiFront": "840,485,25,30",
+    "roiBack": "776,452,326,129",
     "method": "Template matching",
-    "threshold": 0.8,
-    "description": "特殊邮件关闭状态"
+    "threshold": 0.9,
+    "description": "缘结神社勾玉"
   },
   {
-    "itemName": "system_mail_close",
-    "imageName": "harvest_system_mail_close.png",
-    "roiFront": "1187,220,53,112",
-    "roiBack": "1171,186,106,164",
+    "itemName": "harvest_soul1",
+    "imageName": "harvest_harvest_soul1.png",
+    "roiFront": "418,480,34,29",
+    "roiBack": "307,454,275,135",
     "method": "Template matching",
-    "threshold": 0.8,
-    "description": "系统邮件关闭状态"
+    "threshold": 0.9,
+    "description": "缘结神社御魂"
   },
   {
-    "itemName": "special_mail_open",
-    "imageName": "harvest_special_mail_open.png",
-    "roiFront": "1185,377,55,110",
-    "roiBack": "1166,350,112,162",
+    "itemName": "harvest_soul_4",
+    "imageName": "harvest_harvest_soul_4.png",
+    "roiFront": "422,476,33,38",
+    "roiBack": "287,452,293,131",
     "method": "Template matching",
     "threshold": 0.8,
-    "description": "特殊邮件打开状态"
+    "description": "缘结神社自选御魂"
   },
   {
-    "itemName": "read_all_mail",
-    "imageName": "harvest_read_all_mail.png",
-    "roiFront": "180,605,130,35",
-    "roiBack": "149,588,182,72",
+    "itemName": "harvest_jade_2",
+    "imageName": "harvest_harvest_jade_2.png",
+    "roiFront": "508,529,27,30",
+    "roiBack": "508,529,27,30",
     "method": "Template matching",
-    "threshold": 0.8,
-    "description": "一键已读所有邮件"
+    "threshold": 0.9,
+    "description": "望月幽庭勾玉"
   },
   {
-    "itemName": "mail_red_point",
-    "imageName": "harvest_mail_red_point.png",
-    "roiFront": "1229,200,16,21",
-    "roiBack": "1159,189,100,317",
+    "itemName": "harvest_sign_5",
+    "imageName": "harvest_harvest_sign_5.png",
+    "roiFront": "422,532,21,27",
+    "roiBack": "422,532,21,27",
+    "method": "Template matching",
+    "threshold": 0.9,
+    "description": "望月幽庭签到"
+  },
+  {
+    "itemName": "harvest_sign_999_2",
+    "imageName": "harvest_harvest_sign_999_2.png",
+    "roiFront": "419,538,25,26",
+    "roiBack": "419,538,25,26",
+    "method": "Template matching",
+    "threshold": 0.9,
+    "description": "望月幽庭福袋"
+  },
+  {
+    "itemName": "harvest_ap_2",
+    "imageName": "harvest_harvest_ap_2.png",
+    "roiFront": "508,531,25,24",
+    "roiBack": "508,531,25,24",
+    "method": "Template matching",
+    "threshold": 0.9,
+    "description": "望月幽庭食盒"
+  },
+  {
+    "itemName": "harvest_soul_5",
+    "imageName": "harvest_harvest_soul_5.png",
+    "roiFront": "418,531,27,30",
+    "roiBack": "418,531,27,30",
     "method": "Template matching",
     "threshold": 0.8,
-    "description": "邮件红点"
+    "description": "望月幽庭自选御魂"
+  },
+  {
+    "itemName": "harvest_jade_3",
+    "imageName": "harvest_harvest_jade_3.png",
+    "roiFront": "427,454,27,32",
+    "roiBack": "427,454,27,32",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "鹿庭勾玉"
+  },
+  {
+    "itemName": "harvest_harvest_sign_6",
+    "imageName": "harvest_harvest_harvest_sign_6.png",
+    "roiFront": "347,459,28,27",
+    "roiBack": "347,459,28,27",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "鹿庭签到"
+  },
+  {
+    "itemName": "harvest_sign_999_3",
+    "imageName": "harvest_harvest_sign_999_3.png",
+    "roiFront": "349,464,23,26",
+    "roiBack": "349,464,23,26",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "鹿庭999"
+  },
+  {
+    "itemName": "harvest_harvest_soul_6",
+    "imageName": "harvest_harvest_harvest_soul_6.png",
+    "roiFront": "346,455,28,34",
+    "roiBack": "346,455,28,34",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "鹿庭御魂"
+  },
+  {
+    "itemName": "harvest_ap_3",
+    "imageName": "harvest_harvest_ap_3.png",
+    "roiFront": "425,456,29,28",
+    "roiBack": "425,456,29,28",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "鹿庭食盒"
   }
 ]
