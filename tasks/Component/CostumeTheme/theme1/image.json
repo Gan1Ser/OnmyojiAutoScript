@@ -1,19 +1,100 @@
 [
   {
-    "itemName": "theme1_login_scroll_close_1",
+    "itemName": "theme_login_scroll_close_1",
     "roiFront": "1195,650,48,52",
     "roiBack": "1193,649,51,54",
     "description": "description",
-    "imageName": "theme1_login_scroll_close_1.png",
+    "imageName": "theme_login_scroll_close_1.png",
     "method": "Template matching",
     "threshold": 0.8
   },
   {
-    "itemName": "theme1_login_scroll_open_1",
+    "itemName": "theme_login_scroll_open_1",
     "roiFront": "1196,604,48,36",
     "roiBack": "1195,603,51,39",
     "description": "description",
-    "imageName": "theme1_login_scroll_open_1.png",
+    "imageName": "theme_login_scroll_open_1.png",
+    "method": "Template matching",
+    "threshold": 0.8
+  },
+  {
+    "itemName": "theme_main_goto_shikigami_records_1",
+    "roiFront": "1115,625,58,36",
+    "roiBack": "1114,624,61,39",
+    "description": "description",
+    "imageName": "theme_main_goto_shikigami_records_1.png",
+    "method": "Template matching",
+    "threshold": 0.8
+  },
+  {
+    "itemName": "theme_main_goto_onmyodo_1",
+    "roiFront": "1000,633,48,20",
+    "roiBack": "998,632,51,23",
+    "description": "description",
+    "imageName": "theme_main_goto_onmyodo_1.png",
+    "method": "Template matching",
+    "threshold": 0.8
+  },
+  {
+    "itemName": "theme_main_goto_friends_1",
+    "roiFront": "892,632,48,24",
+    "roiBack": "891,630,51,27",
+    "description": "description",
+    "imageName": "theme_main_goto_friends_1.png",
+    "method": "Template matching",
+    "threshold": 0.8
+  },
+  {
+    "itemName": "theme_main_goto_daily_1",
+    "roiFront": "780,616,47,28",
+    "roiBack": "778,615,49,31",
+    "description": "description",
+    "imageName": "theme_main_goto_daily_1.png",
+    "method": "Template matching",
+    "threshold": 0.8
+  },
+  {
+    "itemName": "theme_main_goto_mall_1",
+    "roiFront": "671,634,34,23",
+    "roiBack": "670,633,36,26",
+    "description": "description",
+    "imageName": "theme_main_goto_mall_1.png",
+    "method": "Template matching",
+    "threshold": 0.8
+  },
+  {
+    "itemName": "theme_main_goto_guild_1",
+    "roiFront": "596,619,10,39",
+    "roiBack": "595,617,13,41",
+    "description": "description",
+    "imageName": "theme_main_goto_guild_1.png",
+    "method": "Template matching",
+    "threshold": 0.8
+  },
+  {
+    "itemName": "theme_main_goto_team_1",
+    "roiFront": "449,621,37,34",
+    "roiBack": "447,620,40,36",
+    "description": "description",
+    "imageName": "theme_main_goto_team_1.png",
+    "method": "Template matching",
+    "threshold": 0.8
+  },
+  {
+    "itemName": "theme_main_goto_collection_1",
+    "roiFront": "123,610,22,48",
+    "roiBack": "121,608,24,51",
+    "description": "description",
+    "imageName": "theme_main_goto_collection_1.png",
+    "method": "Template matching",
+    "threshold": 0.8
+  },
+  {
+    "itemName": "theme_main_goto_travel_1",
+    "roiFront": "221,620,37,39",
+    "roiBack": "219,619,40,41",
+    "description": "description",
+    "imageName": "theme_main_goto_travel_1.png",
     "method": "Template matching",
     "threshold": 0.8
   }

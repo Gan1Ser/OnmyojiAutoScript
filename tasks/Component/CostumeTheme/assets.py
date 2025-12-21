@@ -12,8 +12,26 @@ class CostumeThemeAssets:
 
 	# Image Rule Assets
 	# description 
-	I_THEME1_LOGIN_SCROLL_CLOSE_1 = RuleImage(roi_front=(1195,650,48,52), roi_back=(1193,649,51,54), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme1_login_scroll_close_1.png")
+	I_THEME_LOGIN_SCROLL_CLOSE_1 = RuleImage(roi_front=(1195,650,48,52), roi_back=(1193,649,51,54), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_login_scroll_close_1.png")
 	# description 
-	I_THEME1_LOGIN_SCROLL_OPEN_1 = RuleImage(roi_front=(1196,604,48,36), roi_back=(1195,603,51,39), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme1_login_scroll_open_1.png")
+	I_THEME_LOGIN_SCROLL_OPEN_1 = RuleImage(roi_front=(1196,604,48,36), roi_back=(1195,603,51,39), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_login_scroll_open_1.png")
+	# description 
+	I_THEME_MAIN_GOTO_SHIKIGAMI_RECORDS_1 = RuleImage(roi_front=(1115,625,58,36), roi_back=(1114,624,61,39), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_shikigami_records_1.png")
+	# description 
+	I_THEME_MAIN_GOTO_ONMYODO_1 = RuleImage(roi_front=(1000,633,48,20), roi_back=(998,632,51,23), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_onmyodo_1.png")
+	# description 
+	I_THEME_MAIN_GOTO_FRIENDS_1 = RuleImage(roi_front=(892,632,48,24), roi_back=(891,630,51,27), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_friends_1.png")
+	# description 
+	I_THEME_MAIN_GOTO_DAILY_1 = RuleImage(roi_front=(780,616,47,28), roi_back=(778,615,49,31), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_daily_1.png")
+	# description 
+	I_THEME_MAIN_GOTO_MALL_1 = RuleImage(roi_front=(671,634,34,23), roi_back=(670,633,36,26), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_mall_1.png")
+	# description 
+	I_THEME_MAIN_GOTO_GUILD_1 = RuleImage(roi_front=(596,619,10,39), roi_back=(595,617,13,41), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_guild_1.png")
+	# description 
+	I_THEME_MAIN_GOTO_TEAM_1 = RuleImage(roi_front=(449,621,37,34), roi_back=(447,620,40,36), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_team_1.png")
+	# description 
+	I_THEME_MAIN_GOTO_COLLECTION_1 = RuleImage(roi_front=(123,610,22,48), roi_back=(121,608,24,51), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_collection_1.png")
+	# description 
+	I_THEME_MAIN_GOTO_TRAVEL_1 = RuleImage(roi_front=(221,620,37,39), roi_back=(219,619,40,41), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_travel_1.png")
 
 

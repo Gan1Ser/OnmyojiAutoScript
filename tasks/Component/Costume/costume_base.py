@@ -45,8 +45,17 @@ realm_costume_model = {
 # 主题
 theme_costume_model = {
     getattr(ThemeType, f"COSTUME_THEME_{i}"): {
-        'I_MAIN_SCROLL_CLOSE': f'I_THEME1_LOGIN_SCROLL_CLOSE_{i}',
-        'I_MAIN_SCROLL_OPEN': f'I_THEME1_LOGIN_SCROLL_OPEN_{i}',
+        'I_MAIN_SCROLL_CLOSE': f'I_THEME_LOGIN_SCROLL_CLOSE_{i}',
+        'I_MAIN_SCROLL_OPEN': f'I_THEME_LOGIN_SCROLL_OPEN_{i}',
+        'I_MAIN_GOTO_TRAVEL': f'I_THEME_MAIN_GOTO_TRAVEL_{i}',
+        'I_MAIN_GOTO_SHIKIGAMI_RECORDS': f'I_THEME_MAIN_GOTO_SHIKIGAMI_RECORDS_{i}',
+        'I_MAIN_GOTO_ONMYODO': f'I_THEME_MAIN_GOTO_ONMYODO_{i}',
+        'I_MAIN_GOTO_FRIENDS': f'I_THEME_MAIN_GOTO_FRIENDS_{i}',
+        'I_MAIN_GOTO_DAILY': f'I_THEME_MAIN_GOTO_DAILY_{i}',
+        'I_MAIN_GOTO_MALL': f'I_THEME_MAIN_GOTO_MALL_{i}',
+        'I_MAIN_GOTO_GUILD': f'I_THEME_MAIN_GOTO_GUILD_{i}',
+        'I_MAIN_GOTO_TEAM': f'I_THEME_MAIN_GOTO_TEAM_{i}',
+        'I_MAIN_GOTO_COLLECTION': f'I_THEME_MAIN_GOTO_COLLECTION_{i}',
     } for i in range(1, 2)
 }
 
