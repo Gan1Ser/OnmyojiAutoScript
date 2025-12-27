@@ -15,13 +15,13 @@ from tasks.Component.GeneralBattle.assets import GeneralBattleAssets
 from tasks.Component.GeneralBattle.config_general_battle import GreenMarkType, GeneralBattleConfig
 from tasks.Component.GeneralBuff.config_buff import BuffClass
 from tasks.Component.GeneralBuff.general_buff import GeneralBuff
-from tasks.GameUi.game_ui import GameUi
+from tasks.GameUi.assets import GameUiAssets
 from tasks.WantedQuests.assets import WantedQuestsAssets
 
 from module.logger import logger
 
 
-class GeneralBattle(GeneralBuff, GeneralBattleAssets, WantedQuestsAssets,GameUi):
+class GeneralBattle(GeneralBuff, GeneralBattleAssets, WantedQuestsAssets, GameUiAssets):
     """
     使用这个通用的战斗必须要求这个任务的config有config_general_battle
     """
@@ -44,7 +44,10 @@ class GeneralBattle(GeneralBuff, GeneralBattleAssets, WantedQuestsAssets,GameUi)
         if self.is_in_battle(False):
             self.green_mark(config.green_enable, config.green_mark)
         # 战中设置
-        win = self.battle_wait(config.random_click_swipt_enable, model)
+        if model is None:
+            win = self.battle_wait(config.random_click_swipt_enable)
+        else:
+            win = self.battle_wait(config.random_click_swipt_enable, model)
         if win:
             return True
         else:
