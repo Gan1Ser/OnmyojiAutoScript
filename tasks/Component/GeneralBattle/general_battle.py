@@ -15,16 +15,18 @@ from tasks.Component.GeneralBattle.assets import GeneralBattleAssets
 from tasks.Component.GeneralBattle.config_general_battle import GreenMarkType, GeneralBattleConfig
 from tasks.Component.GeneralBuff.config_buff import BuffClass
 from tasks.Component.GeneralBuff.general_buff import GeneralBuff
+from tasks.GameUi.game_ui import GameUi
+from tasks.WantedQuests.assets import WantedQuestsAssets
 
 from module.logger import logger
 
 
-class GeneralBattle(GeneralBuff, GeneralBattleAssets):
+class GeneralBattle(GeneralBuff, GeneralBattleAssets, WantedQuestsAssets,GameUi):
     """
     使用这个通用的战斗必须要求这个任务的config有config_general_battle
     """
 
-    def run_general_battle(self, config: GeneralBattleConfig = None, buff: BuffClass or list[BuffClass] = None) -> bool:
+    def run_general_battle(self, config: GeneralBattleConfig = None, buff: BuffClass or list[BuffClass] = None, model: str = None) -> bool:
         """
         运行脚本
         :return:
@@ -42,7 +44,7 @@ class GeneralBattle(GeneralBuff, GeneralBattleAssets):
         if self.is_in_battle(False):
             self.green_mark(config.green_enable, config.green_mark)
         # 战中设置
-        win = self.battle_wait(config.random_click_swipt_enable)
+        win = self.battle_wait(config.random_click_swipt_enable, model)
         if win:
             return True
         else:
@@ -154,7 +156,7 @@ class GeneralBattle(GeneralBuff, GeneralBattleAssets):
 
         return True
 
-    def battle_wait(self, random_click_swipt_enable: bool) -> bool:
+    def battle_wait(self, random_click_swipt_enable: bool, model: str = None) -> bool:
         """
         等待战斗结束 ！！！
         很重要 这个函数是原先写的， 优化版本在tasks/Secret/script_task下。本着不改动原先的代码的原则，所以就不改了
@@ -219,6 +221,28 @@ class GeneralBattle(GeneralBuff, GeneralBattleAssets):
             # 有些的战斗没有下面的奖励，所以直接返回
             logger.info("There is no reward, Exit battle")
             return win
+        if model == 'secret':
+            # 执行secret模式的逻辑
+            logger.info("Running secret battle mode")
+            # 又臭又长的对话针的是服了这个网易
+            click_count = 0
+            while 1:
+                self.screenshot()
+                if self.appear(self.I_CHECK_EXPLORATION):
+                    break
+                if not self.appear(self.I_CHECK_EXPLORATION):
+                    self.click(self.C_SECRET_CHAT, interval=0.8)
+                    click_count += 1
+                    if click_count >= 6:
+                        logger.warning('Secret mission chat too long, force to close')
+                        click_count = 0
+                        self.device.click_record_clear()
+                    continue
+                if self.appear_then_click(self.I_UI_BACK_RED, interval=1):
+                    continue
+                if self.appear_then_click(self.I_UI_BACK_BLUE, interval=1.5):
+                    continue
+
         logger.info("Get reward")
         while 1:
             self.screenshot()
