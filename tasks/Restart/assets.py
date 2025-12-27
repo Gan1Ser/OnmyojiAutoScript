@@ -42,9 +42,9 @@ class RestartAssets:
 	# 点击随机御魂 
 	I_HARVEST_SOUL_1 = RuleImage(roi_front=(248,501,34,37), roi_back=(165,389,929,168), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_soul_1.png")
 	# 选择第一个御魂 
-	I_HARVEST_SOUL_2 = RuleImage(roi_front=(586,561,112,47), roi_back=(570,547,139,71), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_soul_2.png")
+	I_HARVEST_SOUL_2 = RuleImage(roi_front=(191,566,111,40), roi_back=(189,565,113,43), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_soul_2.png")
 	# description 
-	I_HARVEST_SOUL_3 = RuleImage(roi_front=(313,489,188,33), roi_back=(302,472,216,60), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_soul_3.png")
+	I_HARVEST_SOUL_3 = RuleImage(roi_front=(313,489,188,33), roi_back=(302,472,216,60), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_soul_3.png")
 	# 寮包 
 	I_HARVEST_GUILD_REWARD = RuleImage(roi_front=(244,498,41,42), roi_back=(200,403,817,157), threshold=0.8, method="Template matching", file="./tasks/Restart/harvest/harvest_harvest_guild_reward.png")
 	# 宠物小屋关闭按钮 

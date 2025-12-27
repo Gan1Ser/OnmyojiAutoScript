@@ -61,5 +61,23 @@
     "method": "Template matching",
     "threshold": 0.8,
     "description": "小小宠物，发现宝藏"
+  },
+  {
+    "itemName": "souls_exit",
+    "imageName": "o_souls_exit.png",
+    "roiFront": "1044,122,40,37",
+    "roiBack": "1044,122,40,37",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "退出御魂自选"
+  },
+  {
+    "itemName": "reward_check",
+    "imageName": "o_reward_check.png",
+    "roiFront": "63,647,31,22",
+    "roiBack": "63,647,31,22",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "获得奖励检查"
   }
 ]

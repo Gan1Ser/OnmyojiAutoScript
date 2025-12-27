@@ -219,6 +219,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
     def run_member(self):
         logger.info('Start run member')
         self.ui_get_current_page()
+        # 配置等待队长邀请的超时时间（秒），可根据需要调整
+        INVITE_TIMEOUT = 10  # 5分钟超时
+        last_invite_check_time = datetime.now()  # 初始化计时器
         # self.ui_goto(page_soul_zones)
         # self.orochi_enter()
         # self.check_lock(self.config.orochi.general_battle_config.lock_team_enable)
@@ -242,6 +245,12 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
             if self.check_then_accept():
                 continue
 
+            # 检查邀请超时
+            if (datetime.now() - last_invite_check_time) >= timedelta(seconds=INVITE_TIMEOUT):
+
+                logger.info(f'No invite received for {INVITE_TIMEOUT} seconds, ending task')
+
+                break
             if self.is_in_room():
                 self.device.stuck_record_clear()
                 if self.wait_battle(wait_time=self.config.orochi.invite_config.wait_time):
@@ -432,6 +441,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
         logger.info("Start battle process")
         while 1:
             self.screenshot()
+            # 检查御魂自选
+            if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                continue
             action_click = random.choice([self.C_WIN_1, self.C_WIN_2, self.C_WIN_3])
             if self.appear_then_click(self.I_WIN, action=action_click ,interval=0.8):
                 # 赢的那个鼓
@@ -446,11 +458,33 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                     continue
                 while 1:
                     self.screenshot()
+                    # 检查御魂自选
+                    if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                        continue
                     action_click = random.choice([self.C_REWARD_1, self.C_REWARD_2, self.C_REWARD_3])
-                    if not self.appear(self.I_GREED_GHOST):
+                    if (not self.appear(self.I_GREED_GHOST)) and (not self.appear(self.I_REWARD_CHECK)):
                         break
                     if self.click(action_click, interval=1.5):
+                        pass
+                    # 队长确保不卡在再次邀请界面
+                    if self.appear(self.I_GI_SURE):
+                        break
+                return True
+            if self.appear(self.I_REWARD_CHECK):
+                logger.info('Win battle')
+                while 1:
+                    self.screenshot()
+                    # 检查御魂自选
+                    if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
                         continue
+                    action_click = random.choice([self.C_REWARD_1, self.C_REWARD_2, self.C_REWARD_3])
+                    if (not self.appear(self.I_GREED_GHOST)) and (not self.appear(self.I_REWARD_CHECK)):
+                        break
+                    if self.click(action_click, interval=1.5):
+                        pass
+                    # 队长确保不卡在再次邀请界面
+                    if self.appear(self.I_GI_SURE):
+                        break
                 return True
             if self.appear(self.I_REWARD):
                 # 魂
@@ -458,6 +492,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
                 appear_greed_ghost = self.appear(self.I_GREED_GHOST)
                 while 1:
                     self.screenshot()
+                    # 检查御魂自选
+                    if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                        continue
                     action_click = random.choice([self.C_REWARD_1, self.C_REWARD_2, self.C_REWARD_3])
                     if self.appear_then_click(self.I_REWARD, action=action_click, interval=1.5):
                         continue
@@ -467,6 +504,9 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
 
             if self.appear(self.I_FALSE):
                 logger.warning('False battle')
+                # 检查御魂自选
+                if self.appear_then_click(self.I_SOULS_EXIT, interval=1.5):
+                    continue
                 self.ui_click_until_disappear(self.I_FALSE)
                 return False
 
