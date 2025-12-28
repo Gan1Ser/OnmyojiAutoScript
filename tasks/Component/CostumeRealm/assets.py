@@ -12,21 +12,34 @@ class CostumeRealmAssets:
 
 	# Image Rule Assets
 	# description 
-	I_SHI_CARD_1 = RuleImage(roi_front=(919,295,36,66), roi_back=(868,238,141,150), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm1/realm1_shi_card_1.png")
+	I_SHI_CARD_1 = RuleImage(roi_front=(919,295,36,66), roi_back=(868,238,141,150), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm1/realm_shi_card_1.png")
 	# description 
-	I_SHI_DEFENSE_1 = RuleImage(roi_front=(308,294,35,100), roi_back=(197,241,247,207), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm1/realm1_shi_defense_1.png")
+	I_SHI_DEFENSE_1 = RuleImage(roi_front=(308,294,35,100), roi_back=(197,241,247,207), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm1/realm_shi_defense_1.png")
 
 
 	# Image Rule Assets
 	# description 
-	I_SHI_GROWN_2 = RuleImage(roi_front=(663,344,36,68), roi_back=(598,280,159,186), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm2/realm2_shi_grown_2.png")
+	I_SHI_GROWN_2 = RuleImage(roi_front=(663,344,36,68), roi_back=(598,280,159,186), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm2/realm_shi_grown_2.png")
 	# description 
-	I_SHI_CARD_2 = RuleImage(roi_front=(934,351,36,43), roi_back=(903,318,100,100), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm2/realm2_shi_card_2.png")
+	I_SHI_CARD_2 = RuleImage(roi_front=(934,351,36,43), roi_back=(903,318,100,100), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm2/realm_shi_card_2.png")
 	# description 
-	I_SHI_DEFENSE_2 = RuleImage(roi_front=(369,365,33,100), roi_back=(285,315,178,188), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm2/realm2_shi_defense_2.png")
+	I_SHI_DEFENSE_2 = RuleImage(roi_front=(369,365,33,100), roi_back=(285,315,178,188), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm2/realm_shi_defense_2.png")
 	# description 
-	I_BOX_AP_2 = RuleImage(roi_front=(925,448,50,54), roi_back=(852,377,154,160), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm2/realm2_box_ap_2.png")
+	I_BOX_AP_2 = RuleImage(roi_front=(925,448,50,54), roi_back=(852,377,154,160), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm2/realm_box_ap_2.png")
 	# description 
-	I_BOX_EXP_2 = RuleImage(roi_front=(991,448,41,59), roi_back=(921,372,155,173), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm2/realm2_box_exp_2.png")
+	I_BOX_EXP_2 = RuleImage(roi_front=(991,448,41,59), roi_back=(921,372,155,173), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm2/realm_box_exp_2.png")
+
+
+	# Image Rule Assets
+	# description 
+	I_SHI_GROWN_5 = RuleImage(roi_front=(604,336,20,54), roi_back=(561,255,188,196), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm3/shi_grown_5.png")
+	# description 
+	I_SHI_CARD_5 = RuleImage(roi_front=(886,339,19,51), roi_back=(854,293,132,120), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm3/shi_card_5.png")
+	# description 
+	I_SHI_DEFENSE_5 = RuleImage(roi_front=(268,337,27,45), roi_back=(219,247,252,219), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm3/shi_defense_5.png")
+	# description 
+	I_BOX_AP_5 = RuleImage(roi_front=(985,420,43,49), roi_back=(898,342,259,250), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm3/box_ap_5.png")
+	# description 
+	I_BOX_EXP_5 = RuleImage(roi_front=(1056,422,20,49), roi_back=(962,365,189,161), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeRealm/realm3/box_exp_5.png")
 
 

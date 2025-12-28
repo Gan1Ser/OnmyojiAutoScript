@@ -23,11 +23,12 @@ class MainType(str, Enum):
 
 # 结界皮肤
 class RealmType(str, Enum):
-    COSTUME_REALM_DEFAULT = 'costume_realm_default'  # 妖扇结界
-    COSTUME_REALM_1 = 'costume_realm_1'  # 鬼灵咒符
-    COSTUME_REALM_2 = 'costume_realm_2'  # 狐梦之乡
-    COSTUME_REALM_3 = 'costume_realm_3'  # 编心织忆
-    COSTUME_REALM_4 = 'costume_realm_4'  # 花海繁生
+    COSTUME_REALM_DEFAULT = 'costume_realm_default'  # 妖扇结界 + 普通鲤鱼旗
+    COSTUME_REALM_1 = 'costume_realm_1'  # 鬼灵咒符 + 普通鲤鱼旗
+    COSTUME_REALM_2 = 'costume_realm_2'  # 狐梦之乡 + 普通鲤鱼旗
+    COSTUME_REALM_3 = 'costume_realm_3'  # 编心织忆 + 普通鲤鱼旗
+    COSTUME_REALM_4 = 'costume_realm_4'  # 花海繁生 + 普通鲤鱼旗
+    COSTUME_REALM_5 = 'costume_realm_5'  # 莲心梦乡 + 无垢莲台
 
 # 主题，就是庭院最右下角的展开按钮
 class ThemeType(str, Enum):

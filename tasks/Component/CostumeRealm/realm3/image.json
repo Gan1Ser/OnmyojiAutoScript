@@ -1,0 +1,47 @@
+[
+  {
+    "itemName": "shi_grown_5",
+    "imageName": "shi_grown_5.png",
+    "roiFront": "604,336,20,54",
+    "roiBack": "561,255,188,196",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "description"
+  },
+  {
+    "itemName": "shi_card_5",
+    "imageName": "shi_card_5.png",
+    "roiFront": "886,339,19,51",
+    "roiBack": "854,293,132,120",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "description"
+  },
+  {
+    "itemName": "shi_defense_5",
+    "imageName": "shi_defense_5.png",
+    "roiFront": "268,337,27,45",
+    "roiBack": "219,247,252,219",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "description"
+  },
+  {
+    "itemName": "box_ap_5",
+    "imageName": "box_ap_5.png",
+    "roiFront": "985,420,43,49",
+    "roiBack": "898,342,259,250",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "description"
+  },
+  {
+    "itemName": "box_exp_5",
+    "imageName": "box_exp_5.png",
+    "roiFront": "1056,422,20,49",
+    "roiBack": "962,365,189,161",
+    "method": "Template matching",
+    "threshold": 0.8,
+    "description": "description"
+  }
+]
