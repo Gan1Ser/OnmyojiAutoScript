@@ -46,8 +46,8 @@
   },
   {
     "itemName": "theme_main_goto_daily_1",
-    "roiFront": "780,616,47,28",
-    "roiBack": "778,615,49,31",
+    "roiFront": "801,619,30,36",
+    "roiBack": "799,617,32,39",
     "description": "description",
     "imageName": "theme_main_goto_daily_1.png",
     "method": "Template matching",

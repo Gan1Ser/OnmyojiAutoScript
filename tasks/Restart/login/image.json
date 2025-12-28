@@ -1,8 +1,8 @@
 [
   {
     "itemName": "login_red_close",
-    "imageName": "login_login_red_close.png",
-    "roiFront": "800,0,480,290",
+    "imageName": "login_red_close.png",
+    "roiFront": "850,89,41,37",
     "roiBack": "800,0,480,290",
     "method": "Template matching",
     "threshold": 0.8,

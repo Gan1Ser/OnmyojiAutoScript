@@ -22,7 +22,7 @@ class CostumeThemeAssets:
 	# description 
 	I_THEME_MAIN_GOTO_FRIENDS_1 = RuleImage(roi_front=(892,632,48,24), roi_back=(891,630,51,27), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_friends_1.png")
 	# description 
-	I_THEME_MAIN_GOTO_DAILY_1 = RuleImage(roi_front=(780,616,47,28), roi_back=(778,615,49,31), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_daily_1.png")
+	I_THEME_MAIN_GOTO_DAILY_1 = RuleImage(roi_front=(801,619,30,36), roi_back=(799,617,32,39), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_daily_1.png")
 	# description 
 	I_THEME_MAIN_GOTO_MALL_1 = RuleImage(roi_front=(671,634,34,23), roi_back=(670,633,36,26), threshold=0.8, method="Template matching", file="./tasks/Component/CostumeTheme/theme1/theme_main_goto_mall_1.png")
 	# description 
