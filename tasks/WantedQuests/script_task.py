@@ -17,17 +17,20 @@ from module.logger import logger
 from tasks.Component.Costume.config import MainType
 from tasks.Component.GeneralBattle.config_general_battle import GeneralBattleConfig
 from tasks.GameUi.page import page_main, page_exploration, page_shikigami_records
-from tasks.Secret.script_task import ScriptTask as SecretScriptTask
 from tasks.WantedQuests.assets import WantedQuestsAssets
 from tasks.WantedQuests.config import CooperationType, CooperationSelectMask
 from tasks.WantedQuests.explore import WQExplore, ExploreWantedBoss
 
 
-class ScriptTask(WQExplore, SecretScriptTask, WantedQuestsAssets):
+class ScriptTask(WQExplore, WantedQuestsAssets):
     want_strategy_excluding: list[list] = []  # 不需要执行的
     # 追踪界面(显示"前往"按钮的界面,左上角位置,神秘任务不好使)显示以下名称时,任务不再执行
     unwanted_boss_name_list: list = []
-
+    @cached_property
+    def battle_config(self) -> GeneralBattleConfig:
+        conf = self.config.model.secret.general_battle
+        conf.lock_team_enable = False
+        return conf
     def run(self):
         con = self.config.model.wanted_quests
         unwanted_boss_names = con.wanted_quests_config.unwanted_boss_names

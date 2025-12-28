@@ -233,7 +233,7 @@ class GeneralBattle(GeneralBuff, GeneralBattleAssets, WantedQuestsAssets, GameUi
                 self.screenshot()
                 if self.appear(self.I_CHECK_EXPLORATION):
                     break
-                if not self.appear(self.I_CHECK_EXPLORATION):
+                if not self.appear(self.I_SECRET_FIRE):
                     self.click(self.C_SECRET_CHAT, interval=0.8)
                     click_count += 1
                     if click_count >= 6:
