@@ -220,7 +220,7 @@ class ScriptTask(GeneralBattle, GeneralInvite, GeneralBuff, GeneralRoom, GameUi,
         logger.info('Start run member')
         self.ui_get_current_page()
         # 配置等待队长邀请的超时时间（秒），可根据需要调整
-        INVITE_TIMEOUT = 10  # 5分钟超时
+        INVITE_TIMEOUT = 600  # 5分钟超时
         last_invite_check_time = datetime.now()  # 初始化计时器
         # self.ui_goto(page_soul_zones)
         # self.orochi_enter()
