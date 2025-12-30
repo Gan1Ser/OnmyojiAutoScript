@@ -207,6 +207,9 @@ class LoginHandler(RestartAssets, GameUi):
                 self.wait_until_appear(self.I_LOGIN_RED_CLOSE, wait_time=2)
                 timer_harvest.reset()
                 continue
+            if self.appear_then_click(self.I_LOGIN_RED_CLOSE, interval=1.5):
+                timer_harvest.reset()
+                continue
             # 999天的签到福袋
             for SIGN_999 in SIGN_999_List:
                 if self.appear_then_click(SIGN_999, interval=1.5):
@@ -266,7 +269,8 @@ class LoginHandler(RestartAssets, GameUi):
                     break
 
             # 红色的关闭
-            if self.appear_then_click(self.I_UI_BACK_RED, interval=2.3):
+            if self.appear(self.I_LOGIN_RED_CLOSE):
+                self.click(self.I_LOGIN_RED_CLOSE, interval=2)
                 timer_harvest.reset()
                 continue
 
