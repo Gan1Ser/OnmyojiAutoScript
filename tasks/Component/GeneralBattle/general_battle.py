@@ -17,11 +17,12 @@ from tasks.Component.GeneralBuff.config_buff import BuffClass
 from tasks.Component.GeneralBuff.general_buff import GeneralBuff
 from tasks.GameUi.assets import GameUiAssets
 from tasks.WantedQuests.assets import WantedQuestsAssets
+from tasks.Secret.assets import SecretAssets
 
 from module.logger import logger
 
 
-class GeneralBattle(GeneralBuff, GeneralBattleAssets, WantedQuestsAssets, GameUiAssets):
+class GeneralBattle(GeneralBuff, GeneralBattleAssets, WantedQuestsAssets, GameUiAssets, SecretAssets):
     """
     使用这个通用的战斗必须要求这个任务的config有config_general_battle
     """
@@ -233,7 +234,13 @@ class GeneralBattle(GeneralBuff, GeneralBattleAssets, WantedQuestsAssets, GameUi
                 self.screenshot()
                 if self.appear(self.I_CHECK_EXPLORATION):
                     break
-                if not self.appear(self.I_SECRET_FIRE):
+                if self.appear_then_click(self.I_UI_BACK_RED, interval=1):
+                    continue
+                if self.appear_then_click(self.I_UI_BACK_YELLOW, interval=1.5):
+                    continue
+                if self.appear_then_click(self.I_UI_BACK_BLUE, interval=1.5):
+                    continue
+                if not self.appear(self.I_SECRET_FIRE) and not self.appear(self.I_SE_FIRE):
                     self.click(self.C_SECRET_CHAT, interval=0.8)
                     click_count += 1
                     if click_count >= 6:
@@ -241,10 +248,7 @@ class GeneralBattle(GeneralBuff, GeneralBattleAssets, WantedQuestsAssets, GameUi
                         click_count = 0
                         self.device.click_record_clear()
                     continue
-                if self.appear_then_click(self.I_UI_BACK_RED, interval=1):
-                    continue
-                if self.appear_then_click(self.I_UI_BACK_BLUE, interval=1.5):
-                    continue
+
 
         logger.info("Get reward")
         while 1:

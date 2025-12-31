@@ -308,8 +308,8 @@
   {
     "itemName": "secret_fire",
     "imageName": "gb_secret_fire.png",
-    "roiFront": "1108,551,100,100",
-    "roiBack": "1100,541,120,120",
+    "roiFront": "1055,568,94,82",
+    "roiBack": "1036,540,130,126",
     "method": "Template matching",
     "threshold": 0.7,
     "description": "秘闻挑战"

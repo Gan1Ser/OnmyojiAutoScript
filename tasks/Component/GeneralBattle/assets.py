@@ -136,7 +136,7 @@ class GeneralBattleAssets:
 	# 战斗信息标识 
 	I_BATTLE_INFO = RuleImage(roi_front=(230,12,37,39), roi_back=(210,1,147,72), threshold=0.8, method="Template matching", file="./tasks/Component/GeneralBattle/gb/gb_battle_info.png")
 	# 秘闻挑战 
-	I_SECRET_FIRE = RuleImage(roi_front=(1108,551,100,100), roi_back=(1100,541,120,120), threshold=0.7, method="Template matching", file="./tasks/Component/GeneralBattle/gb/gb_secret_fire.png")
+	I_SECRET_FIRE = RuleImage(roi_front=(1055,568,94,82), roi_back=(1036,540,130,126), threshold=0.7, method="Template matching", file="./tasks/Component/GeneralBattle/gb/gb_secret_fire.png")
 
 
 	# Image Rule Assets
