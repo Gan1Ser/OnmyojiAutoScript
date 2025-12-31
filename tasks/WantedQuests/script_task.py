@@ -364,6 +364,8 @@ class ScriptTask(WQExplore, WantedQuestsAssets):
             self.screenshot()
             if self.appear(self.I_CHECK_EXPLORATION):
                 break
+            if self.appear_then_click(self.I_BACK_Y, interval=1.5):
+                continue
             if self.appear_then_click(self.I_UI_BACK_RED, interval=1):
                 continue
             if self.appear_then_click(self.I_UI_BACK_BLUE, interval=1.5):
