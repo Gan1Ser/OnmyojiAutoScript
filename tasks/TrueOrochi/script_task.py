@@ -58,7 +58,7 @@ class ScriptTask(OrochiScriptTask, TrueOrochiAssets):
                 raise TaskEnd('TrueOrochi')
 
             self.check_layer(Layer.TEN)
-            self.check_lock(False)
+            self.check_lock(True)
             count_orochi_ten = 0
             while 1:
                 self.screenshot()
@@ -71,7 +71,7 @@ class ScriptTask(OrochiScriptTask, TrueOrochiAssets):
                     logger.info('Find true orochi')
                     battle = True
                     break
-                if count_orochi_ten >= 10:
+                if count_orochi_ten >= 20:
                     logger.warning('Not find true orochi')
                     battle = False
                     break
