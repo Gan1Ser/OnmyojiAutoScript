@@ -232,14 +232,14 @@ class GeneralBattle(GeneralBuff, GeneralBattleAssets, WantedQuestsAssets, GameUi
             click_count = 0
             while 1:
                 self.screenshot()
-                if self.appear(self.I_CHECK_EXPLORATION):
+                # if self.appear(self.I_CHECK_EXPLORATION):
+                #     break
+                if self.appear(self.I_UI_BACK_RED, interval=1) or self.appear(self.I_UI_BACK_BLUE, interval=1.5):
                     break
-                if self.appear_then_click(self.I_UI_BACK_RED, interval=1):
-                    continue
-                if self.appear_then_click(self.I_UI_BACK_YELLOW, interval=1.5):
-                    continue
-                if self.appear_then_click(self.I_UI_BACK_BLUE, interval=1.5):
-                    continue
+                # if self.appear_then_click(self.I_UI_BACK_YELLOW, interval=1.5):
+                #     continue
+                # if self.appear_then_click(self.I_UI_BACK_BLUE, interval=1.5):
+                #     continue
                 if not self.appear(self.I_SECRET_FIRE) and not self.appear(self.I_SE_FIRE):
                     self.click(self.C_SECRET_CHAT, interval=0.8)
                     click_count += 1
